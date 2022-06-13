@@ -1,0 +1,16 @@
+PODS:
+  - CirclePay (0.1.0)
+
+DEPENDENCIES:
+  - CirclePay (from `../`)
+
+EXTERNAL SOURCES:
+  CirclePay:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CirclePay: dba14e5d8f89f40f017a0d28cf5f5789a7f40f46
+
+PODFILE CHECKSUM: 09dcd107afc26345586259913347680b2831dabe
+
+COCOAPODS: 1.11.3

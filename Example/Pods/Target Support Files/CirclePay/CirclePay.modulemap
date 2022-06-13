@@ -1,0 +1,6 @@
+framework module CirclePay {
+  umbrella header "CirclePay-umbrella.h"
+
+  export *
+  module * { export * }
+}
