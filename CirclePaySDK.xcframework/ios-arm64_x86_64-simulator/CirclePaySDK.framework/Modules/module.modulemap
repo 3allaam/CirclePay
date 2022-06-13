@@ -1,0 +1,11 @@
+framework module CirclePaySDK {
+  umbrella header "CirclePaySDK.h"
+
+  export *
+  module * { export * }
+}
+
+module CirclePaySDK.Swift {
+    header "CirclePaySDK-Swift.h"
+    requires objc
+}

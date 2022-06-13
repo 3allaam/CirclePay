@@ -1,0 +1,2238 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios12.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CirclePaySDK
+@_exported import CirclePaySDK
+import Combine
+import CoreGraphics
+import CoreText
+import Dispatch
+import Foundation
+import MobileCoreServices
+import QuartzCore
+import Swift
+import SystemConfiguration
+import UIKit
+@objc extension UIView {
+  @objc dynamic public func viewContainingController() -> UIKit.UIViewController?
+  @objc dynamic public func topMostController() -> UIKit.UIViewController?
+  @objc dynamic public func parentContainerViewController() -> UIKit.UIViewController?
+  @objc dynamic public func superviewOfClassType(_ classType: UIKit.UIView.Type, belowView: UIKit.UIView? = nil) -> UIKit.UIView?
+}
+@objc extension UIViewController {
+  @objc dynamic public func parentIQContainerViewController() -> UIKit.UIViewController?
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class IQKeyboardManager : ObjectiveC.NSObject, UIKit.UIGestureRecognizerDelegate {
+  @objc public var enable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var keyboardDistanceFromTextField: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc public var keyboardShowing: Swift.Bool {
+    @objc get
+  }
+  @objc public var movedDistance: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc public class var shared: CirclePaySDK.IQKeyboardManager {
+    @objc get
+  }
+  @objc public var enableAutoToolbar: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var toolbarManageBehaviour: CirclePaySDK.IQAutoToolbarManageBehaviour
+  @objc public var shouldToolbarUsesTextFieldTintColor: Swift.Bool
+  @objc public var toolbarTintColor: UIKit.UIColor?
+  @objc public var toolbarBarTintColor: UIKit.UIColor?
+  @objc public var previousNextDisplayMode: CirclePaySDK.IQPreviousNextDisplayMode
+  @objc public var toolbarPreviousBarButtonItemImage: UIKit.UIImage?
+  @objc public var toolbarNextBarButtonItemImage: UIKit.UIImage?
+  @objc public var toolbarDoneBarButtonItemImage: UIKit.UIImage?
+  @objc public var toolbarPreviousBarButtonItemText: Swift.String?
+  @objc public var toolbarNextBarButtonItemText: Swift.String?
+  @objc public var toolbarDoneBarButtonItemText: Swift.String?
+  @objc public var shouldShowToolbarPlaceholder: Swift.Bool
+  @objc public var placeholderFont: UIKit.UIFont?
+  @objc public var placeholderColor: UIKit.UIColor?
+  @objc public var placeholderButtonColor: UIKit.UIColor?
+  @objc public var overrideKeyboardAppearance: Swift.Bool
+  @objc public var keyboardAppearance: UIKit.UIKeyboardAppearance
+  @objc public var shouldResignOnTouchOutside: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var resignFirstResponderGesture: UIKit.UITapGestureRecognizer {
+    @objc get
+    @objc set
+  }
+  @discardableResult
+  @objc public func resignFirstResponder() -> Swift.Bool
+  @objc public var canGoPrevious: Swift.Bool {
+    @objc get
+  }
+  @objc public var canGoNext: Swift.Bool {
+    @objc get
+  }
+  @discardableResult
+  @objc public func goPrevious() -> Swift.Bool
+  @discardableResult
+  @objc public func goNext() -> Swift.Bool
+  @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+  @objc public var shouldPlayInputClicks: Swift.Bool
+  @objc public var layoutIfNeededOnUpdate: Swift.Bool
+  @objc public var disabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc public var enabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc public var disabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc public var enabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc public var toolbarPreviousNextAllowedClasses: [UIKit.UIView.Type]
+  @objc public var disabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc public var enabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc public var touchResignedGestureIgnoreClasses: [UIKit.UIView.Type]
+  @objc public func registerTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc public func unregisterTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc deinit
+  @objc public func reloadLayoutIfNeeded()
+  @objc public func reloadInputViews()
+  @objc public var enableDebugging: Swift.Bool
+  @objc public func registerAllNotifications()
+  @objc public func unregisterAllNotifications()
+}
+@_hasMissingDesignatedInitializers public class Request {
+  public enum State {
+    case initialized
+    case resumed
+    case suspended
+    case cancelled
+    case finished
+    public static func == (a: CirclePaySDK.Request.State, b: CirclePaySDK.Request.State) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let id: Foundation.UUID
+  final public let underlyingQueue: Dispatch.DispatchQueue
+  final public let serializationQueue: Dispatch.DispatchQueue
+  final public let eventMonitor: CirclePaySDK.EventMonitor?
+  final public let interceptor: CirclePaySDK.RequestInterceptor?
+  weak public var delegate: CirclePaySDK.RequestDelegate? {
+    get
+  }
+  public var state: CirclePaySDK.Request.State {
+    get
+  }
+  public var isInitialized: Swift.Bool {
+    get
+  }
+  public var isResumed: Swift.Bool {
+    get
+  }
+  public var isSuspended: Swift.Bool {
+    get
+  }
+  public var isCancelled: Swift.Bool {
+    get
+  }
+  public var isFinished: Swift.Bool {
+    get
+  }
+  public typealias ProgressHandler = (Foundation.Progress) -> Swift.Void
+  final public let uploadProgress: Foundation.Progress
+  final public let downloadProgress: Foundation.Progress
+  public var redirectHandler: CirclePaySDK.RedirectHandler? {
+    get
+  }
+  public var cachedResponseHandler: CirclePaySDK.CachedResponseHandler? {
+    get
+  }
+  public var credential: Foundation.URLCredential? {
+    get
+  }
+  public var requests: [Foundation.URLRequest] {
+    get
+  }
+  public var firstRequest: Foundation.URLRequest? {
+    get
+  }
+  public var lastRequest: Foundation.URLRequest? {
+    get
+  }
+  public var request: Foundation.URLRequest? {
+    get
+  }
+  public var performedRequests: [Foundation.URLRequest] {
+    get
+  }
+  public var response: Foundation.HTTPURLResponse? {
+    get
+  }
+  public var tasks: [Foundation.URLSessionTask] {
+    get
+  }
+  public var firstTask: Foundation.URLSessionTask? {
+    get
+  }
+  public var lastTask: Foundation.URLSessionTask? {
+    get
+  }
+  public var task: Foundation.URLSessionTask? {
+    get
+  }
+  public var allMetrics: [Foundation.URLSessionTaskMetrics] {
+    get
+  }
+  public var firstMetrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+  public var lastMetrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+  public var retryCount: Swift.Int {
+    get
+  }
+  public var error: CirclePaySDK.AFError? {
+    get
+  }
+  @discardableResult
+  public func cancel() -> Self
+  @discardableResult
+  public func suspend() -> Self
+  @discardableResult
+  public func resume() -> Self
+  @discardableResult
+  public func authenticate(username: Swift.String, password: Swift.String, persistence: Foundation.URLCredential.Persistence = .forSession) -> Self
+  @discardableResult
+  public func authenticate(with credential: Foundation.URLCredential) -> Self
+  @discardableResult
+  public func downloadProgress(queue: Dispatch.DispatchQueue = .main, closure: @escaping CirclePaySDK.Request.ProgressHandler) -> Self
+  @discardableResult
+  public func uploadProgress(queue: Dispatch.DispatchQueue = .main, closure: @escaping CirclePaySDK.Request.ProgressHandler) -> Self
+  @discardableResult
+  public func redirect(using handler: CirclePaySDK.RedirectHandler) -> Self
+  @discardableResult
+  public func cacheResponse(using handler: CirclePaySDK.CachedResponseHandler) -> Self
+  @discardableResult
+  public func cURLDescription(on queue: Dispatch.DispatchQueue, calling handler: @escaping (Swift.String) -> Swift.Void) -> Self
+  @discardableResult
+  public func cURLDescription(calling handler: @escaping (Swift.String) -> Swift.Void) -> Self
+  @discardableResult
+  public func onURLRequestCreation(on queue: Dispatch.DispatchQueue = .main, perform handler: @escaping (Foundation.URLRequest) -> Swift.Void) -> Self
+  @discardableResult
+  public func onURLSessionTaskCreation(on queue: Dispatch.DispatchQueue = .main, perform handler: @escaping (Foundation.URLSessionTask) -> Swift.Void) -> Self
+  @objc deinit
+}
+extension Request : Swift.Equatable {
+  public static func == (lhs: CirclePaySDK.Request, rhs: CirclePaySDK.Request) -> Swift.Bool
+}
+extension Request : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Request : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Request {
+  public func cURLDescription() -> Swift.String
+}
+public protocol RequestDelegate : AnyObject {
+  var sessionConfiguration: Foundation.URLSessionConfiguration { get }
+  var startImmediately: Swift.Bool { get }
+  func cleanup(after request: CirclePaySDK.Request)
+  func retryResult(for request: CirclePaySDK.Request, dueTo error: CirclePaySDK.AFError, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  func retryRequest(_ request: CirclePaySDK.Request, withDelay timeDelay: Foundation.TimeInterval?)
+}
+@_hasMissingDesignatedInitializers public class DataRequest : CirclePaySDK.Request {
+  final public let convertible: CirclePaySDK.URLRequestConvertible
+  public var data: Foundation.Data? {
+    get
+  }
+  @discardableResult
+  public func validate(_ validation: @escaping CirclePaySDK.DataRequest.Validation) -> Self
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class DataStreamRequest : CirclePaySDK.Request {
+  public typealias Handler<Success, Failure> = (CirclePaySDK.DataStreamRequest.Stream<Success, Failure>) throws -> Swift.Void where Failure : Swift.Error
+  public struct Stream<Success, Failure> where Failure : Swift.Error {
+    public let event: CirclePaySDK.DataStreamRequest.Event<Success, Failure>
+    public let token: CirclePaySDK.DataStreamRequest.CancellationToken
+    public func cancel()
+  }
+  public enum Event<Success, Failure> where Failure : Swift.Error {
+    case stream(Swift.Result<Success, Failure>)
+    case complete(CirclePaySDK.DataStreamRequest.Completion)
+  }
+  public struct Completion {
+    public let request: Foundation.URLRequest?
+    public let response: Foundation.HTTPURLResponse?
+    public let metrics: Foundation.URLSessionTaskMetrics?
+    public let error: CirclePaySDK.AFError?
+  }
+  public struct CancellationToken {
+    public func cancel()
+  }
+  final public let convertible: CirclePaySDK.URLRequestConvertible
+  final public let automaticallyCancelOnStreamError: Swift.Bool
+  @discardableResult
+  final public func validate(_ validation: @escaping CirclePaySDK.DataStreamRequest.Validation) -> Self
+  final public func asInputStream(bufferSize: Swift.Int = 1024) -> Foundation.InputStream?
+  @objc deinit
+}
+extension DataStreamRequest.Stream {
+  public var result: Swift.Result<Success, Failure>? {
+    get
+  }
+  public var value: Success? {
+    get
+  }
+  public var error: Failure? {
+    get
+  }
+  public var completion: CirclePaySDK.DataStreamRequest.Completion? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class DownloadRequest : CirclePaySDK.Request {
+  public struct Options : Swift.OptionSet {
+    public static let createIntermediateDirectories: CirclePaySDK.DownloadRequest.Options
+    public static let removePreviousFile: CirclePaySDK.DownloadRequest.Options
+    public let rawValue: Swift.Int
+    public init(rawValue: Swift.Int)
+    public typealias ArrayLiteralElement = CirclePaySDK.DownloadRequest.Options
+    public typealias Element = CirclePaySDK.DownloadRequest.Options
+    public typealias RawValue = Swift.Int
+  }
+  public typealias Destination = (Foundation.URL, Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: CirclePaySDK.DownloadRequest.Options)
+  public class func suggestedDownloadDestination(for directory: Foundation.FileManager.SearchPathDirectory = .documentDirectory, in domain: Foundation.FileManager.SearchPathDomainMask = .userDomainMask, options: CirclePaySDK.DownloadRequest.Options = []) -> CirclePaySDK.DownloadRequest.Destination
+  public enum Downloadable {
+    case request(CirclePaySDK.URLRequestConvertible)
+    case resumeData(Foundation.Data)
+  }
+  public var resumeData: Foundation.Data? {
+    get
+  }
+  public var fileURL: Foundation.URL? {
+    get
+  }
+  final public let downloadable: CirclePaySDK.DownloadRequest.Downloadable
+  public func task(forResumeData data: Foundation.Data, using session: Foundation.URLSession) -> Foundation.URLSessionTask
+  @discardableResult
+  override public func cancel() -> Self
+  @discardableResult
+  public func cancel(producingResumeData shouldProduceResumeData: Swift.Bool) -> Self
+  @discardableResult
+  public func cancel(byProducingResumeData completionHandler: @escaping (Foundation.Data?) -> Swift.Void) -> Self
+  @discardableResult
+  public func validate(_ validation: @escaping CirclePaySDK.DownloadRequest.Validation) -> Self
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class UploadRequest : CirclePaySDK.DataRequest {
+  public enum Uploadable {
+    case data(Foundation.Data)
+    case file(Foundation.URL, shouldRemove: Swift.Bool)
+    case stream(Foundation.InputStream)
+  }
+  final public let upload: CirclePaySDK.UploadableConvertible
+  final public let fileManager: Foundation.FileManager
+  public var uploadable: CirclePaySDK.UploadRequest.Uploadable?
+  public func cleanup()
+  @objc deinit
+}
+public protocol UploadableConvertible {
+  func createUploadable() throws -> CirclePaySDK.UploadRequest.Uploadable
+}
+extension UploadRequest.Uploadable : CirclePaySDK.UploadableConvertible {
+  public func createUploadable() throws -> CirclePaySDK.UploadRequest.Uploadable
+}
+public protocol UploadConvertible : CirclePaySDK.URLRequestConvertible, CirclePaySDK.UploadableConvertible {
+}
+public typealias AFResult<Success> = Swift.Result<Success, CirclePaySDK.AFError>
+public protocol RedirectHandler {
+  func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
+}
+public struct Redirector {
+  public enum Behavior {
+    case follow
+    case doNotFollow
+    case modify((Foundation.URLSessionTask, Foundation.URLRequest, Foundation.HTTPURLResponse) -> Foundation.URLRequest?)
+  }
+  public static let follow: CirclePaySDK.Redirector
+  public static let doNotFollow: CirclePaySDK.Redirector
+  public let behavior: CirclePaySDK.Redirector.Behavior
+  public init(behavior: CirclePaySDK.Redirector.Behavior)
+}
+extension Redirector : CirclePaySDK.RedirectHandler {
+  public func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
+}
+@objc public class IQBarButtonItemConfiguration : ObjectiveC.NSObject {
+  @objc public init(barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem, action: ObjectiveC.Selector)
+  @objc public init(image: UIKit.UIImage, action: ObjectiveC.Selector)
+  @objc public init(title: Swift.String, action: ObjectiveC.Selector)
+  final public let barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem?
+  @objc final public let image: UIKit.UIImage?
+  @objc final public let title: Swift.String?
+  @objc final public let action: ObjectiveC.Selector?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc extension UIImage {
+  @objc public static func keyboardPreviousiOS9Image() -> UIKit.UIImage?
+  @objc public static func keyboardNextiOS9Image() -> UIKit.UIImage?
+  @objc public static func keyboardPreviousiOS10Image() -> UIKit.UIImage?
+  @objc public static func keyboardNextiOS10Image() -> UIKit.UIImage?
+  @objc public static func keyboardPreviousImage() -> UIKit.UIImage?
+  @objc public static func keyboardNextImage() -> UIKit.UIImage?
+}
+@objc extension UIView {
+  @objc dynamic public var keyboardToolbar: CirclePaySDK.IQToolbar {
+    @objc get
+  }
+  @objc dynamic public var shouldHideToolbarPlaceholder: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc dynamic public var toolbarPlaceholder: Swift.String? {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc dynamic public var drawingToolbarPlaceholder: Swift.String? {
+    @objc get
+  }
+  @objc dynamic public func addKeyboardToolbarWithTarget(target: Swift.AnyObject?, titleText: Swift.String?, rightBarButtonConfiguration: CirclePaySDK.IQBarButtonItemConfiguration?, previousBarButtonConfiguration: CirclePaySDK.IQBarButtonItemConfiguration? = nil, nextBarButtonConfiguration: CirclePaySDK.IQBarButtonItemConfiguration? = nil)
+  @objc dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+}
+@objc public class IQInvocation : ObjectiveC.NSObject {
+  @objc weak public var target: Swift.AnyObject?
+  @objc public var action: ObjectiveC.Selector
+  @objc public init(_ target: Swift.AnyObject, _ action: ObjectiveC.Selector)
+  @objc public func invoke(from: Any)
+  @objc deinit
+  @objc override dynamic public init()
+}
+public let AF: CirclePaySDK.Session
+@objc @_inheritsConvenienceInitializers public class IQKeyboardReturnKeyHandler : ObjectiveC.NSObject, UIKit.UITextFieldDelegate, UIKit.UITextViewDelegate {
+  @objc weak public var delegate: (UIKit.UITextFieldDelegate & UIKit.UITextViewDelegate)?
+  @objc public var lastTextFieldReturnKeyType: UIKit.UIReturnKeyType {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
+  @objc public init(controller: UIKit.UIViewController)
+  @objc deinit
+  @objc public func addTextFieldView(_ view: UIKit.UIView)
+  @objc public func removeTextFieldView(_ view: UIKit.UIView)
+  @objc public func addResponderFromView(_ view: UIKit.UIView)
+  @objc public func removeResponderFromView(_ view: UIKit.UIView)
+  @objc public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc public func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @available(iOS 10.0, *)
+  @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @objc public func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc public func textViewShouldBeginEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @objc public func textViewShouldEndEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @objc public func textViewDidBeginEditing(_ textView: UIKit.UITextView)
+  @objc public func textViewDidEndEditing(_ textView: UIKit.UITextView)
+  @objc public func textView(_ textView: UIKit.UITextView, shouldChangeTextIn range: Foundation.NSRange, replacementText text: Swift.String) -> Swift.Bool
+  @objc public func textViewDidChange(_ textView: UIKit.UITextView)
+  @objc public func textViewDidChangeSelection(_ textView: UIKit.UITextView)
+  @available(iOS 10.0, *)
+  @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @available(iOS 10.0, *)
+  @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange) -> Swift.Bool
+}
+public protocol EventMonitor {
+  var queue: Dispatch.DispatchQueue { get }
+  func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
+  func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge)
+  func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  func urlSession(_ session: Foundation.URLSession, taskNeedsNewBodyStream task: Foundation.URLSessionTask)
+  func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
+  func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
+  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
+  func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
+  func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+  func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  func request(_ request: CirclePaySDK.Request, didCreateInitialURLRequest urlRequest: Foundation.URLRequest)
+  func request(_ request: CirclePaySDK.Request, didFailToCreateURLRequestWithError error: CirclePaySDK.AFError)
+  func request(_ request: CirclePaySDK.Request, didAdaptInitialRequest initialRequest: Foundation.URLRequest, to adaptedRequest: Foundation.URLRequest)
+  func request(_ request: CirclePaySDK.Request, didFailToAdaptURLRequest initialRequest: Foundation.URLRequest, withError error: CirclePaySDK.AFError)
+  func request(_ request: CirclePaySDK.Request, didCreateURLRequest urlRequest: Foundation.URLRequest)
+  func request(_ request: CirclePaySDK.Request, didCreateTask task: Foundation.URLSessionTask)
+  func request(_ request: CirclePaySDK.Request, didGatherMetrics metrics: Foundation.URLSessionTaskMetrics)
+  func request(_ request: CirclePaySDK.Request, didFailTask task: Foundation.URLSessionTask, earlyWithError error: CirclePaySDK.AFError)
+  func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
+  func requestIsRetrying(_ request: CirclePaySDK.Request)
+  func requestDidFinish(_ request: CirclePaySDK.Request)
+  func requestDidResume(_ request: CirclePaySDK.Request)
+  func request(_ request: CirclePaySDK.Request, didResumeTask task: Foundation.URLSessionTask)
+  func requestDidSuspend(_ request: CirclePaySDK.Request)
+  func request(_ request: CirclePaySDK.Request, didSuspendTask task: Foundation.URLSessionTask)
+  func requestDidCancel(_ request: CirclePaySDK.Request)
+  func request(_ request: CirclePaySDK.Request, didCancelTask task: Foundation.URLSessionTask)
+  func request(_ request: CirclePaySDK.DataRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, data: Foundation.Data?, withResult result: CirclePaySDK.Request.ValidationResult)
+  func request(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Foundation.Data?, CirclePaySDK.AFError>)
+  func request<Value>(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Value, CirclePaySDK.AFError>)
+  func request(_ request: CirclePaySDK.DataStreamRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, withResult result: CirclePaySDK.Request.ValidationResult)
+  func request<Value>(_ request: CirclePaySDK.DataStreamRequest, didParseStream result: Swift.Result<Value, CirclePaySDK.AFError>)
+  func request(_ request: CirclePaySDK.UploadRequest, didCreateUploadable uploadable: CirclePaySDK.UploadRequest.Uploadable)
+  func request(_ request: CirclePaySDK.UploadRequest, didFailToCreateUploadableWithError error: CirclePaySDK.AFError)
+  func request(_ request: CirclePaySDK.UploadRequest, didProvideInputStream stream: Foundation.InputStream)
+  func request(_ request: CirclePaySDK.DownloadRequest, didFinishDownloadingUsing task: Foundation.URLSessionTask, with result: Swift.Result<Foundation.URL, CirclePaySDK.AFError>)
+  func request(_ request: CirclePaySDK.DownloadRequest, didCreateDestinationURL url: Foundation.URL)
+  func request(_ request: CirclePaySDK.DownloadRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, fileURL: Foundation.URL?, withResult result: CirclePaySDK.Request.ValidationResult)
+  func request(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>)
+  func request<Value>(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Value, CirclePaySDK.AFError>)
+}
+extension EventMonitor {
+  public var queue: Dispatch.DispatchQueue {
+    get
+  }
+  public func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
+  public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge)
+  public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  public func urlSession(_ session: Foundation.URLSession, taskNeedsNewBodyStream task: Foundation.URLSessionTask)
+  public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
+  public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
+  public func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
+  public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
+  public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+  public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  public func request(_ request: CirclePaySDK.Request, didCreateInitialURLRequest urlRequest: Foundation.URLRequest)
+  public func request(_ request: CirclePaySDK.Request, didFailToCreateURLRequestWithError error: CirclePaySDK.AFError)
+  public func request(_ request: CirclePaySDK.Request, didAdaptInitialRequest initialRequest: Foundation.URLRequest, to adaptedRequest: Foundation.URLRequest)
+  public func request(_ request: CirclePaySDK.Request, didFailToAdaptURLRequest initialRequest: Foundation.URLRequest, withError error: CirclePaySDK.AFError)
+  public func request(_ request: CirclePaySDK.Request, didCreateURLRequest urlRequest: Foundation.URLRequest)
+  public func request(_ request: CirclePaySDK.Request, didCreateTask task: Foundation.URLSessionTask)
+  public func request(_ request: CirclePaySDK.Request, didGatherMetrics metrics: Foundation.URLSessionTaskMetrics)
+  public func request(_ request: CirclePaySDK.Request, didFailTask task: Foundation.URLSessionTask, earlyWithError error: CirclePaySDK.AFError)
+  public func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
+  public func requestIsRetrying(_ request: CirclePaySDK.Request)
+  public func requestDidFinish(_ request: CirclePaySDK.Request)
+  public func requestDidResume(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didResumeTask task: Foundation.URLSessionTask)
+  public func requestDidSuspend(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didSuspendTask task: Foundation.URLSessionTask)
+  public func requestDidCancel(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didCancelTask task: Foundation.URLSessionTask)
+  public func request(_ request: CirclePaySDK.DataRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, data: Foundation.Data?, withResult result: CirclePaySDK.Request.ValidationResult)
+  public func request(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Foundation.Data?, CirclePaySDK.AFError>)
+  public func request<Value>(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Value, CirclePaySDK.AFError>)
+  public func request(_ request: CirclePaySDK.DataStreamRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, withResult result: CirclePaySDK.Request.ValidationResult)
+  public func request<Value>(_ request: CirclePaySDK.DataStreamRequest, didParseStream result: Swift.Result<Value, CirclePaySDK.AFError>)
+  public func request(_ request: CirclePaySDK.UploadRequest, didCreateUploadable uploadable: CirclePaySDK.UploadRequest.Uploadable)
+  public func request(_ request: CirclePaySDK.UploadRequest, didFailToCreateUploadableWithError error: CirclePaySDK.AFError)
+  public func request(_ request: CirclePaySDK.UploadRequest, didProvideInputStream stream: Foundation.InputStream)
+  public func request(_ request: CirclePaySDK.DownloadRequest, didFinishDownloadingUsing task: Foundation.URLSessionTask, with result: Swift.Result<Foundation.URL, CirclePaySDK.AFError>)
+  public func request(_ request: CirclePaySDK.DownloadRequest, didCreateDestinationURL url: Foundation.URL)
+  public func request(_ request: CirclePaySDK.DownloadRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, fileURL: Foundation.URL?, withResult result: CirclePaySDK.Request.ValidationResult)
+  public func request(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>)
+  public func request<Value>(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Value, CirclePaySDK.AFError>)
+}
+@_hasMissingDesignatedInitializers final public class CompositeEventMonitor : CirclePaySDK.EventMonitor {
+  final public let queue: Dispatch.DispatchQueue
+  final public func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
+  final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge)
+  final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  final public func urlSession(_ session: Foundation.URLSession, taskNeedsNewBodyStream task: Foundation.URLSessionTask)
+  final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
+  final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
+  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  final public func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
+  final public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  final public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
+  final public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+  final public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  final public func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  final public func request(_ request: CirclePaySDK.Request, didCreateInitialURLRequest urlRequest: Foundation.URLRequest)
+  final public func request(_ request: CirclePaySDK.Request, didFailToCreateURLRequestWithError error: CirclePaySDK.AFError)
+  final public func request(_ request: CirclePaySDK.Request, didAdaptInitialRequest initialRequest: Foundation.URLRequest, to adaptedRequest: Foundation.URLRequest)
+  final public func request(_ request: CirclePaySDK.Request, didFailToAdaptURLRequest initialRequest: Foundation.URLRequest, withError error: CirclePaySDK.AFError)
+  final public func request(_ request: CirclePaySDK.Request, didCreateURLRequest urlRequest: Foundation.URLRequest)
+  final public func request(_ request: CirclePaySDK.Request, didCreateTask task: Foundation.URLSessionTask)
+  final public func request(_ request: CirclePaySDK.Request, didGatherMetrics metrics: Foundation.URLSessionTaskMetrics)
+  final public func request(_ request: CirclePaySDK.Request, didFailTask task: Foundation.URLSessionTask, earlyWithError error: CirclePaySDK.AFError)
+  final public func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
+  final public func requestIsRetrying(_ request: CirclePaySDK.Request)
+  final public func requestDidFinish(_ request: CirclePaySDK.Request)
+  final public func requestDidResume(_ request: CirclePaySDK.Request)
+  final public func request(_ request: CirclePaySDK.Request, didResumeTask task: Foundation.URLSessionTask)
+  final public func requestDidSuspend(_ request: CirclePaySDK.Request)
+  final public func request(_ request: CirclePaySDK.Request, didSuspendTask task: Foundation.URLSessionTask)
+  final public func requestDidCancel(_ request: CirclePaySDK.Request)
+  final public func request(_ request: CirclePaySDK.Request, didCancelTask task: Foundation.URLSessionTask)
+  final public func request(_ request: CirclePaySDK.DataRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, data: Foundation.Data?, withResult result: CirclePaySDK.Request.ValidationResult)
+  final public func request(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Foundation.Data?, CirclePaySDK.AFError>)
+  final public func request<Value>(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Value, CirclePaySDK.AFError>)
+  final public func request(_ request: CirclePaySDK.DataStreamRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, withResult result: CirclePaySDK.Request.ValidationResult)
+  final public func request<Value>(_ request: CirclePaySDK.DataStreamRequest, didParseStream result: Swift.Result<Value, CirclePaySDK.AFError>)
+  final public func request(_ request: CirclePaySDK.UploadRequest, didCreateUploadable uploadable: CirclePaySDK.UploadRequest.Uploadable)
+  final public func request(_ request: CirclePaySDK.UploadRequest, didFailToCreateUploadableWithError error: CirclePaySDK.AFError)
+  final public func request(_ request: CirclePaySDK.UploadRequest, didProvideInputStream stream: Foundation.InputStream)
+  final public func request(_ request: CirclePaySDK.DownloadRequest, didFinishDownloadingUsing task: Foundation.URLSessionTask, with result: Swift.Result<Foundation.URL, CirclePaySDK.AFError>)
+  final public func request(_ request: CirclePaySDK.DownloadRequest, didCreateDestinationURL url: Foundation.URL)
+  final public func request(_ request: CirclePaySDK.DownloadRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, fileURL: Foundation.URL?, withResult result: CirclePaySDK.Request.ValidationResult)
+  final public func request(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>)
+  final public func request<Value>(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Value, CirclePaySDK.AFError>)
+  @objc deinit
+}
+open class ClosureEventMonitor : CirclePaySDK.EventMonitor {
+  open var sessionDidBecomeInvalidWithError: ((Foundation.URLSession, Swift.Error?) -> Swift.Void)?
+  open var taskDidReceiveChallenge: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge) -> Swift.Void)?
+  open var taskDidSendBodyData: ((Foundation.URLSession, Foundation.URLSessionTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var taskNeedNewBodyStream: ((Foundation.URLSession, Foundation.URLSessionTask) -> Swift.Void)?
+  open var taskWillPerformHTTPRedirection: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.HTTPURLResponse, Foundation.URLRequest) -> Swift.Void)?
+  open var taskDidFinishCollectingMetrics: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLSessionTaskMetrics) -> Swift.Void)?
+  open var taskDidComplete: ((Foundation.URLSession, Foundation.URLSessionTask, Swift.Error?) -> Swift.Void)?
+  open var taskIsWaitingForConnectivity: ((Foundation.URLSession, Foundation.URLSessionTask) -> Swift.Void)?
+  open var dataTaskDidReceiveData: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.Data) -> Swift.Void)?
+  open var dataTaskWillCacheResponse: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.CachedURLResponse) -> Swift.Void)?
+  open var downloadTaskDidFinishDownloadingToURL: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Foundation.URL) -> Swift.Void)?
+  open var downloadTaskDidWriteData: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var downloadTaskDidResumeAtOffset: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var requestDidCreateInitialURLRequest: ((CirclePaySDK.Request, Foundation.URLRequest) -> Swift.Void)?
+  open var requestDidFailToCreateURLRequestWithError: ((CirclePaySDK.Request, CirclePaySDK.AFError) -> Swift.Void)?
+  open var requestDidAdaptInitialRequestToAdaptedRequest: ((CirclePaySDK.Request, Foundation.URLRequest, Foundation.URLRequest) -> Swift.Void)?
+  open var requestDidFailToAdaptURLRequestWithError: ((CirclePaySDK.Request, Foundation.URLRequest, CirclePaySDK.AFError) -> Swift.Void)?
+  open var requestDidCreateURLRequest: ((CirclePaySDK.Request, Foundation.URLRequest) -> Swift.Void)?
+  open var requestDidCreateTask: ((CirclePaySDK.Request, Foundation.URLSessionTask) -> Swift.Void)?
+  open var requestDidGatherMetrics: ((CirclePaySDK.Request, Foundation.URLSessionTaskMetrics) -> Swift.Void)?
+  open var requestDidFailTaskEarlyWithError: ((CirclePaySDK.Request, Foundation.URLSessionTask, CirclePaySDK.AFError) -> Swift.Void)?
+  open var requestDidCompleteTaskWithError: ((CirclePaySDK.Request, Foundation.URLSessionTask, CirclePaySDK.AFError?) -> Swift.Void)?
+  open var requestIsRetrying: ((CirclePaySDK.Request) -> Swift.Void)?
+  open var requestDidFinish: ((CirclePaySDK.Request) -> Swift.Void)?
+  open var requestDidResume: ((CirclePaySDK.Request) -> Swift.Void)?
+  open var requestDidResumeTask: ((CirclePaySDK.Request, Foundation.URLSessionTask) -> Swift.Void)?
+  open var requestDidSuspend: ((CirclePaySDK.Request) -> Swift.Void)?
+  open var requestDidSuspendTask: ((CirclePaySDK.Request, Foundation.URLSessionTask) -> Swift.Void)?
+  open var requestDidCancel: ((CirclePaySDK.Request) -> Swift.Void)?
+  open var requestDidCancelTask: ((CirclePaySDK.Request, Foundation.URLSessionTask) -> Swift.Void)?
+  open var requestDidValidateRequestResponseDataWithResult: ((CirclePaySDK.DataRequest, Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.Data?, CirclePaySDK.Request.ValidationResult) -> Swift.Void)?
+  open var requestDidParseResponse: ((CirclePaySDK.DataRequest, CirclePaySDK.DataResponse<Foundation.Data?, CirclePaySDK.AFError>) -> Swift.Void)?
+  open var requestDidValidateRequestResponseWithResult: ((CirclePaySDK.DataStreamRequest, Foundation.URLRequest?, Foundation.HTTPURLResponse, CirclePaySDK.Request.ValidationResult) -> Swift.Void)?
+  open var requestDidCreateUploadable: ((CirclePaySDK.UploadRequest, CirclePaySDK.UploadRequest.Uploadable) -> Swift.Void)?
+  open var requestDidFailToCreateUploadableWithError: ((CirclePaySDK.UploadRequest, CirclePaySDK.AFError) -> Swift.Void)?
+  open var requestDidProvideInputStream: ((CirclePaySDK.UploadRequest, Foundation.InputStream) -> Swift.Void)?
+  open var requestDidFinishDownloadingUsingTaskWithResult: ((CirclePaySDK.DownloadRequest, Foundation.URLSessionTask, Swift.Result<Foundation.URL, CirclePaySDK.AFError>) -> Swift.Void)?
+  open var requestDidCreateDestinationURL: ((CirclePaySDK.DownloadRequest, Foundation.URL) -> Swift.Void)?
+  open var requestDidValidateRequestResponseFileURLWithResult: ((CirclePaySDK.DownloadRequest, Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.URL?, CirclePaySDK.Request.ValidationResult) -> Swift.Void)?
+  open var requestDidParseDownloadResponse: ((CirclePaySDK.DownloadRequest, CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>) -> Swift.Void)?
+  final public let queue: Dispatch.DispatchQueue
+  public init(queue: Dispatch.DispatchQueue = .main)
+  open func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
+  open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge)
+  open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  open func urlSession(_ session: Foundation.URLSession, taskNeedsNewBodyStream task: Foundation.URLSessionTask)
+  open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
+  open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
+  open func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
+  open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
+  open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+  open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  open func request(_ request: CirclePaySDK.Request, didCreateInitialURLRequest urlRequest: Foundation.URLRequest)
+  open func request(_ request: CirclePaySDK.Request, didFailToCreateURLRequestWithError error: CirclePaySDK.AFError)
+  open func request(_ request: CirclePaySDK.Request, didAdaptInitialRequest initialRequest: Foundation.URLRequest, to adaptedRequest: Foundation.URLRequest)
+  open func request(_ request: CirclePaySDK.Request, didFailToAdaptURLRequest initialRequest: Foundation.URLRequest, withError error: CirclePaySDK.AFError)
+  open func request(_ request: CirclePaySDK.Request, didCreateURLRequest urlRequest: Foundation.URLRequest)
+  open func request(_ request: CirclePaySDK.Request, didCreateTask task: Foundation.URLSessionTask)
+  open func request(_ request: CirclePaySDK.Request, didGatherMetrics metrics: Foundation.URLSessionTaskMetrics)
+  open func request(_ request: CirclePaySDK.Request, didFailTask task: Foundation.URLSessionTask, earlyWithError error: CirclePaySDK.AFError)
+  open func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
+  open func requestIsRetrying(_ request: CirclePaySDK.Request)
+  open func requestDidFinish(_ request: CirclePaySDK.Request)
+  open func requestDidResume(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didResumeTask task: Foundation.URLSessionTask)
+  open func requestDidSuspend(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didSuspendTask task: Foundation.URLSessionTask)
+  open func requestDidCancel(_ request: CirclePaySDK.Request)
+  public func request(_ request: CirclePaySDK.Request, didCancelTask task: Foundation.URLSessionTask)
+  open func request(_ request: CirclePaySDK.DataRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, data: Foundation.Data?, withResult result: CirclePaySDK.Request.ValidationResult)
+  open func request(_ request: CirclePaySDK.DataRequest, didParseResponse response: CirclePaySDK.DataResponse<Foundation.Data?, CirclePaySDK.AFError>)
+  public func request(_ request: CirclePaySDK.DataStreamRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, withResult result: CirclePaySDK.Request.ValidationResult)
+  open func request(_ request: CirclePaySDK.UploadRequest, didCreateUploadable uploadable: CirclePaySDK.UploadRequest.Uploadable)
+  open func request(_ request: CirclePaySDK.UploadRequest, didFailToCreateUploadableWithError error: CirclePaySDK.AFError)
+  open func request(_ request: CirclePaySDK.UploadRequest, didProvideInputStream stream: Foundation.InputStream)
+  open func request(_ request: CirclePaySDK.DownloadRequest, didFinishDownloadingUsing task: Foundation.URLSessionTask, with result: Swift.Result<Foundation.URL, CirclePaySDK.AFError>)
+  open func request(_ request: CirclePaySDK.DownloadRequest, didCreateDestinationURL url: Foundation.URL)
+  open func request(_ request: CirclePaySDK.DownloadRequest, didValidateRequest urlRequest: Foundation.URLRequest?, response: Foundation.HTTPURLResponse, fileURL: Foundation.URL?, withResult result: CirclePaySDK.Request.ValidationResult)
+  open func request(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>)
+  @objc deinit
+}
+public protocol ParameterEncoder {
+  func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
+}
+open class JSONParameterEncoder : CirclePaySDK.ParameterEncoder {
+  public static var `default`: CirclePaySDK.JSONParameterEncoder {
+    get
+  }
+  public static var prettyPrinted: CirclePaySDK.JSONParameterEncoder {
+    get
+  }
+  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  public static var sortedKeys: CirclePaySDK.JSONParameterEncoder {
+    get
+  }
+  final public let encoder: Foundation.JSONEncoder
+  public init(encoder: Foundation.JSONEncoder = JSONEncoder())
+  open func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
+  @objc deinit
+}
+open class URLEncodedFormParameterEncoder : CirclePaySDK.ParameterEncoder {
+  public enum Destination {
+    case methodDependent
+    case queryString
+    case httpBody
+    public static func == (a: CirclePaySDK.URLEncodedFormParameterEncoder.Destination, b: CirclePaySDK.URLEncodedFormParameterEncoder.Destination) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var `default`: CirclePaySDK.URLEncodedFormParameterEncoder {
+    get
+  }
+  final public let encoder: CirclePaySDK.URLEncodedFormEncoder
+  final public let destination: CirclePaySDK.URLEncodedFormParameterEncoder.Destination
+  public init(encoder: CirclePaySDK.URLEncodedFormEncoder = URLEncodedFormEncoder(), destination: CirclePaySDK.URLEncodedFormParameterEncoder.Destination = .methodDependent)
+  open func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
+  @objc deinit
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+public struct DataResponsePublisher<Value> : Combine.Publisher {
+  public typealias Output = CirclePaySDK.DataResponse<Value, CirclePaySDK.AFError>
+  public typealias Failure = Swift.Never
+  public init<Serializer>(_ request: CirclePaySDK.DataRequest, queue: Dispatch.DispatchQueue, serializer: Serializer) where Value == Serializer.SerializedObject, Serializer : CirclePaySDK.ResponseSerializer
+  public init<Serializer>(_ request: CirclePaySDK.DataRequest, queue: Dispatch.DispatchQueue, serializer: Serializer) where Value == Serializer.SerializedObject, Serializer : CirclePaySDK.DataResponseSerializerProtocol
+  public func result() -> Combine.AnyPublisher<Swift.Result<Value, CirclePaySDK.AFError>, Swift.Never>
+  public func value() -> Combine.AnyPublisher<Value, CirclePaySDK.AFError>
+  public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == CirclePaySDK.DataResponsePublisher<Value>.Failure, S.Input == CirclePaySDK.DataResponsePublisher<Value>.Output
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+extension DataResponsePublisher where Value == Foundation.Data? {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public init(_ request: CirclePaySDK.DataRequest, queue: Dispatch.DispatchQueue)
+}
+extension DataRequest {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishResponse<Serializer, T>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DataResponsePublisher<T> where Serializer : CirclePaySDK.ResponseSerializer, T == Serializer.SerializedObject
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishData(queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods) -> CirclePaySDK.DataResponsePublisher<Foundation.Data>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishString(queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods) -> CirclePaySDK.DataResponsePublisher<Swift.String>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishDecodable<T>(type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyResponseMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods) -> CirclePaySDK.DataResponsePublisher<T> where T : Swift.Decodable
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishUnserialized(queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DataResponsePublisher<Foundation.Data?>
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+public struct DataStreamPublisher<Value> : Combine.Publisher {
+  public typealias Output = CirclePaySDK.DataStreamRequest.Stream<Value, CirclePaySDK.AFError>
+  public typealias Failure = Swift.Never
+  public init<Serializer>(_ request: CirclePaySDK.DataStreamRequest, queue: Dispatch.DispatchQueue, serializer: Serializer) where Value == Serializer.SerializedObject, Serializer : CirclePaySDK.DataStreamSerializer
+  public func result() -> Combine.AnyPublisher<Swift.Result<Value, CirclePaySDK.AFError>, Swift.Never>
+  public func value() -> Combine.AnyPublisher<Value, CirclePaySDK.AFError>
+  public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == CirclePaySDK.DataStreamPublisher<Value>.Failure, S.Input == CirclePaySDK.DataStreamPublisher<Value>.Output
+}
+extension DataStreamRequest {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  final public func publishStream<Serializer>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DataStreamPublisher<Serializer.SerializedObject> where Serializer : CirclePaySDK.DataStreamSerializer
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  final public func publishData(queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DataStreamPublisher<Foundation.Data>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  final public func publishString(queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DataStreamPublisher<Swift.String>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  final public func publishDecodable<T>(type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), preprocessor: CirclePaySDK.DataPreprocessor = PassthroughPreprocessor()) -> CirclePaySDK.DataStreamPublisher<T> where T : Swift.Decodable
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+public struct DownloadResponsePublisher<Value> : Combine.Publisher {
+  public typealias Output = CirclePaySDK.DownloadResponse<Value, CirclePaySDK.AFError>
+  public typealias Failure = Swift.Never
+  public init<Serializer>(_ request: CirclePaySDK.DownloadRequest, queue: Dispatch.DispatchQueue, serializer: Serializer) where Value == Serializer.SerializedObject, Serializer : CirclePaySDK.ResponseSerializer
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public init<Serializer>(_ request: CirclePaySDK.DownloadRequest, queue: Dispatch.DispatchQueue, serializer: Serializer) where Value == Serializer.SerializedObject, Serializer : CirclePaySDK.DownloadResponseSerializerProtocol
+  public func result() -> Combine.AnyPublisher<Swift.Result<Value, CirclePaySDK.AFError>, Swift.Never>
+  public func value() -> Combine.AnyPublisher<Value, CirclePaySDK.AFError>
+  public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == CirclePaySDK.DownloadResponsePublisher<Value>.Failure, S.Input == CirclePaySDK.DownloadResponsePublisher<Value>.Output
+}
+extension DownloadRequest {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishResponse<Serializer, T>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DownloadResponsePublisher<T> where Serializer : CirclePaySDK.ResponseSerializer, T == Serializer.SerializedObject
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishResponse<Serializer, T>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DownloadResponsePublisher<T> where Serializer : CirclePaySDK.DownloadResponseSerializerProtocol, T == Serializer.SerializedObject
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishURL(queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DownloadResponsePublisher<Foundation.URL>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishData(queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods) -> CirclePaySDK.DownloadResponsePublisher<Foundation.Data>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishString(queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods) -> CirclePaySDK.DownloadResponsePublisher<Swift.String>
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishDecodable<T>(type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, preprocessor: CirclePaySDK.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyResponseMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods) -> CirclePaySDK.DownloadResponsePublisher<T> where T : Swift.Decodable
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+extension DownloadResponsePublisher where Value == Foundation.URL? {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public init(_ request: CirclePaySDK.DownloadRequest, queue: Dispatch.DispatchQueue)
+}
+extension DownloadRequest {
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+  public func publishUnserialized(on queue: Dispatch.DispatchQueue = .main) -> CirclePaySDK.DownloadResponsePublisher<Foundation.URL?>
+}
+open class MultipartFormData {
+  public static let encodingMemoryThreshold: Swift.UInt64
+  open var contentType: Swift.String {
+    get
+    set
+  }
+  public var contentLength: Swift.UInt64 {
+    get
+  }
+  final public let boundary: Swift.String
+  public init(fileManager: Foundation.FileManager = .default, boundary: Swift.String? = nil)
+  public func append(_ data: Foundation.Data, withName name: Swift.String, fileName: Swift.String? = nil, mimeType: Swift.String? = nil)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, headers: CirclePaySDK.HTTPHeaders)
+  public func encode() throws -> Foundation.Data
+  public func writeEncodedData(to fileURL: Foundation.URL) throws
+  @objc deinit
+}
+public let kIQUseDefaultKeyboardDistance: CoreGraphics.CGFloat
+@objc extension UIView {
+  @objc dynamic public var keyboardDistanceFromTextField: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc dynamic public var ignoreSwitchingByNextPrevious: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc dynamic public var shouldResignOnTouchOutsideMode: CirclePaySDK.IQEnableMode {
+    @objc get
+    @objc set(newValue)
+  }
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoding {
+  func encode(_ urlRequest: CirclePaySDK.URLRequestConvertible, with parameters: CirclePaySDK.Parameters?) throws -> Foundation.URLRequest
+}
+public struct URLEncoding : CirclePaySDK.ParameterEncoding {
+  public enum Destination {
+    case methodDependent
+    case queryString
+    case httpBody
+    public static func == (a: CirclePaySDK.URLEncoding.Destination, b: CirclePaySDK.URLEncoding.Destination) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ArrayEncoding {
+    case brackets
+    case noBrackets
+    public static func == (a: CirclePaySDK.URLEncoding.ArrayEncoding, b: CirclePaySDK.URLEncoding.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric
+    case literal
+    public static func == (a: CirclePaySDK.URLEncoding.BoolEncoding, b: CirclePaySDK.URLEncoding.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var `default`: CirclePaySDK.URLEncoding {
+    get
+  }
+  public static var queryString: CirclePaySDK.URLEncoding {
+    get
+  }
+  public static var httpBody: CirclePaySDK.URLEncoding {
+    get
+  }
+  public let destination: CirclePaySDK.URLEncoding.Destination
+  public let arrayEncoding: CirclePaySDK.URLEncoding.ArrayEncoding
+  public let boolEncoding: CirclePaySDK.URLEncoding.BoolEncoding
+  public init(destination: CirclePaySDK.URLEncoding.Destination = .methodDependent, arrayEncoding: CirclePaySDK.URLEncoding.ArrayEncoding = .brackets, boolEncoding: CirclePaySDK.URLEncoding.BoolEncoding = .numeric)
+  public func encode(_ urlRequest: CirclePaySDK.URLRequestConvertible, with parameters: CirclePaySDK.Parameters?) throws -> Foundation.URLRequest
+  public func queryComponents(fromKey key: Swift.String, value: Any) -> [(Swift.String, Swift.String)]
+  public func escape(_ string: Swift.String) -> Swift.String
+}
+public struct JSONEncoding : CirclePaySDK.ParameterEncoding {
+  public static var `default`: CirclePaySDK.JSONEncoding {
+    get
+  }
+  public static var prettyPrinted: CirclePaySDK.JSONEncoding {
+    get
+  }
+  public let options: Foundation.JSONSerialization.WritingOptions
+  public init(options: Foundation.JSONSerialization.WritingOptions = [])
+  public func encode(_ urlRequest: CirclePaySDK.URLRequestConvertible, with parameters: CirclePaySDK.Parameters?) throws -> Foundation.URLRequest
+  public func encode(_ urlRequest: CirclePaySDK.URLRequestConvertible, withJSONObject jsonObject: Any? = nil) throws -> Foundation.URLRequest
+}
+@_hasMissingDesignatedInitializers final public class FontBlaster {
+  public static var debugEnabled: Swift.Bool
+  public static var loadedFonts: [Swift.String]
+  final public class func blast(bundle: Foundation.Bundle = Bundle.main)
+  final public class func blast(bundle: Foundation.Bundle = Bundle.main, completion handler: (([Swift.String]) -> Swift.Void)?)
+  @objc deinit
+}
+public protocol CachedResponseHandler {
+  func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+}
+public struct ResponseCacher {
+  public enum Behavior {
+    case cache
+    case doNotCache
+    case modify((Foundation.URLSessionDataTask, Foundation.CachedURLResponse) -> Foundation.CachedURLResponse?)
+  }
+  public static let cache: CirclePaySDK.ResponseCacher
+  public static let doNotCache: CirclePaySDK.ResponseCacher
+  public let behavior: CirclePaySDK.ResponseCacher.Behavior
+  public init(behavior: CirclePaySDK.ResponseCacher.Behavior)
+}
+extension ResponseCacher : CirclePaySDK.CachedResponseHandler {
+  public func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+}
+public protocol URLConvertible {
+  func asURL() throws -> Foundation.URL
+}
+extension String : CirclePaySDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension URL : CirclePaySDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension URLComponents : CirclePaySDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+public protocol URLRequestConvertible {
+  func asURLRequest() throws -> Foundation.URLRequest
+}
+extension URLRequestConvertible {
+  public var urlRequest: Foundation.URLRequest? {
+    get
+  }
+}
+extension URLRequest : CirclePaySDK.URLRequestConvertible {
+  public func asURLRequest() throws -> Foundation.URLRequest
+}
+extension URLRequest {
+  public init(url: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod, headers: CirclePaySDK.HTTPHeaders? = nil) throws
+}
+@_hasMissingDesignatedInitializers open class NetworkReachabilityManager {
+  public enum NetworkReachabilityStatus {
+    case unknown
+    case notReachable
+    case reachable(CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType)
+    public enum ConnectionType {
+      case ethernetOrWiFi
+      case cellular
+      public static func == (a: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType, b: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+  }
+  public typealias Listener = (CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Void
+  public static let `default`: CirclePaySDK.NetworkReachabilityManager?
+  open var isReachable: Swift.Bool {
+    get
+  }
+  open var isReachableOnCellular: Swift.Bool {
+    get
+  }
+  open var isReachableOnEthernetOrWiFi: Swift.Bool {
+    get
+  }
+  final public let reachabilityQueue: Dispatch.DispatchQueue
+  open var flags: SystemConfiguration.SCNetworkReachabilityFlags? {
+    get
+  }
+  open var status: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus {
+    get
+  }
+  convenience public init?(host: Swift.String)
+  convenience public init?()
+  @objc deinit
+  @discardableResult
+  open func startListening(onQueue queue: Dispatch.DispatchQueue = .main, onUpdatePerforming listener: @escaping CirclePaySDK.NetworkReachabilityManager.Listener) -> Swift.Bool
+  open func stopListening()
+}
+extension NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
+  public static func == (a: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus, b: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
+}
+public struct AlamofireExtension<ExtendedType> {
+  public var type: ExtendedType {
+    get
+  }
+  public init(_ type: ExtendedType)
+}
+public protocol AlamofireExtended {
+  associatedtype ExtendedType
+  static var af: CirclePaySDK.AlamofireExtension<Self.ExtendedType>.Type { get set }
+  var af: CirclePaySDK.AlamofireExtension<Self.ExtendedType> { get set }
+}
+extension AlamofireExtended {
+  public static var af: CirclePaySDK.AlamofireExtension<Self>.Type {
+    get
+    set
+  }
+  public var af: CirclePaySDK.AlamofireExtension<Self> {
+    get
+    set
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class IQTitleBarButtonItem : CirclePaySDK.IQBarButtonItem {
+  @objc open var titleFont: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc open var titleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open var selectableTitleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc override open var invocation: CirclePaySDK.IQInvocation? {
+    @objc get
+    @objc set
+  }
+  @objc convenience public init(title: Swift.String?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class IQTextView : UIKit.UITextView {
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect, textContainer: UIKit.NSTextContainer?)
+  @objc override dynamic open func awakeFromNib()
+  @objc deinit
+  @objc @IBInspectable open var placeholderTextColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable open var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  open var attributedPlaceholder: Foundation.NSAttributedString? {
+    get
+    set
+  }
+  @objc override dynamic open func layoutSubviews()
+  @objc override dynamic open var text: Swift.String! {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var attributedText: Foundation.NSAttributedString! {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var font: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var delegate: UIKit.UITextViewDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @objc get
+  }
+}
+public struct HTTPHeaders {
+  public init()
+  public init(_ headers: [CirclePaySDK.HTTPHeader])
+  public init(_ dictionary: [Swift.String : Swift.String])
+  public mutating func add(name: Swift.String, value: Swift.String)
+  public mutating func add(_ header: CirclePaySDK.HTTPHeader)
+  public mutating func update(name: Swift.String, value: Swift.String)
+  public mutating func update(_ header: CirclePaySDK.HTTPHeader)
+  public mutating func remove(name: Swift.String)
+  public mutating func sort()
+  public func sorted() -> CirclePaySDK.HTTPHeaders
+  public func value(for name: Swift.String) -> Swift.String?
+  public subscript(name: Swift.String) -> Swift.String? {
+    get
+    set
+  }
+  public var dictionary: [Swift.String : Swift.String] {
+    get
+  }
+}
+extension HTTPHeaders : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Swift.String)...)
+  public typealias Key = Swift.String
+  public typealias Value = Swift.String
+}
+extension HTTPHeaders : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: CirclePaySDK.HTTPHeader...)
+  public typealias ArrayLiteralElement = CirclePaySDK.HTTPHeader
+}
+extension HTTPHeaders : Swift.Sequence {
+  public func makeIterator() -> Swift.IndexingIterator<[CirclePaySDK.HTTPHeader]>
+}
+extension HTTPHeaders : Swift.Collection {
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(position: Swift.Int) -> CirclePaySDK.HTTPHeader {
+    get
+  }
+  public func index(after i: Swift.Int) -> Swift.Int
+  public typealias Element = CirclePaySDK.HTTPHeader
+  public typealias Index = Swift.Int
+  public typealias Indices = Swift.DefaultIndices<CirclePaySDK.HTTPHeaders>
+  public typealias Iterator = Swift.IndexingIterator<[CirclePaySDK.HTTPHeader]>
+  public typealias SubSequence = Swift.Slice<CirclePaySDK.HTTPHeaders>
+}
+extension HTTPHeaders : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public struct HTTPHeader : Swift.Hashable {
+  public let name: Swift.String
+  public let value: Swift.String
+  public init(name: Swift.String, value: Swift.String)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: CirclePaySDK.HTTPHeader, b: CirclePaySDK.HTTPHeader) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension HTTPHeader : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension HTTPHeader {
+  public static func accept(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func acceptCharset(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func acceptLanguage(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func acceptEncoding(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func authorization(username: Swift.String, password: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func authorization(bearerToken: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func authorization(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func contentDisposition(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func contentType(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+  public static func userAgent(_ value: Swift.String) -> CirclePaySDK.HTTPHeader
+}
+extension HTTPHeaders {
+  public static let `default`: CirclePaySDK.HTTPHeaders
+}
+extension HTTPHeader {
+  public static let defaultAcceptEncoding: CirclePaySDK.HTTPHeader
+  public static let defaultAcceptLanguage: CirclePaySDK.HTTPHeader
+  public static let defaultUserAgent: CirclePaySDK.HTTPHeader
+}
+extension URLRequest {
+  public var headers: CirclePaySDK.HTTPHeaders {
+    get
+    set
+  }
+}
+extension HTTPURLResponse {
+  public var headers: CirclePaySDK.HTTPHeaders {
+    get
+  }
+}
+extension URLSessionConfiguration {
+  public var headers: CirclePaySDK.HTTPHeaders {
+    get
+    set
+  }
+}
+extension URLSessionConfiguration : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Foundation.URLSessionConfiguration
+}
+extension AlamofireExtension where ExtendedType : Foundation.URLSessionConfiguration {
+  public static var `default`: Foundation.URLSessionConfiguration {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class IQPreviousNextView : UIKit.UIView {
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class IQBarButtonItem : UIKit.UIBarButtonItem {
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open var tintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc open func setTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector?)
+  @objc open var invocation: CirclePaySDK.IQInvocation?
+  @objc deinit
+}
+extension Request {
+  public typealias ValidationResult = Swift.Result<Swift.Void, Swift.Error>
+}
+extension DataRequest {
+  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.Data?) -> CirclePaySDK.DataRequest.ValidationResult
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: @autoclosure @escaping () -> S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+extension DataStreamRequest {
+  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse) -> CirclePaySDK.DataStreamRequest.ValidationResult
+  @discardableResult
+  final public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  final public func validate<S>(contentType acceptableContentTypes: @autoclosure @escaping () -> S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  final public func validate() -> Self
+}
+extension DownloadRequest {
+  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.URL?) -> CirclePaySDK.DownloadRequest.ValidationResult
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: @autoclosure @escaping () -> S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+@objc extension UIViewController {
+  @available(*, deprecated, message: "Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview.")
+  @IBOutlet @objc dynamic public var IQLayoutGuideConstraint: UIKit.NSLayoutConstraint? {
+    @objc get
+    @objc set(newValue)
+  }
+}
+public protocol AuthenticationCredential {
+  var requiresRefresh: Swift.Bool { get }
+}
+public protocol Authenticator : AnyObject {
+  associatedtype Credential : CirclePaySDK.AuthenticationCredential
+  func apply(_ credential: Self.Credential, to urlRequest: inout Foundation.URLRequest)
+  func refresh(_ credential: Self.Credential, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Self.Credential, Swift.Error>) -> Swift.Void)
+  func didRequest(_ urlRequest: Foundation.URLRequest, with response: Foundation.HTTPURLResponse, failDueToAuthenticationError error: Swift.Error) -> Swift.Bool
+  func isRequest(_ urlRequest: Foundation.URLRequest, authenticatedWith credential: Self.Credential) -> Swift.Bool
+}
+public enum AuthenticationError : Swift.Error {
+  case missingCredential
+  case excessiveRefresh
+  public static func == (a: CirclePaySDK.AuthenticationError, b: CirclePaySDK.AuthenticationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class AuthenticationInterceptor<AuthenticatorType> : CirclePaySDK.RequestInterceptor where AuthenticatorType : CirclePaySDK.Authenticator {
+  public typealias Credential = AuthenticatorType.Credential
+  public struct RefreshWindow {
+    public let interval: Foundation.TimeInterval
+    public let maximumAttempts: Swift.Int
+    public init(interval: Foundation.TimeInterval = 30.0, maximumAttempts: Swift.Int = 5)
+  }
+  public var credential: CirclePaySDK.AuthenticationInterceptor<AuthenticatorType>.Credential? {
+    get
+    set
+  }
+  public init(authenticator: AuthenticatorType, credential: CirclePaySDK.AuthenticationInterceptor<AuthenticatorType>.Credential? = nil, refreshWindow: CirclePaySDK.AuthenticationInterceptor<AuthenticatorType>.RefreshWindow? = RefreshWindow())
+  public func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
+  public func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  @objc deinit
+}
+open class RetryPolicy : CirclePaySDK.RequestInterceptor {
+  public static let defaultRetryLimit: Swift.UInt
+  public static let defaultExponentialBackoffBase: Swift.UInt
+  public static let defaultExponentialBackoffScale: Swift.Double
+  public static let defaultRetryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  public static let defaultRetryableHTTPStatusCodes: Swift.Set<Swift.Int>
+  public static let defaultRetryableURLErrorCodes: Swift.Set<Foundation.URLError.Code>
+  final public let retryLimit: Swift.UInt
+  final public let exponentialBackoffBase: Swift.UInt
+  final public let exponentialBackoffScale: Swift.Double
+  final public let retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  final public let retryableHTTPStatusCodes: Swift.Set<Swift.Int>
+  final public let retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code>
+  public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = RetryPolicy.defaultRetryableHTTPStatusCodes, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = RetryPolicy.defaultRetryableURLErrorCodes)
+  open func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  open func shouldRetry(request: CirclePaySDK.Request, dueTo error: Swift.Error) -> Swift.Bool
+  @objc deinit
+}
+open class ConnectionLostRetryPolicy : CirclePaySDK.RetryPolicy {
+  public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods)
+  override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
+  @objc deinit
+}
+@objc public enum IQAutoToolbarManageBehaviour : Swift.Int {
+  case bySubviews
+  case byTag
+  case byPosition
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum IQPreviousNextDisplayMode : Swift.Int {
+  case `default`
+  case alwaysHide
+  case alwaysShow
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum IQEnableMode : Swift.Int {
+  case `default`
+  case enabled
+  case disabled
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum AFError : Swift.Error {
+  public enum MultipartEncodingFailureReason {
+    case bodyPartURLInvalid(url: Foundation.URL)
+    case bodyPartFilenameInvalid(in: Foundation.URL)
+    case bodyPartFileNotReachable(at: Foundation.URL)
+    case bodyPartFileNotReachableWithError(atURL: Foundation.URL, error: Swift.Error)
+    case bodyPartFileIsDirectory(at: Foundation.URL)
+    case bodyPartFileSizeNotAvailable(at: Foundation.URL)
+    case bodyPartFileSizeQueryFailedWithError(forURL: Foundation.URL, error: Swift.Error)
+    case bodyPartInputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamFileAlreadyExists(at: Foundation.URL)
+    case outputStreamURLInvalid(url: Foundation.URL)
+    case outputStreamWriteFailed(error: Swift.Error)
+    case inputStreamReadFailed(error: Swift.Error)
+  }
+  public enum ParameterEncodingFailureReason {
+    case missingURL
+    case jsonEncodingFailed(error: Swift.Error)
+    case customEncodingFailed(error: Swift.Error)
+  }
+  public enum ParameterEncoderFailureReason {
+    public enum RequiredComponent {
+      case url
+      case httpMethod(rawValue: Swift.String)
+    }
+    case missingRequiredComponent(CirclePaySDK.AFError.ParameterEncoderFailureReason.RequiredComponent)
+    case encoderFailed(error: Swift.Error)
+  }
+  public enum ResponseValidationFailureReason {
+    case dataFileNil
+    case dataFileReadFailed(at: Foundation.URL)
+    case missingContentType(acceptableContentTypes: [Swift.String])
+    case unacceptableContentType(acceptableContentTypes: [Swift.String], responseContentType: Swift.String)
+    case unacceptableStatusCode(code: Swift.Int)
+    case customValidationFailed(error: Swift.Error)
+  }
+  public enum ResponseSerializationFailureReason {
+    case inputDataNilOrZeroLength
+    case inputFileNil
+    case inputFileReadFailed(at: Foundation.URL)
+    case stringSerializationFailed(encoding: Swift.String.Encoding)
+    case jsonSerializationFailed(error: Swift.Error)
+    case decodingFailed(error: Swift.Error)
+    case customSerializationFailed(error: Swift.Error)
+    case invalidEmptyResponse(type: Swift.String)
+  }
+  public enum ServerTrustFailureReason {
+    public struct Output {
+      public let host: Swift.String
+      public let trust: Security.SecTrust
+      public let status: Darwin.OSStatus
+      public let result: Security.SecTrustResultType
+    }
+    case noRequiredEvaluator(host: Swift.String)
+    case noCertificatesFound
+    case noPublicKeysFound
+    case policyApplicationFailed(trust: Security.SecTrust, policy: Security.SecPolicy, status: Darwin.OSStatus)
+    case settingAnchorCertificatesFailed(status: Darwin.OSStatus, certificates: [Security.SecCertificate])
+    case revocationPolicyCreationFailed
+    case trustEvaluationFailed(error: Swift.Error?)
+    case defaultEvaluationFailed(output: CirclePaySDK.AFError.ServerTrustFailureReason.Output)
+    case hostValidationFailed(output: CirclePaySDK.AFError.ServerTrustFailureReason.Output)
+    case revocationCheckFailed(output: CirclePaySDK.AFError.ServerTrustFailureReason.Output, options: CirclePaySDK.RevocationTrustEvaluator.Options)
+    case certificatePinningFailed(host: Swift.String, trust: Security.SecTrust, pinnedCertificates: [Security.SecCertificate], serverCertificates: [Security.SecCertificate])
+    case publicKeyPinningFailed(host: Swift.String, trust: Security.SecTrust, pinnedKeys: [Security.SecKey], serverKeys: [Security.SecKey])
+    case customEvaluationFailed(error: Swift.Error)
+  }
+  public enum URLRequestValidationFailureReason {
+    case bodyDataInGETRequest(Foundation.Data)
+  }
+  case createUploadableFailed(error: Swift.Error)
+  case createURLRequestFailed(error: Swift.Error)
+  case downloadedFileMoveFailed(error: Swift.Error, source: Foundation.URL, destination: Foundation.URL)
+  case explicitlyCancelled
+  case invalidURL(url: CirclePaySDK.URLConvertible)
+  case multipartEncodingFailed(reason: CirclePaySDK.AFError.MultipartEncodingFailureReason)
+  case parameterEncodingFailed(reason: CirclePaySDK.AFError.ParameterEncodingFailureReason)
+  case parameterEncoderFailed(reason: CirclePaySDK.AFError.ParameterEncoderFailureReason)
+  case requestAdaptationFailed(error: Swift.Error)
+  case requestRetryFailed(retryError: Swift.Error, originalError: Swift.Error)
+  case responseValidationFailed(reason: CirclePaySDK.AFError.ResponseValidationFailureReason)
+  case responseSerializationFailed(reason: CirclePaySDK.AFError.ResponseSerializationFailureReason)
+  case serverTrustEvaluationFailed(reason: CirclePaySDK.AFError.ServerTrustFailureReason)
+  case sessionDeinitialized
+  case sessionInvalidated(error: Swift.Error?)
+  case sessionTaskFailed(error: Swift.Error)
+  case urlRequestValidationFailed(reason: CirclePaySDK.AFError.URLRequestValidationFailureReason)
+}
+extension Error {
+  public var asAFError: CirclePaySDK.AFError? {
+    get
+  }
+  public func asAFError(orFailWith message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> CirclePaySDK.AFError
+}
+extension AFError {
+  public var isSessionDeinitializedError: Swift.Bool {
+    get
+  }
+  public var isSessionInvalidatedError: Swift.Bool {
+    get
+  }
+  public var isExplicitlyCancelledError: Swift.Bool {
+    get
+  }
+  public var isInvalidURLError: Swift.Bool {
+    get
+  }
+  public var isParameterEncodingError: Swift.Bool {
+    get
+  }
+  public var isParameterEncoderError: Swift.Bool {
+    get
+  }
+  public var isMultipartEncodingError: Swift.Bool {
+    get
+  }
+  public var isRequestAdaptationError: Swift.Bool {
+    get
+  }
+  public var isResponseValidationError: Swift.Bool {
+    get
+  }
+  public var isResponseSerializationError: Swift.Bool {
+    get
+  }
+  public var isServerTrustEvaluationError: Swift.Bool {
+    get
+  }
+  public var isRequestRetryError: Swift.Bool {
+    get
+  }
+  public var isCreateUploadableError: Swift.Bool {
+    get
+  }
+  public var isCreateURLRequestError: Swift.Bool {
+    get
+  }
+  public var isDownloadedFileMoveError: Swift.Bool {
+    get
+  }
+  public var isSessionTaskError: Swift.Bool {
+    get
+  }
+}
+extension AFError {
+  public var urlConvertible: CirclePaySDK.URLConvertible? {
+    get
+  }
+  public var url: Foundation.URL? {
+    get
+  }
+  public var underlyingError: Swift.Error? {
+    get
+  }
+  public var acceptableContentTypes: [Swift.String]? {
+    get
+  }
+  public var responseContentType: Swift.String? {
+    get
+  }
+  public var responseCode: Swift.Int? {
+    get
+  }
+  public var failedStringEncoding: Swift.String.Encoding? {
+    get
+  }
+  public var sourceURL: Foundation.URL? {
+    get
+  }
+  public var destinationURL: Foundation.URL? {
+    get
+  }
+}
+extension AFError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+open class Session {
+  public static let `default`: CirclePaySDK.Session
+  final public let session: Foundation.URLSession
+  final public let delegate: CirclePaySDK.SessionDelegate
+  final public let rootQueue: Dispatch.DispatchQueue
+  final public let startRequestsImmediately: Swift.Bool
+  final public let requestQueue: Dispatch.DispatchQueue
+  final public let serializationQueue: Dispatch.DispatchQueue
+  final public let interceptor: CirclePaySDK.RequestInterceptor?
+  final public let serverTrustManager: CirclePaySDK.ServerTrustManager?
+  final public let redirectHandler: CirclePaySDK.RedirectHandler?
+  final public let cachedResponseHandler: CirclePaySDK.CachedResponseHandler?
+  final public let eventMonitor: CirclePaySDK.CompositeEventMonitor
+  final public let defaultEventMonitors: [CirclePaySDK.EventMonitor]
+  public init(session: Foundation.URLSession, delegate: CirclePaySDK.SessionDelegate, rootQueue: Dispatch.DispatchQueue, startRequestsImmediately: Swift.Bool = true, requestQueue: Dispatch.DispatchQueue? = nil, serializationQueue: Dispatch.DispatchQueue? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, serverTrustManager: CirclePaySDK.ServerTrustManager? = nil, redirectHandler: CirclePaySDK.RedirectHandler? = nil, cachedResponseHandler: CirclePaySDK.CachedResponseHandler? = nil, eventMonitors: [CirclePaySDK.EventMonitor] = [])
+  convenience public init(configuration: Foundation.URLSessionConfiguration = URLSessionConfiguration.af.default, delegate: CirclePaySDK.SessionDelegate = SessionDelegate(), rootQueue: Dispatch.DispatchQueue = DispatchQueue(label: "org.alamofire.session.rootQueue"), startRequestsImmediately: Swift.Bool = true, requestQueue: Dispatch.DispatchQueue? = nil, serializationQueue: Dispatch.DispatchQueue? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, serverTrustManager: CirclePaySDK.ServerTrustManager? = nil, redirectHandler: CirclePaySDK.RedirectHandler? = nil, cachedResponseHandler: CirclePaySDK.CachedResponseHandler? = nil, eventMonitors: [CirclePaySDK.EventMonitor] = [])
+  @objc deinit
+  public func withAllRequests(perform action: @escaping (Swift.Set<CirclePaySDK.Request>) -> Swift.Void)
+  public func cancelAllRequests(completingOnQueue queue: Dispatch.DispatchQueue = .main, completion: (() -> Swift.Void)? = nil)
+  public typealias RequestModifier = (inout Foundation.URLRequest) throws -> Swift.Void
+  open func request(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, parameters: CirclePaySDK.Parameters? = nil, encoding: CirclePaySDK.ParameterEncoding = URLEncoding.default, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.DataRequest
+  open func request<Parameters>(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, parameters: Parameters? = nil, encoder: CirclePaySDK.ParameterEncoder = URLEncodedFormParameterEncoder.default, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.DataRequest where Parameters : Swift.Encodable
+  open func request(_ convertible: CirclePaySDK.URLRequestConvertible, interceptor: CirclePaySDK.RequestInterceptor? = nil) -> CirclePaySDK.DataRequest
+  open func streamRequest<Parameters>(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, parameters: Parameters? = nil, encoder: CirclePaySDK.ParameterEncoder = URLEncodedFormParameterEncoder.default, headers: CirclePaySDK.HTTPHeaders? = nil, automaticallyCancelOnStreamError: Swift.Bool = false, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.DataStreamRequest where Parameters : Swift.Encodable
+  open func streamRequest(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, headers: CirclePaySDK.HTTPHeaders? = nil, automaticallyCancelOnStreamError: Swift.Bool = false, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.DataStreamRequest
+  open func streamRequest(_ convertible: CirclePaySDK.URLRequestConvertible, automaticallyCancelOnStreamError: Swift.Bool = false, interceptor: CirclePaySDK.RequestInterceptor? = nil) -> CirclePaySDK.DataStreamRequest
+  open func download(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, parameters: CirclePaySDK.Parameters? = nil, encoding: CirclePaySDK.ParameterEncoding = URLEncoding.default, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil, to destination: CirclePaySDK.DownloadRequest.Destination? = nil) -> CirclePaySDK.DownloadRequest
+  open func download<Parameters>(_ convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .get, parameters: Parameters? = nil, encoder: CirclePaySDK.ParameterEncoder = URLEncodedFormParameterEncoder.default, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, requestModifier: CirclePaySDK.Session.RequestModifier? = nil, to destination: CirclePaySDK.DownloadRequest.Destination? = nil) -> CirclePaySDK.DownloadRequest where Parameters : Swift.Encodable
+  open func download(_ convertible: CirclePaySDK.URLRequestConvertible, interceptor: CirclePaySDK.RequestInterceptor? = nil, to destination: CirclePaySDK.DownloadRequest.Destination? = nil) -> CirclePaySDK.DownloadRequest
+  open func download(resumingWith data: Foundation.Data, interceptor: CirclePaySDK.RequestInterceptor? = nil, to destination: CirclePaySDK.DownloadRequest.Destination? = nil) -> CirclePaySDK.DownloadRequest
+  open func upload(_ data: Foundation.Data, to convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .post, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.UploadRequest
+  open func upload(_ data: Foundation.Data, with convertible: CirclePaySDK.URLRequestConvertible, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> CirclePaySDK.UploadRequest
+  open func upload(_ fileURL: Foundation.URL, to convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .post, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.UploadRequest
+  open func upload(_ fileURL: Foundation.URL, with convertible: CirclePaySDK.URLRequestConvertible, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> CirclePaySDK.UploadRequest
+  open func upload(_ stream: Foundation.InputStream, to convertible: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod = .post, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.UploadRequest
+  open func upload(_ stream: Foundation.InputStream, with convertible: CirclePaySDK.URLRequestConvertible, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> CirclePaySDK.UploadRequest
+  open func upload(multipartFormData: @escaping (CirclePaySDK.MultipartFormData) -> Swift.Void, to url: CirclePaySDK.URLConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, method: CirclePaySDK.HTTPMethod = .post, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.UploadRequest
+  open func upload(multipartFormData: @escaping (CirclePaySDK.MultipartFormData) -> Swift.Void, with request: CirclePaySDK.URLRequestConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> CirclePaySDK.UploadRequest
+  open func upload(multipartFormData: CirclePaySDK.MultipartFormData, to url: CirclePaySDK.URLConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, method: CirclePaySDK.HTTPMethod = .post, headers: CirclePaySDK.HTTPHeaders? = nil, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: CirclePaySDK.Session.RequestModifier? = nil) -> CirclePaySDK.UploadRequest
+  open func upload(multipartFormData: CirclePaySDK.MultipartFormData, with request: CirclePaySDK.URLRequestConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, interceptor: CirclePaySDK.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> CirclePaySDK.UploadRequest
+}
+extension Session : CirclePaySDK.RequestDelegate {
+  public var sessionConfiguration: Foundation.URLSessionConfiguration {
+    get
+  }
+  public var startImmediately: Swift.Bool {
+    get
+  }
+  public func cleanup(after request: CirclePaySDK.Request)
+  public func retryResult(for request: CirclePaySDK.Request, dueTo error: CirclePaySDK.AFError, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  public func retryRequest(_ request: CirclePaySDK.Request, withDelay timeDelay: Foundation.TimeInterval?)
+}
+@objc extension UIScrollView {
+  @objc dynamic public var shouldIgnoreScrollingAdjustment: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc dynamic public var shouldRestoreScrollViewContentOffset: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+}
+final public class URLEncodedFormEncoder {
+  public enum ArrayEncoding {
+    case brackets
+    case noBrackets
+    public static func == (a: CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding, b: CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric
+    case literal
+    public static func == (a: CirclePaySDK.URLEncodedFormEncoder.BoolEncoding, b: CirclePaySDK.URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DataEncoding {
+    case deferredToData
+    case base64
+    case custom((Foundation.Data) throws -> Swift.String)
+  }
+  public enum DateEncoding {
+    case deferredToDate
+    case secondsSince1970
+    case millisecondsSince1970
+    case iso8601
+    case formatted(Foundation.DateFormatter)
+    case custom((Foundation.Date) throws -> Swift.String)
+  }
+  public enum KeyEncoding {
+    case useDefaultKeys
+    case convertToSnakeCase
+    case convertToKebabCase
+    case capitalized
+    case uppercased
+    case lowercased
+    case custom((Swift.String) -> Swift.String)
+  }
+  public enum SpaceEncoding {
+    case percentEscaped
+    case plusReplaced
+    public static func == (a: CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding, b: CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Error : Swift.Error {
+    case invalidRootObject(Swift.String)
+  }
+  final public let alphabetizeKeyValuePairs: Swift.Bool
+  final public let arrayEncoding: CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding
+  final public let boolEncoding: CirclePaySDK.URLEncodedFormEncoder.BoolEncoding
+  final public let dataEncoding: CirclePaySDK.URLEncodedFormEncoder.DataEncoding
+  final public let dateEncoding: CirclePaySDK.URLEncodedFormEncoder.DateEncoding
+  final public let keyEncoding: CirclePaySDK.URLEncodedFormEncoder.KeyEncoding
+  final public let spaceEncoding: CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding
+  final public var allowedCharacters: Foundation.CharacterSet
+  public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: CirclePaySDK.URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: CirclePaySDK.URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: CirclePaySDK.URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: CirclePaySDK.URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
+  final public func encode(_ value: Swift.Encodable) throws -> Swift.String
+  final public func encode(_ value: Swift.Encodable) throws -> Foundation.Data
+  @objc deinit
+}
+extension CharacterSet {
+  public static let afURLQueryAllowed: Foundation.CharacterSet
+}
+public protocol RequestAdapter {
+  func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
+}
+public enum RetryResult {
+  case retry
+  case retryWithDelay(Foundation.TimeInterval)
+  case doNotRetry
+  case doNotRetryWithError(Swift.Error)
+}
+public protocol RequestRetrier {
+  func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+}
+public protocol RequestInterceptor : CirclePaySDK.RequestAdapter, CirclePaySDK.RequestRetrier {
+}
+extension RequestInterceptor {
+  public func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
+  public func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+}
+public typealias AdaptHandler = (Foundation.URLRequest, CirclePaySDK.Session, @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void) -> Swift.Void
+public typealias RetryHandler = (CirclePaySDK.Request, CirclePaySDK.Session, Swift.Error, @escaping (CirclePaySDK.RetryResult) -> Swift.Void) -> Swift.Void
+open class Adapter : CirclePaySDK.RequestInterceptor {
+  public init(_ adaptHandler: @escaping CirclePaySDK.AdaptHandler)
+  open func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+open class Retrier : CirclePaySDK.RequestInterceptor {
+  public init(_ retryHandler: @escaping CirclePaySDK.RetryHandler)
+  open func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  @objc deinit
+}
+open class Interceptor : CirclePaySDK.RequestInterceptor {
+  final public let adapters: [CirclePaySDK.RequestAdapter]
+  final public let retriers: [CirclePaySDK.RequestRetrier]
+  public init(adaptHandler: @escaping CirclePaySDK.AdaptHandler, retryHandler: @escaping CirclePaySDK.RetryHandler)
+  public init(adapter: CirclePaySDK.RequestAdapter, retrier: CirclePaySDK.RequestRetrier)
+  public init(adapters: [CirclePaySDK.RequestAdapter] = [], retriers: [CirclePaySDK.RequestRetrier] = [], interceptors: [CirclePaySDK.RequestInterceptor] = [])
+  open func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
+  open func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
+  @objc deinit
+}
+public struct HTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashable {
+  public static let connect: CirclePaySDK.HTTPMethod
+  public static let delete: CirclePaySDK.HTTPMethod
+  public static let get: CirclePaySDK.HTTPMethod
+  public static let head: CirclePaySDK.HTTPMethod
+  public static let options: CirclePaySDK.HTTPMethod
+  public static let patch: CirclePaySDK.HTTPMethod
+  public static let post: CirclePaySDK.HTTPMethod
+  public static let put: CirclePaySDK.HTTPMethod
+  public static let trace: CirclePaySDK.HTTPMethod
+  public let rawValue: Swift.String
+  public init(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+}
+@objc open class SessionDelegate : ObjectiveC.NSObject {
+  public init(fileManager: Foundation.FileManager = .default)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension SessionDelegate : Foundation.URLSessionDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
+}
+extension SessionDelegate : Foundation.URLSessionTaskDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, needNewBodyStream completionHandler: @escaping (Foundation.InputStream?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest, completionHandler: @escaping (Foundation.URLRequest?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
+  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
+}
+extension SessionDelegate : Foundation.URLSessionDataDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse, completionHandler: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+}
+extension SessionDelegate : Foundation.URLSessionDownloadDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+}
+public protocol DataResponseSerializerProtocol {
+  associatedtype SerializedObject
+  func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Self.SerializedObject
+}
+public protocol DownloadResponseSerializerProtocol {
+  associatedtype SerializedObject
+  func serializeDownload(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, error: Swift.Error?) throws -> Self.SerializedObject
+}
+public protocol ResponseSerializer : CirclePaySDK.DataResponseSerializerProtocol, CirclePaySDK.DownloadResponseSerializerProtocol {
+  var dataPreprocessor: CirclePaySDK.DataPreprocessor { get }
+  var emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> { get }
+  var emptyResponseCodes: Swift.Set<Swift.Int> { get }
+}
+public protocol DataPreprocessor {
+  func preprocess(_ data: Foundation.Data) throws -> Foundation.Data
+}
+public struct PassthroughPreprocessor : CirclePaySDK.DataPreprocessor {
+  public init()
+  public func preprocess(_ data: Foundation.Data) throws -> Foundation.Data
+}
+public struct GoogleXSSIPreprocessor : CirclePaySDK.DataPreprocessor {
+  public init()
+  public func preprocess(_ data: Foundation.Data) throws -> Foundation.Data
+}
+extension ResponseSerializer {
+  public static var defaultDataPreprocessor: CirclePaySDK.DataPreprocessor {
+    get
+  }
+  public static var defaultEmptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> {
+    get
+  }
+  public static var defaultEmptyResponseCodes: Swift.Set<Swift.Int> {
+    get
+  }
+  public var dataPreprocessor: CirclePaySDK.DataPreprocessor {
+    get
+  }
+  public var emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> {
+    get
+  }
+  public var emptyResponseCodes: Swift.Set<Swift.Int> {
+    get
+  }
+  public func requestAllowsEmptyResponseData(_ request: Foundation.URLRequest?) -> Swift.Bool?
+  public func responseAllowsEmptyResponseData(_ response: Foundation.HTTPURLResponse?) -> Swift.Bool?
+  public func emptyResponseAllowed(forRequest request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?) -> Swift.Bool
+}
+extension DownloadResponseSerializerProtocol where Self : CirclePaySDK.DataResponseSerializerProtocol {
+  public func serializeDownload(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, error: Swift.Error?) throws -> Self.SerializedObject
+}
+extension DataRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (CirclePaySDK.AFDataResponse<Foundation.Data?>) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<Serializer>(queue: Dispatch.DispatchQueue = .main, responseSerializer: Serializer, completionHandler: @escaping (CirclePaySDK.AFDataResponse<Serializer.SerializedObject>) -> Swift.Void) -> Self where Serializer : CirclePaySDK.DataResponseSerializerProtocol
+}
+extension DownloadRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Foundation.URL?>) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<Serializer>(queue: Dispatch.DispatchQueue = .main, responseSerializer: Serializer, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Serializer.SerializedObject>) -> Swift.Void) -> Self where Serializer : CirclePaySDK.DownloadResponseSerializerProtocol
+}
+public struct URLResponseSerializer : CirclePaySDK.DownloadResponseSerializerProtocol {
+  public init()
+  public func serializeDownload(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, error: Swift.Error?) throws -> Foundation.URL
+  public typealias SerializedObject = Foundation.URL
+}
+extension DownloadRequest {
+  @discardableResult
+  public func responseURL(queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Foundation.URL>) -> Swift.Void) -> Self
+}
+final public class DataResponseSerializer : CirclePaySDK.ResponseSerializer {
+  final public let dataPreprocessor: CirclePaySDK.DataPreprocessor
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  public init(dataPreprocessor: CirclePaySDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods)
+  final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Foundation.Data
+  public typealias SerializedObject = Foundation.Data
+  @objc deinit
+}
+extension DataRequest {
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDataResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+extension DownloadRequest {
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+final public class StringResponseSerializer : CirclePaySDK.ResponseSerializer {
+  final public let dataPreprocessor: CirclePaySDK.DataPreprocessor
+  final public let encoding: Swift.String.Encoding?
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  public init(dataPreprocessor: CirclePaySDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods)
+  final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Swift.String
+  public typealias SerializedObject = Swift.String
+  @objc deinit
+}
+extension DataRequest {
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDataResponse<Swift.String>) -> Swift.Void) -> Self
+}
+extension DownloadRequest {
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Swift.String>) -> Swift.Void) -> Self
+}
+final public class JSONResponseSerializer : CirclePaySDK.ResponseSerializer {
+  final public let dataPreprocessor: CirclePaySDK.DataPreprocessor
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  final public let options: Foundation.JSONSerialization.ReadingOptions
+  public init(dataPreprocessor: CirclePaySDK.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments)
+  final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Any
+  public typealias SerializedObject = Any
+  @objc deinit
+}
+extension DataRequest {
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (CirclePaySDK.AFDataResponse<Any>) -> Swift.Void) -> Self
+}
+extension DownloadRequest {
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<Any>) -> Swift.Void) -> Self
+}
+public protocol EmptyResponse {
+  static func emptyValue() -> Self
+}
+public struct Empty : Swift.Codable {
+  public static let value: CirclePaySDK.Empty
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Empty : CirclePaySDK.EmptyResponse {
+  public static func emptyValue() -> CirclePaySDK.Empty
+}
+public protocol DataDecoder {
+  func decode<D>(_ type: D.Type, from data: Foundation.Data) throws -> D where D : Swift.Decodable
+}
+extension JSONDecoder : CirclePaySDK.DataDecoder {
+}
+extension PropertyListDecoder : CirclePaySDK.DataDecoder {
+}
+final public class DecodableResponseSerializer<T> : CirclePaySDK.ResponseSerializer where T : Swift.Decodable {
+  final public let dataPreprocessor: CirclePaySDK.DataPreprocessor
+  final public let decoder: CirclePaySDK.DataDecoder
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  public init(dataPreprocessor: CirclePaySDK.DataPreprocessor = DecodableResponseSerializer.defaultDataPreprocessor, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DecodableResponseSerializer.defaultEmptyRequestMethods)
+  final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> T
+  public typealias SerializedObject = T
+  @objc deinit
+}
+extension DataRequest {
+  @discardableResult
+  public func responseDecodable<T>(of type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDataResponse<T>) -> Swift.Void) -> Self where T : Swift.Decodable
+}
+extension DownloadRequest {
+  @discardableResult
+  public func responseDecodable<T>(of type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, dataPreprocessor: CirclePaySDK.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: CirclePaySDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods, completionHandler: @escaping (CirclePaySDK.AFDownloadResponse<T>) -> Swift.Void) -> Self where T : Swift.Decodable
+}
+public protocol DataStreamSerializer {
+  associatedtype SerializedObject
+  func serialize(_ data: Foundation.Data) throws -> Self.SerializedObject
+}
+public struct DecodableStreamSerializer<T> : CirclePaySDK.DataStreamSerializer where T : Swift.Decodable {
+  public let decoder: CirclePaySDK.DataDecoder
+  public let dataPreprocessor: CirclePaySDK.DataPreprocessor
+  public init(decoder: CirclePaySDK.DataDecoder = JSONDecoder(), dataPreprocessor: CirclePaySDK.DataPreprocessor = PassthroughPreprocessor())
+  public func serialize(_ data: Foundation.Data) throws -> T
+  public typealias SerializedObject = T
+}
+public struct PassthroughStreamSerializer : CirclePaySDK.DataStreamSerializer {
+  public func serialize(_ data: Foundation.Data) throws -> Foundation.Data
+  public typealias SerializedObject = Foundation.Data
+}
+public struct StringStreamSerializer : CirclePaySDK.DataStreamSerializer {
+  public func serialize(_ data: Foundation.Data) throws -> Swift.String
+  public typealias SerializedObject = Swift.String
+}
+extension DataStreamRequest {
+  @discardableResult
+  final public func responseStream(on queue: Dispatch.DispatchQueue = .main, stream: @escaping CirclePaySDK.DataStreamRequest.Handler<Foundation.Data, Swift.Never>) -> Self
+  @discardableResult
+  final public func responseStream<Serializer>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main, stream: @escaping CirclePaySDK.DataStreamRequest.Handler<Serializer.SerializedObject, CirclePaySDK.AFError>) -> Self where Serializer : CirclePaySDK.DataStreamSerializer
+  @discardableResult
+  final public func responseStreamString(on queue: Dispatch.DispatchQueue = .main, stream: @escaping CirclePaySDK.DataStreamRequest.Handler<Swift.String, Swift.Never>) -> Self
+  @discardableResult
+  final public func responseStreamDecodable<T>(of type: T.Type = T.self, on queue: Dispatch.DispatchQueue = .main, using decoder: CirclePaySDK.DataDecoder = JSONDecoder(), preprocessor: CirclePaySDK.DataPreprocessor = PassthroughPreprocessor(), stream: @escaping CirclePaySDK.DataStreamRequest.Handler<T, CirclePaySDK.AFError>) -> Self where T : Swift.Decodable
+}
+extension Request {
+  public static let didResumeNotification: Foundation.Notification.Name
+  public static let didSuspendNotification: Foundation.Notification.Name
+  public static let didCancelNotification: Foundation.Notification.Name
+  public static let didFinishNotification: Foundation.Notification.Name
+  public static let didResumeTaskNotification: Foundation.Notification.Name
+  public static let didSuspendTaskNotification: Foundation.Notification.Name
+  public static let didCancelTaskNotification: Foundation.Notification.Name
+  public static let didCompleteTaskNotification: Foundation.Notification.Name
+}
+extension Notification {
+  public var request: CirclePaySDK.Request? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class AlamofireNotifications : CirclePaySDK.EventMonitor {
+  final public func requestDidResume(_ request: CirclePaySDK.Request)
+  final public func requestDidSuspend(_ request: CirclePaySDK.Request)
+  final public func requestDidCancel(_ request: CirclePaySDK.Request)
+  final public func requestDidFinish(_ request: CirclePaySDK.Request)
+  final public func request(_ request: CirclePaySDK.Request, didResumeTask task: Foundation.URLSessionTask)
+  final public func request(_ request: CirclePaySDK.Request, didSuspendTask task: Foundation.URLSessionTask)
+  final public func request(_ request: CirclePaySDK.Request, didCancelTask task: Foundation.URLSessionTask)
+  final public func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class IQToolbar : UIKit.UIToolbar, UIKit.UIInputViewAudioFeedback {
+  @objc open var previousBarButton: CirclePaySDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc open var nextBarButton: CirclePaySDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc open var titleBarButton: CirclePaySDK.IQTitleBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc open var doneBarButton: CirclePaySDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc open var fixedSpaceBarButton: CirclePaySDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func sizeThatFits(_ size: CoreGraphics.CGSize) -> CoreGraphics.CGSize
+  @objc override dynamic open var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open func layoutSubviews()
+  @objc open var enableInputClicksWhenVisible: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+public typealias AFDataResponse<Success> = CirclePaySDK.DataResponse<Success, CirclePaySDK.AFError>
+public typealias AFDownloadResponse<Success> = CirclePaySDK.DownloadResponse<Success, CirclePaySDK.AFError>
+public struct DataResponse<Success, Failure> where Failure : Swift.Error {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let data: Foundation.Data?
+  public let metrics: Foundation.URLSessionTaskMetrics?
+  public let serializationDuration: Foundation.TimeInterval
+  public let result: Swift.Result<Success, Failure>
+  public var value: Success? {
+    get
+  }
+  public var error: Failure? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, metrics: Foundation.URLSessionTaskMetrics?, serializationDuration: Foundation.TimeInterval, result: Swift.Result<Success, Failure>)
+}
+extension DataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension DataResponse {
+  public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> CirclePaySDK.DataResponse<NewSuccess, Failure>
+  public func tryMap<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> CirclePaySDK.DataResponse<NewSuccess, Swift.Error>
+  public func mapError<NewFailure>(_ transform: (Failure) -> NewFailure) -> CirclePaySDK.DataResponse<Success, NewFailure> where NewFailure : Swift.Error
+  public func tryMapError<NewFailure>(_ transform: (Failure) throws -> NewFailure) -> CirclePaySDK.DataResponse<Success, Swift.Error> where NewFailure : Swift.Error
+}
+public struct DownloadResponse<Success, Failure> where Failure : Swift.Error {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let fileURL: Foundation.URL?
+  public let resumeData: Foundation.Data?
+  public let metrics: Foundation.URLSessionTaskMetrics?
+  public let serializationDuration: Foundation.TimeInterval
+  public let result: Swift.Result<Success, Failure>
+  public var value: Success? {
+    get
+  }
+  public var error: Failure? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, resumeData: Foundation.Data?, metrics: Foundation.URLSessionTaskMetrics?, serializationDuration: Foundation.TimeInterval, result: Swift.Result<Success, Failure>)
+}
+extension DownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension DownloadResponse {
+  public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> CirclePaySDK.DownloadResponse<NewSuccess, Failure>
+  public func tryMap<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> CirclePaySDK.DownloadResponse<NewSuccess, Swift.Error>
+  public func mapError<NewFailure>(_ transform: (Failure) -> NewFailure) -> CirclePaySDK.DownloadResponse<Success, NewFailure> where NewFailure : Swift.Error
+  public func tryMapError<NewFailure>(_ transform: (Failure) throws -> NewFailure) -> CirclePaySDK.DownloadResponse<Success, Swift.Error> where NewFailure : Swift.Error
+}
+open class ServerTrustManager {
+  final public let allHostsMustBeEvaluated: Swift.Bool
+  final public let evaluators: [Swift.String : CirclePaySDK.ServerTrustEvaluating]
+  public init(allHostsMustBeEvaluated: Swift.Bool = true, evaluators: [Swift.String : CirclePaySDK.ServerTrustEvaluating])
+  open func serverTrustEvaluator(forHost host: Swift.String) throws -> CirclePaySDK.ServerTrustEvaluating?
+  @objc deinit
+}
+public protocol ServerTrustEvaluating {
+  func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+}
+final public class DefaultTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public init(validateHost: Swift.Bool = true)
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+final public class RevocationTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public struct Options : Swift.OptionSet {
+    public static let crl: CirclePaySDK.RevocationTrustEvaluator.Options
+    public static let networkAccessDisabled: CirclePaySDK.RevocationTrustEvaluator.Options
+    public static let ocsp: CirclePaySDK.RevocationTrustEvaluator.Options
+    public static let preferCRL: CirclePaySDK.RevocationTrustEvaluator.Options
+    public static let requirePositiveResponse: CirclePaySDK.RevocationTrustEvaluator.Options
+    public static let any: CirclePaySDK.RevocationTrustEvaluator.Options
+    public let rawValue: CoreFoundation.CFOptionFlags
+    public init(rawValue: CoreFoundation.CFOptionFlags)
+    public typealias ArrayLiteralElement = CirclePaySDK.RevocationTrustEvaluator.Options
+    public typealias Element = CirclePaySDK.RevocationTrustEvaluator.Options
+    public typealias RawValue = CoreFoundation.CFOptionFlags
+  }
+  public init(performDefaultValidation: Swift.Bool = true, validateHost: Swift.Bool = true, options: CirclePaySDK.RevocationTrustEvaluator.Options = .any)
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+final public class PinnedCertificatesTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public init(certificates: [Security.SecCertificate] = Bundle.main.af.certificates, acceptSelfSignedCertificates: Swift.Bool = false, performDefaultValidation: Swift.Bool = true, validateHost: Swift.Bool = true)
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+final public class PublicKeysTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public init(keys: [Security.SecKey] = Bundle.main.af.publicKeys, performDefaultValidation: Swift.Bool = true, validateHost: Swift.Bool = true)
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+final public class CompositeTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public init(evaluators: [CirclePaySDK.ServerTrustEvaluating])
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+@available(*, deprecated, renamed: "DisabledTrustEvaluator", message: "DisabledEvaluator has been renamed DisabledTrustEvaluator.")
+public typealias DisabledEvaluator = CirclePaySDK.DisabledTrustEvaluator
+final public class DisabledTrustEvaluator : CirclePaySDK.ServerTrustEvaluating {
+  public init()
+  final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+  @objc deinit
+}
+extension Array where Element == CirclePaySDK.ServerTrustEvaluating {
+  public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
+}
+extension Bundle : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Foundation.Bundle
+}
+extension AlamofireExtension where ExtendedType : Foundation.Bundle {
+  public var certificates: [Security.SecCertificate] {
+    get
+  }
+  public var publicKeys: [Security.SecKey] {
+    get
+  }
+  public func paths(forResourcesOfTypes types: [Swift.String]) -> [Swift.String]
+}
+extension SecTrust : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Security.SecTrust
+}
+extension AlamofireExtension where ExtendedType == Security.SecTrust {
+  @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
+  public func evaluate(afterApplying policy: Security.SecPolicy) throws
+  @available(iOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
+  @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate(afterApplying:)")
+  @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
+  @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate(afterApplying:)")
+  public func validate(policy: Security.SecPolicy, errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
+  public func apply(policy: Security.SecPolicy) throws -> Security.SecTrust
+  @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
+  public func evaluate() throws
+  @available(iOS, introduced: 10, deprecated: 12, renamed: "evaluate()")
+  @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate()")
+  @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate()")
+  @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate()")
+  public func validate(errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
+  public func setAnchorCertificates(_ certificates: [Security.SecCertificate]) throws
+  public var publicKeys: [Security.SecKey] {
+    get
+  }
+  public var certificates: [Security.SecCertificate] {
+    get
+  }
+  public var certificateData: [Foundation.Data] {
+    get
+  }
+  public func performDefaultValidation(forHost host: Swift.String) throws
+  public func performValidation(forHost host: Swift.String) throws
+}
+extension SecPolicy : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Security.SecPolicy
+}
+extension AlamofireExtension where ExtendedType == Security.SecPolicy {
+  public static let `default`: Security.SecPolicy
+  public static func hostname(_ hostname: Swift.String) -> Security.SecPolicy
+  public static func revocation(options: CirclePaySDK.RevocationTrustEvaluator.Options) throws -> Security.SecPolicy
+}
+extension Array : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Swift.Array<Element>
+}
+extension AlamofireExtension where ExtendedType == [Security.SecCertificate] {
+  public var data: [Foundation.Data] {
+    get
+  }
+  public var publicKeys: [Security.SecKey] {
+    get
+  }
+}
+extension SecCertificate : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Security.SecCertificate
+}
+extension AlamofireExtension where ExtendedType == Security.SecCertificate {
+  public var publicKey: Security.SecKey? {
+    get
+  }
+}
+extension Int32 : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Swift.Int32
+}
+extension AlamofireExtension where ExtendedType == Darwin.OSStatus {
+  public var isSuccess: Swift.Bool {
+    get
+  }
+}
+extension SecTrustResultType : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = Security.SecTrustResultType
+}
+extension AlamofireExtension where ExtendedType == Security.SecTrustResultType {
+  public var isSuccess: Swift.Bool {
+    get
+  }
+}
+extension URLRequest {
+  public var method: CirclePaySDK.HTTPMethod? {
+    get
+    set
+  }
+  public func validate() throws
+}
+extension CirclePaySDK.Request.State : Swift.Equatable {}
+extension CirclePaySDK.Request.State : Swift.Hashable {}
+extension CirclePaySDK.URLEncodedFormParameterEncoder.Destination : Swift.Equatable {}
+extension CirclePaySDK.URLEncodedFormParameterEncoder.Destination : Swift.Hashable {}
+extension CirclePaySDK.URLEncoding.Destination : Swift.Equatable {}
+extension CirclePaySDK.URLEncoding.Destination : Swift.Hashable {}
+extension CirclePaySDK.URLEncoding.ArrayEncoding : Swift.Equatable {}
+extension CirclePaySDK.URLEncoding.ArrayEncoding : Swift.Hashable {}
+extension CirclePaySDK.URLEncoding.BoolEncoding : Swift.Equatable {}
+extension CirclePaySDK.URLEncoding.BoolEncoding : Swift.Hashable {}
+extension CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Equatable {}
+extension CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Hashable {}
+extension CirclePaySDK.AuthenticationError : Swift.Equatable {}
+extension CirclePaySDK.AuthenticationError : Swift.Hashable {}
+extension CirclePaySDK.IQAutoToolbarManageBehaviour : Swift.Equatable {}
+extension CirclePaySDK.IQAutoToolbarManageBehaviour : Swift.Hashable {}
+extension CirclePaySDK.IQAutoToolbarManageBehaviour : Swift.RawRepresentable {}
+extension CirclePaySDK.IQPreviousNextDisplayMode : Swift.Equatable {}
+extension CirclePaySDK.IQPreviousNextDisplayMode : Swift.Hashable {}
+extension CirclePaySDK.IQPreviousNextDisplayMode : Swift.RawRepresentable {}
+extension CirclePaySDK.IQEnableMode : Swift.Equatable {}
+extension CirclePaySDK.IQEnableMode : Swift.Hashable {}
+extension CirclePaySDK.IQEnableMode : Swift.RawRepresentable {}
+extension CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
+extension CirclePaySDK.URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
+extension CirclePaySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
+extension CirclePaySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
+extension CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
+extension CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
