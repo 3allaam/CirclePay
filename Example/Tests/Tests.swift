@@ -1,5 +1,4 @@
 import XCTest
-import OHHTTPStubs
 import CirclePaySDK
 class Tests: XCTestCase {
     

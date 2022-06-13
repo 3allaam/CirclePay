@@ -1,35 +1,16 @@
 PODS:
-  - CirclePay (0.1.1)
-  - OHHTTPStubs/Core (9.1.0)
-  - OHHTTPStubs/Default (9.1.0):
-    - OHHTTPStubs/Core
-    - OHHTTPStubs/JSON
-    - OHHTTPStubs/NSURLSession
-    - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (9.1.0):
-    - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (9.1.0):
-    - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (9.1.0)
-  - OHHTTPStubs/Swift (9.1.0):
-    - OHHTTPStubs/Default
+  - CirclePay (0.1.2)
 
 DEPENDENCIES:
   - CirclePay (from `../`)
-  - OHHTTPStubs/Swift (~> 9.1.0)
-
-SPEC REPOS:
-  trunk:
-    - OHHTTPStubs
 
 EXTERNAL SOURCES:
   CirclePay:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CirclePay: 6f3957fd00bf37c4e88f6cc54a1ba515cb8a49de
-  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
+  CirclePay: a004a2a7a58531e04767c6a37c7007f5f7a3b1bd
 
-PODFILE CHECKSUM: 13d37520ac05d7008da65ae4a279b4e50ca0ffce
+PODFILE CHECKSUM: 5b5578c5e3b62740707eb9d56322eaf37035f384
 
 COCOAPODS: 1.11.3

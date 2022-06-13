@@ -1,6 +1,6 @@
 {
   "name": "CirclePay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "An Online Payment Solution",
   "swift_versions": "5.0",
   "description": "This Software Development Kit allows you to accept online payments provided by many payment getways",
@@ -15,7 +15,7 @@
   },
   "source": {
     "git": "https://github.com/Mahmoud3allam/CirclePay.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "requires_arc": true,
   "pod_target_xcconfig": {
@@ -27,17 +27,5 @@
   "ios": {
     "vendored_frameworks": "CirclePaySDK.xcframework"
   },
-  "testspecs": [
-    {
-      "name": "Tests",
-      "test_type": "unit",
-      "source_files": "Tests/*.{h,m}",
-      "dependencies": {
-        "OHHTTPStubs/Swift": [
-          "~> 9.1.0"
-        ]
-      }
-    }
-  ],
   "swift_version": "5.0"
 }

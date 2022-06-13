@@ -7,6 +7,6 @@ target 'CirclePay_Example' do
 
   target 'CirclePay_Tests' do
     inherit! :search_paths
-    pod 'OHHTTPStubs/Swift' , '~> 9.1.0'
+#    pod 'OHHTTPStubs/Swift' , '~> 9.1.0'
   end
 end
