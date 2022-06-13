@@ -585,6 +585,13 @@ SWIFT_CLASS("_TtC12CirclePaySDK9IQToolbar")
 @end
 
 
+SWIFT_CLASS("_TtC12CirclePaySDK5Items")
+@interface Items : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 
 
 
@@ -639,6 +646,10 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 
 
 
+
+
+
+
 @interface UIImage (SWIFT_EXTENSION(CirclePaySDK))
 + (UIImage * _Nullable)keyboardPreviousiOS9Image SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)keyboardNextiOS9Image SWIFT_WARN_UNUSED_RESULT;
@@ -655,6 +666,9 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 /// To set customized distance from keyboard for textField/textView. Can’t be less than zero
 @property (nonatomic) BOOL shouldRestoreScrollViewContentOffset;
 @end
+
+
+
 
 
 
@@ -744,9 +758,11 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 @end
 
 
+
 @interface UIViewController (SWIFT_EXTENSION(CirclePaySDK))
 - (UIViewController * _Nullable)parentIQContainerViewController SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 @class NSLayoutConstraint;
 
@@ -1350,6 +1366,13 @@ SWIFT_CLASS("_TtC12CirclePaySDK9IQToolbar")
 @end
 
 
+SWIFT_CLASS("_TtC12CirclePaySDK5Items")
+@interface Items : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 
 
 
@@ -1404,6 +1427,10 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 
 
 
+
+
+
+
 @interface UIImage (SWIFT_EXTENSION(CirclePaySDK))
 + (UIImage * _Nullable)keyboardPreviousiOS9Image SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)keyboardNextiOS9Image SWIFT_WARN_UNUSED_RESULT;
@@ -1420,6 +1447,9 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 /// To set customized distance from keyboard for textField/textView. Can’t be less than zero
 @property (nonatomic) BOOL shouldRestoreScrollViewContentOffset;
 @end
+
+
+
 
 
 
@@ -1509,9 +1539,11 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 @end
 
 
+
 @interface UIViewController (SWIFT_EXTENSION(CirclePaySDK))
 - (UIViewController * _Nullable)parentIQContainerViewController SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 @class NSLayoutConstraint;
 

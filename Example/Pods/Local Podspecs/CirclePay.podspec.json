@@ -1,22 +1,43 @@
 {
   "name": "CirclePay",
-  "version": "0.1.0",
-  "summary": "A short description of CirclePay.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.1",
+  "summary": "An Online Payment Solution",
+  "swift_versions": "5.0",
+  "description": "This Software Development Kit allows you to accept online payments provided by many payment getways",
   "homepage": "https://github.com/Mahmoud3allam/CirclePay",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Mahmoud3allam": "mahmoudallam@circlepay.ai"
+    "adel": "adelmohy_58@hotmail.com",
+    "allam": "allam40960@gmail.com"
   },
   "source": {
     "git": "https://github.com/Mahmoud3allam/CirclePay.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
+  },
+  "requires_arc": true,
+  "pod_target_xcconfig": {
+    "VALID_ARCHS": "arm64 arm64e armv7 armv7s x86_64"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "12.1"
   },
-  "source_files": "CirclePay/Classes/**/*"
+  "ios": {
+    "vendored_frameworks": "CirclePaySDK.xcframework"
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "Tests/*.{h,m}",
+      "dependencies": {
+        "OHHTTPStubs/Swift": [
+          "~> 9.1.0"
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.0"
 }

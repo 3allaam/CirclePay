@@ -3,31 +3,67 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4D045BE899498B48DE74563E5C204F58 /* CirclePay */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5B445A7AAB104951EC56B7C642CA58A1 /* Build configuration list for PBXAggregateTarget "CirclePay" */;
+			buildPhases = (
+				1BB2E3343222F23765791143B39484C4 /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = CirclePay;
+			productName = CirclePay;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		183C516C285789FD00120E5B /* CirclePaySDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183C516B285789FD00120E5B /* CirclePaySDK.xcframework */; };
-		236414F53303AAC4E1C1F45AB2AE7114 /* CirclePay-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B74E093A35DBE88409D37F2E65D5B9D2 /* CirclePay-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		47A266873DF027798D4A5B670343D9DB /* Pods-CirclePay_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF3DA411981BFB6D081E39B0CB914E35 /* Pods-CirclePay_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D048072FB7E207A2FDF8CF79F466E70 /* Pods-CirclePay_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE51E6808708834AD838DA725DA18E6 /* Pods-CirclePay_Example-dummy.m */; };
-		73FF49E2B730B66A0F88769C59D86716 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		889B2B9D80FEC2FE4A0D565FD6F0749D /* Pods-CirclePay_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E58A8B46F5CE840A15E4367F6A03C /* Pods-CirclePay_Tests-dummy.m */; };
-		9F46C3AD3DB57A2F9C597F315BD104FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		CF46E5B5FD362A3E049CC792239EE1CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		E30CE0A545B51A6A4FA95A20C59F0E05 /* Pods-CirclePay_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 697B4C638144FDF64B5BE334096E7CE3 /* Pods-CirclePay_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F5AA63FF76B4B211B63322C4BCAA6007 /* CirclePay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4243BB76575DD8BA3EAE28521107D0 /* CirclePay-dummy.m */; };
+		0194717FC38FFAE0D1B2C6029A093FB4 /* NSURLRequest+HTTPBodyTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AC9AAE6418AF877A38D1FDCBC620BE5 /* NSURLRequest+HTTPBodyTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D1BCE5AD80B0B843782627D32A9945 /* HTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 47996ECC3F3C0091DF67E18683D77AEA /* HTTPStubs.m */; };
+		042668FFA122D78B6EE074C04C460261 /* OHHTTPStubsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A8A782D7E9DD56B2D71B6B6BDE130 /* OHHTTPStubsSwift.swift */; };
+		06AEAFA69F767CA815A08AF6C6CBA998 /* Pods-CirclePay_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA7AC012D50642650A2D6A9FD3911402 /* Pods-CirclePay_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07AF133A017AB74CC31B5475BFFA92E9 /* HTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 72468E28AE8E4A1C954928A810C29633 /* HTTPStubsResponse+JSON.m */; };
+		09C4DA95304C05A60EC159203C0F4CF4 /* HTTPStubsResponse+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E8F87888190219C69EEDBF9BF1848ED /* HTTPStubsResponse+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FDF71FA492E5D74C93CF083F086E48D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		19FF16C15407ABBCAB0168CDE44709E1 /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5108C23AC87C098477CFFBD4D806F5A5 /* NSURLRequest+HTTPBodyTesting.m */; };
+		2114F7E4B02770BF53B9B521D0DBC801 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 7733FD4A1A3AB538B245BD517B663B28 /* HTTPStubsMethodSwizzling.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2A090B165CFA5629C9CE47E6318AB38E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		47A266873DF027798D4A5B670343D9DB /* Pods-CirclePay_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2278F9AA56050D27605E11FF287A16BB /* Pods-CirclePay_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D048072FB7E207A2FDF8CF79F466E70 /* Pods-CirclePay_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8253CA36584D69FF3144B7AEF841E5DE /* Pods-CirclePay_Example-dummy.m */; };
+		5E2FF15EAFEF89119E9FD90C2B46D6E4 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F6362623A9B6BCC1A2F0803BD53D1C /* HTTPStubsMethodSwizzling.m */; };
+		5F6E86DF36F8AC7D9B15396880AC2DA5 /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 05795D80F7ADBF5F4A6F778B7729A2F6 /* HTTPStubsPathHelpers.m */; };
+		622D4F6AA5A0F7F2FE7522F6CD5FB210 /* Compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = AC17B72B64B618B416CCA97514209F19 /* Compatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A6135DF3532D742992A489E58E8D421 /* OHHTTPStubs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD220818A23936E2AB3394735DD1D124 /* OHHTTPStubs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90BBA22AE62C6D103CA45126D916E9B5 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D43335D402FE711DD910A20491CFB /* HTTPStubs+NSURLSessionConfiguration.m */; };
+		9F46C3AD3DB57A2F9C597F315BD104FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		A30F65F16395BF5436088F7F327E8817 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */; };
+		A75F1D93C20CB25C19260ED16E0DC048 /* OHHTTPStubs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B09F70D8318D3B3C6B25589AAE9933 /* OHHTTPStubs-dummy.m */; };
+		BBD06A2859332AAF7C685D224F7E7A1A /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8752ED48BF48F46C57381CD46FB0C493 /* HTTPStubsResponse.m */; };
+		D1AA75E25744E797B4D68F6A4CB5D03D /* HTTPStubsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9104B13FA4CDFA3B9E98F37F21ED3F /* HTTPStubsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E551070A151DC06AF47B84CE7A258AEE /* HTTPStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 0389F5918103E445BC3DBC43C114AEFC /* HTTPStubs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9B0EE7261F3F7D057EF4124131880B9 /* Pods-CirclePay_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB0209291FAC8B2EBECF8559CB9615 /* Pods-CirclePay_Tests-dummy.m */; };
+		FBA10EDD6E1E7704324E66F6B35540CD /* HTTPStubsPathHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 76ECE6049BBB7D8EC1A83DB3C317321F /* HTTPStubsPathHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A772D63C956A2BA1214CD49165130959 /* PBXContainerItemProxy */ = {
+		35655773747DEAC2493F06C487969B10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A983A2D06C5B6AA3D6ABA5CCC0A16725;
+			remoteInfo = OHHTTPStubs;
+		};
+		A04E4AB221AF135D1087E6922AA2A2E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FFA00E34CD8C49E8AF9D9882B1037BF5;
 			remoteInfo = "Pods-CirclePay_Example";
 		};
-		FB9AA376A6C4836F2DD3A5A3FEBB99B6 /* PBXContainerItemProxy */ = {
+		FB68063DC3B2B1F4B7D4FE4A3D4026BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -37,56 +73,67 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AE434A6861206D9D891F66285FE9D4A /* CirclePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CirclePay.release.xcconfig; sourceTree = "<group>"; };
-		119E58A8B46F5CE840A15E4367F6A03C /* Pods-CirclePay_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CirclePay_Tests-dummy.m"; sourceTree = "<group>"; };
-		183C516B285789FD00120E5B /* CirclePaySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CirclePaySDK.xcframework; sourceTree = "<group>"; };
-		1F3A7082AF49326C7B657CAA302437D1 /* Pods-CirclePay_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CirclePay_Tests.modulemap"; sourceTree = "<group>"; };
-		21199F425FB4A5E95858F77746C92C21 /* Pods-CirclePay_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		2EB94C353DC1F7CBEF13C5F3696677B6 /* CirclePay-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CirclePay-Info.plist"; sourceTree = "<group>"; };
-		337457F0697EAB9E657F7308C16A5612 /* Pods-CirclePay_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Tests-Info.plist"; sourceTree = "<group>"; };
-		35E88FAD55B47897093D1E8A74F223A7 /* CirclePay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CirclePay-prefix.pch"; sourceTree = "<group>"; };
-		3806548BF21E01936E68758A1382A73E /* Pods-CirclePay_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CirclePay_Example.modulemap"; sourceTree = "<group>"; };
-		3E8685C337368D3B9AAA4633626A2DA3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41E8B1CCC2CC3E7F5BB77F819C71558F /* CirclePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CirclePay.debug.xcconfig; sourceTree = "<group>"; };
-		5396EEF312634BBB7521E4010C3498DB /* CirclePay */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CirclePay; path = CirclePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EAD0C12D089B0974BCC99A3AB3E7CB8 /* Pods-CirclePay_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CirclePay_Example-frameworks.sh"; sourceTree = "<group>"; };
-		657D517854DF05D98C06CC22D30A2624 /* CirclePay.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CirclePay.modulemap; sourceTree = "<group>"; };
-		68D7694344521D071D281D5FAC679C5E /* Pods-CirclePay_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		697B4C638144FDF64B5BE334096E7CE3 /* Pods-CirclePay_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CirclePay_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6A9F1FF63D8FA35E514024455D1BFFB8 /* CirclePay.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = CirclePay.podspec; sourceTree = "<group>"; tabWidth = 2; };
-		7167E42FDB6DA725A111DF7953D5EE32 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73062B46CDB3C82C1100B364E2B190CA /* Pods-CirclePay_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		782293100E726C2BBEB5DC180DF3AEA3 /* Pods-CirclePay_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		01261D4BEEA3EAEB127B4C304F76FEE9 /* Pods-CirclePay_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CirclePay_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0389F5918103E445BC3DBC43C114AEFC /* HTTPStubs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPStubs.h; path = Sources/OHHTTPStubs/include/HTTPStubs.h; sourceTree = "<group>"; };
+		0432D81AD4701459DE9A4E96C436CBCA /* Pods-CirclePay_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		05795D80F7ADBF5F4A6F778B7729A2F6 /* HTTPStubsPathHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPStubsPathHelpers.m; path = Sources/OHHTTPStubs/HTTPStubsPathHelpers.m; sourceTree = "<group>"; };
+		07A896C3EB5579E39262A541BF2EA061 /* Pods-CirclePay_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CirclePay_Example-frameworks.sh"; sourceTree = "<group>"; };
+		17E33041B314FA837A3CAEB9DF3CDE9F /* OHHTTPStubs */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OHHTTPStubs; path = OHHTTPStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18290BAA2857F6AD00C2A037 /* CirclePaySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CirclePaySDK.xcframework; sourceTree = "<group>"; };
+		1AC9AAE6418AF877A38D1FDCBC620BE5 /* NSURLRequest+HTTPBodyTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+HTTPBodyTesting.h"; path = "Sources/OHHTTPStubs/include/NSURLRequest+HTTPBodyTesting.h"; sourceTree = "<group>"; };
+		2278F9AA56050D27605E11FF287A16BB /* Pods-CirclePay_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CirclePay_Example-umbrella.h"; sourceTree = "<group>"; };
+		2B3D3237BDFD3BFD3B61513F838E21F6 /* OHHTTPStubs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubs-prefix.pch"; sourceTree = "<group>"; };
+		3D46B3AFF4CCC823E2EDE7F3EF569D48 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4394BA6BB98C6F2FCD4DDEE360FF3F34 /* CirclePay.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = CirclePay.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		444D43335D402FE711DD910A20491CFB /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "HTTPStubs+NSURLSessionConfiguration.m"; path = "Sources/OHHTTPStubs/HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
+		47996ECC3F3C0091DF67E18683D77AEA /* HTTPStubs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPStubs.m; path = Sources/OHHTTPStubs/HTTPStubs.m; sourceTree = "<group>"; };
+		5108C23AC87C098477CFFBD4D806F5A5 /* NSURLRequest+HTTPBodyTesting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+HTTPBodyTesting.m"; path = "Sources/OHHTTPStubs/NSURLRequest+HTTPBodyTesting.m"; sourceTree = "<group>"; };
+		5CEC6CB5CED75CC2FC24115BD0BDAD6B /* OHHTTPStubs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OHHTTPStubs.release.xcconfig; sourceTree = "<group>"; };
+		71BE67DB428E6D1BA035DAEEFA2A91E3 /* CirclePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CirclePay.release.xcconfig; sourceTree = "<group>"; };
+		72468E28AE8E4A1C954928A810C29633 /* HTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "HTTPStubsResponse+JSON.m"; path = "Sources/OHHTTPStubs/HTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		736A8A782D7E9DD56B2D71B6B6BDE130 /* OHHTTPStubsSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OHHTTPStubsSwift.swift; path = Sources/OHHTTPStubsSwift/OHHTTPStubsSwift.swift; sourceTree = "<group>"; };
+		76ECE6049BBB7D8EC1A83DB3C317321F /* HTTPStubsPathHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPStubsPathHelpers.h; path = Sources/OHHTTPStubs/include/HTTPStubsPathHelpers.h; sourceTree = "<group>"; };
+		7733FD4A1A3AB538B245BD517B663B28 /* HTTPStubsMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPStubsMethodSwizzling.h; path = Sources/OHHTTPStubs/HTTPStubsMethodSwizzling.h; sourceTree = "<group>"; };
+		8253CA36584D69FF3144B7AEF841E5DE /* Pods-CirclePay_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CirclePay_Example-dummy.m"; sourceTree = "<group>"; };
+		8752ED48BF48F46C57381CD46FB0C493 /* HTTPStubsResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPStubsResponse.m; path = Sources/OHHTTPStubs/HTTPStubsResponse.m; sourceTree = "<group>"; };
+		8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		8D9723A2C45AE3C04DC1FE871CCFDD67 /* CirclePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CirclePay.debug.xcconfig; sourceTree = "<group>"; };
+		8E8F87888190219C69EEDBF9BF1848ED /* HTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTTPStubsResponse+JSON.h"; path = "Sources/OHHTTPStubs/include/HTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
+		8EC3488DA660920038760CC2C11CB1DA /* OHHTTPStubs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OHHTTPStubs.debug.xcconfig; sourceTree = "<group>"; };
+		8EDB0209291FAC8B2EBECF8559CB9615 /* Pods-CirclePay_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CirclePay_Tests-dummy.m"; sourceTree = "<group>"; };
+		90F6362623A9B6BCC1A2F0803BD53D1C /* HTTPStubsMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPStubsMethodSwizzling.m; path = Sources/OHHTTPStubs/HTTPStubsMethodSwizzling.m; sourceTree = "<group>"; };
+		9318736F2DA355B90118A0AC096F3761 /* Pods-CirclePay_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		96B09F70D8318D3B3C6B25589AAE9933 /* OHHTTPStubs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubs-dummy.m"; sourceTree = "<group>"; };
+		9D73E3615CEA01376902FE219EEDDC0B /* Pods-CirclePay_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Tests-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B74E093A35DBE88409D37F2E65D5B9D2 /* CirclePay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CirclePay-umbrella.h"; sourceTree = "<group>"; };
-		B944DCB430692740A6FB68733A6B7479 /* Pods-CirclePay_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CirclePay_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9E0C5D0BDE60BBBE881BC7FACA385BE3 /* Pods-CirclePay_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Example-Info.plist"; sourceTree = "<group>"; };
+		AC17B72B64B618B416CCA97514209F19 /* Compatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Compatibility.h; path = Sources/OHHTTPStubs/include/Compatibility.h; sourceTree = "<group>"; };
+		AE74686EA3CA695D75FCE0F6B615B303 /* Pods-CirclePay_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B0772FDA3D3AF23CD5AB271D184F50D3 /* Pods-CirclePay_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CirclePay_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		BF3F66B3E0CF91C536869F9EBF7D7D82 /* OHHTTPStubs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = OHHTTPStubs.modulemap; sourceTree = "<group>"; };
+		BFDAC85D212E6202FAFE4B4DC38DCE4D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C4C75ED2FC77EA1DD140FA02C7868853 /* Pods-CirclePay_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CirclePay_Example"; path = Pods_CirclePay_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB8498655EC501CA890177EC14CFDB60 /* Pods-CirclePay_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CirclePay_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DC7466BA010006D7ACB0CEB5EA80129F /* Pods-CirclePay_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DF3DA411981BFB6D081E39B0CB914E35 /* Pods-CirclePay_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CirclePay_Example-umbrella.h"; sourceTree = "<group>"; };
-		E9801A27254A55968CE48BD691A7DB85 /* Pods-CirclePay_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		EB4243BB76575DD8BA3EAE28521107D0 /* CirclePay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CirclePay-dummy.m"; sourceTree = "<group>"; };
-		F2381FC9EBF2262F098E55BB3AE677B8 /* Pods-CirclePay_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Example-Info.plist"; sourceTree = "<group>"; };
+		CB57C79BC49706A3167F761E925F969E /* Pods-CirclePay_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Example.release.xcconfig"; sourceTree = "<group>"; };
+		CB81504EA7F9EA0B07B322C2BADF6121 /* Pods-CirclePay_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CirclePay_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		CD0A46EA243BE529300CE1A85CEEDA3B /* Pods-CirclePay_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CirclePay_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		CD220818A23936E2AB3394735DD1D124 /* OHHTTPStubs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubs-umbrella.h"; sourceTree = "<group>"; };
+		CFAC01833A347CE021A051B7D360F85F /* Pods-CirclePay_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CirclePay_Example.modulemap"; sourceTree = "<group>"; };
+		D705E52DB4F3AD788231EC127028E1EA /* Pods-CirclePay_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CirclePay_Tests.modulemap"; sourceTree = "<group>"; };
+		D8271BE9485D327CBECA394306611B48 /* OHHTTPStubs-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "OHHTTPStubs-Info.plist"; sourceTree = "<group>"; };
+		DEFF124C2A7ADFA7C1E7BD62F79C9E83 /* Pods-CirclePay_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CirclePay_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E8E24C18C9D8E640B844357D6BE60D7F /* CirclePay-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "CirclePay-xcframeworks.sh"; sourceTree = "<group>"; };
+		EA7AC012D50642650A2D6A9FD3911402 /* Pods-CirclePay_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CirclePay_Tests-umbrella.h"; sourceTree = "<group>"; };
 		F55A461DF9486D16CF49E75DD03CE3D8 /* Pods-CirclePay_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CirclePay_Tests"; path = Pods_CirclePay_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEE51E6808708834AD838DA725DA18E6 /* Pods-CirclePay_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CirclePay_Example-dummy.m"; sourceTree = "<group>"; };
+		FA9104B13FA4CDFA3B9E98F37F21ED3F /* HTTPStubsResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPStubsResponse.h; path = Sources/OHHTTPStubs/include/HTTPStubsResponse.h; sourceTree = "<group>"; };
+		FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41E728DB49BFC20AEFE37F3F3E9F2B0A /* Frameworks */ = {
+		8B69A2994E24AB9A7C700F62C355E454 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FF49E2B730B66A0F88769C59D86716 /* Foundation.framework in Frameworks */,
-				183C516C285789FD00120E5B /* CirclePaySDK.xcframework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		931B680957C8BC1AAF2BD5F00CA86FE7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF46E5B5FD362A3E049CC792239EE1CD /* Foundation.framework in Frameworks */,
+				0FDF71FA492E5D74C93CF083F086E48D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,103 +145,172 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6C4221503E63AB94BBB9CE997C151A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30F65F16395BF5436088F7F327E8817 /* CFNetwork.framework in Frameworks */,
+				2A090B165CFA5629C9CE47E6318AB38E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		029A2E00A7C3D8B702B23A9D1E65017C /* Products */ = {
+		0389F2F489917D675F66FA48F47E9C27 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				5396EEF312634BBB7521E4010C3498DB /* CirclePay */,
-				C4C75ED2FC77EA1DD140FA02C7868853 /* Pods-CirclePay_Example */,
-				F55A461DF9486D16CF49E75DD03CE3D8 /* Pods-CirclePay_Tests */,
+				736A8A782D7E9DD56B2D71B6B6BDE130 /* OHHTTPStubsSwift.swift */,
 			);
-			name = Products;
+			name = Swift;
 			sourceTree = "<group>";
 		};
-		07AAB58838D31D03BB35A70BA0DFCF15 /* Support Files */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				657D517854DF05D98C06CC22D30A2624 /* CirclePay.modulemap */,
-				EB4243BB76575DD8BA3EAE28521107D0 /* CirclePay-dummy.m */,
-				2EB94C353DC1F7CBEF13C5F3696677B6 /* CirclePay-Info.plist */,
-				35E88FAD55B47897093D1E8A74F223A7 /* CirclePay-prefix.pch */,
-				B74E093A35DBE88409D37F2E65D5B9D2 /* CirclePay-umbrella.h */,
-				41E8B1CCC2CC3E7F5BB77F819C71558F /* CirclePay.debug.xcconfig */,
-				0AE434A6861206D9D891F66285FE9D4A /* CirclePay.release.xcconfig */,
+				61C8CC330A5CA84DA2F5F1D32AB07069 /* iOS */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/CirclePay";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		112D4921A595328F51F70F421816BA24 /* Pod */ = {
+		1BA3C1823846A764684949B6A5C8B401 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6A9F1FF63D8FA35E514024455D1BFFB8 /* CirclePay.podspec */,
-				7167E42FDB6DA725A111DF7953D5EE32 /* LICENSE */,
-				3E8685C337368D3B9AAA4633626A2DA3 /* README.md */,
+				A8803767495ABAA1B17D8138DCD31DA3 /* OHHTTPStubs */,
 			);
-			name = Pod;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		32112ABFCF3D75876DB64A18F27690C2 /* Pods-CirclePay_Example */ = {
+		61C8CC330A5CA84DA2F5F1D32AB07069 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3806548BF21E01936E68758A1382A73E /* Pods-CirclePay_Example.modulemap */,
-				B944DCB430692740A6FB68733A6B7479 /* Pods-CirclePay_Example-acknowledgements.markdown */,
-				21199F425FB4A5E95858F77746C92C21 /* Pods-CirclePay_Example-acknowledgements.plist */,
-				FEE51E6808708834AD838DA725DA18E6 /* Pods-CirclePay_Example-dummy.m */,
-				5EAD0C12D089B0974BCC99A3AB3E7CB8 /* Pods-CirclePay_Example-frameworks.sh */,
-				F2381FC9EBF2262F098E55BB3AE677B8 /* Pods-CirclePay_Example-Info.plist */,
-				DF3DA411981BFB6D081E39B0CB914E35 /* Pods-CirclePay_Example-umbrella.h */,
-				73062B46CDB3C82C1100B364E2B190CA /* Pods-CirclePay_Example.debug.xcconfig */,
-				DC7466BA010006D7ACB0CEB5EA80129F /* Pods-CirclePay_Example.release.xcconfig */,
-			);
-			name = "Pods-CirclePay_Example";
-			path = "Target Support Files/Pods-CirclePay_Example";
-			sourceTree = "<group>";
-		};
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */,
+				FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7320A0949A70D5E92101464E52D58F97 /* Targets Support Files */ = {
+		6A9356365490803D37F2DD066530C7AA /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				32112ABFCF3D75876DB64A18F27690C2 /* Pods-CirclePay_Example */,
-				94222FA969FA66E7DDD36B492FE468AF /* Pods-CirclePay_Tests */,
+				4394BA6BB98C6F2FCD4DDEE360FF3F34 /* CirclePay.podspec */,
+				BFDAC85D212E6202FAFE4B4DC38DCE4D /* LICENSE */,
+				3D46B3AFF4CCC823E2EDE7F3EF569D48 /* README.md */,
 			);
-			name = "Targets Support Files";
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		8A394AF4433D6353327D647BBEA6C516 /* CirclePay */ = {
+		79FC27EC455B537370D6E107EDC6CF1B /* CirclePay */ = {
 			isa = PBXGroup;
 			children = (
-				183C516B285789FD00120E5B /* CirclePaySDK.xcframework */,
-				112D4921A595328F51F70F421816BA24 /* Pod */,
-				07AAB58838D31D03BB35A70BA0DFCF15 /* Support Files */,
+				DCF0F094696E619C68F9C2FB5FA0B119 /* Frameworks */,
+				6A9356365490803D37F2DD066530C7AA /* Pod */,
+				A6858686AC77E3240B2854E1364B77A9 /* Support Files */,
 			);
 			name = CirclePay;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		94222FA969FA66E7DDD36B492FE468AF /* Pods-CirclePay_Tests */ = {
+		7A06AB0D949B78CF4A93BE8FBA4B5CEC /* Pods-CirclePay_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1F3A7082AF49326C7B657CAA302437D1 /* Pods-CirclePay_Tests.modulemap */,
-				CB8498655EC501CA890177EC14CFDB60 /* Pods-CirclePay_Tests-acknowledgements.markdown */,
-				E9801A27254A55968CE48BD691A7DB85 /* Pods-CirclePay_Tests-acknowledgements.plist */,
-				119E58A8B46F5CE840A15E4367F6A03C /* Pods-CirclePay_Tests-dummy.m */,
-				337457F0697EAB9E657F7308C16A5612 /* Pods-CirclePay_Tests-Info.plist */,
-				697B4C638144FDF64B5BE334096E7CE3 /* Pods-CirclePay_Tests-umbrella.h */,
-				68D7694344521D071D281D5FAC679C5E /* Pods-CirclePay_Tests.debug.xcconfig */,
-				782293100E726C2BBEB5DC180DF3AEA3 /* Pods-CirclePay_Tests.release.xcconfig */,
+				D705E52DB4F3AD788231EC127028E1EA /* Pods-CirclePay_Tests.modulemap */,
+				01261D4BEEA3EAEB127B4C304F76FEE9 /* Pods-CirclePay_Tests-acknowledgements.markdown */,
+				9318736F2DA355B90118A0AC096F3761 /* Pods-CirclePay_Tests-acknowledgements.plist */,
+				8EDB0209291FAC8B2EBECF8559CB9615 /* Pods-CirclePay_Tests-dummy.m */,
+				B0772FDA3D3AF23CD5AB271D184F50D3 /* Pods-CirclePay_Tests-frameworks.sh */,
+				9D73E3615CEA01376902FE219EEDDC0B /* Pods-CirclePay_Tests-Info.plist */,
+				EA7AC012D50642650A2D6A9FD3911402 /* Pods-CirclePay_Tests-umbrella.h */,
+				0432D81AD4701459DE9A4E96C436CBCA /* Pods-CirclePay_Tests.debug.xcconfig */,
+				CB81504EA7F9EA0B07B322C2BADF6121 /* Pods-CirclePay_Tests.release.xcconfig */,
 			);
 			name = "Pods-CirclePay_Tests";
 			path = "Target Support Files/Pods-CirclePay_Tests";
+			sourceTree = "<group>";
+		};
+		7A7FD685BEE56B63E1F6F240D4B0D09A /* OHPathHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				76ECE6049BBB7D8EC1A83DB3C317321F /* HTTPStubsPathHelpers.h */,
+				05795D80F7ADBF5F4A6F778B7729A2F6 /* HTTPStubsPathHelpers.m */,
+			);
+			name = OHPathHelpers;
+			sourceTree = "<group>";
+		};
+		801107C3ED4915228DE0563C404855C1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F7B002332E3F7F23A619F340B32CA /* Pods-CirclePay_Example */,
+				7A06AB0D949B78CF4A93BE8FBA4B5CEC /* Pods-CirclePay_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		91C13F8F2D709FB6B869F3065B6AB447 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC17B72B64B618B416CCA97514209F19 /* Compatibility.h */,
+				0389F5918103E445BC3DBC43C114AEFC /* HTTPStubs.h */,
+				47996ECC3F3C0091DF67E18683D77AEA /* HTTPStubs.m */,
+				FA9104B13FA4CDFA3B9E98F37F21ED3F /* HTTPStubsResponse.h */,
+				8752ED48BF48F46C57381CD46FB0C493 /* HTTPStubsResponse.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		A6858686AC77E3240B2854E1364B77A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8E24C18C9D8E640B844357D6BE60D7F /* CirclePay-xcframeworks.sh */,
+				8D9723A2C45AE3C04DC1FE871CCFDD67 /* CirclePay.debug.xcconfig */,
+				71BE67DB428E6D1BA035DAEEFA2A91E3 /* CirclePay.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/CirclePay";
+			sourceTree = "<group>";
+		};
+		A8803767495ABAA1B17D8138DCD31DA3 /* OHHTTPStubs */ = {
+			isa = PBXGroup;
+			children = (
+				91C13F8F2D709FB6B869F3065B6AB447 /* Core */,
+				BC1AA576E42B2328348DAE8C5C5BF67A /* JSON */,
+				AC27C31569BBF764D122BD802DFC3A3D /* NSURLSession */,
+				7A7FD685BEE56B63E1F6F240D4B0D09A /* OHPathHelpers */,
+				EF81891485D5AFBA5E33C1B67A5433FD /* Support Files */,
+				0389F2F489917D675F66FA48F47E9C27 /* Swift */,
+			);
+			path = OHHTTPStubs;
+			sourceTree = "<group>";
+		};
+		AC27C31569BBF764D122BD802DFC3A3D /* NSURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				444D43335D402FE711DD910A20491CFB /* HTTPStubs+NSURLSessionConfiguration.m */,
+				7733FD4A1A3AB538B245BD517B663B28 /* HTTPStubsMethodSwizzling.h */,
+				90F6362623A9B6BCC1A2F0803BD53D1C /* HTTPStubsMethodSwizzling.m */,
+				1AC9AAE6418AF877A38D1FDCBC620BE5 /* NSURLRequest+HTTPBodyTesting.h */,
+				5108C23AC87C098477CFFBD4D806F5A5 /* NSURLRequest+HTTPBodyTesting.m */,
+			);
+			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		BC1AA576E42B2328348DAE8C5C5BF67A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				8E8F87888190219C69EEDBF9BF1848ED /* HTTPStubsResponse+JSON.h */,
+				72468E28AE8E4A1C954928A810C29633 /* HTTPStubsResponse+JSON.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		CDF00D633CAA678BC41DE27C15E0DAE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17E33041B314FA837A3CAEB9DF3CDE9F /* OHHTTPStubs */,
+				C4C75ED2FC77EA1DD140FA02C7868853 /* Pods-CirclePay_Example */,
+				F55A461DF9486D16CF49E75DD03CE3D8 /* Pods-CirclePay_Tests */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -202,24 +318,57 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				FB0FEFA88A16EE45A305425F3C5A6EC4 /* Development Pods */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				029A2E00A7C3D8B702B23A9D1E65017C /* Products */,
-				7320A0949A70D5E92101464E52D58F97 /* Targets Support Files */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				1BA3C1823846A764684949B6A5C8B401 /* Pods */,
+				CDF00D633CAA678BC41DE27C15E0DAE8 /* Products */,
+				801107C3ED4915228DE0563C404855C1 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		DCF0F094696E619C68F9C2FB5FA0B119 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				18290BAA2857F6AD00C2A037 /* CirclePaySDK.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD0F7B002332E3F7F23A619F340B32CA /* Pods-CirclePay_Example */ = {
+			isa = PBXGroup;
+			children = (
+				CFAC01833A347CE021A051B7D360F85F /* Pods-CirclePay_Example.modulemap */,
+				DEFF124C2A7ADFA7C1E7BD62F79C9E83 /* Pods-CirclePay_Example-acknowledgements.markdown */,
+				CD0A46EA243BE529300CE1A85CEEDA3B /* Pods-CirclePay_Example-acknowledgements.plist */,
+				8253CA36584D69FF3144B7AEF841E5DE /* Pods-CirclePay_Example-dummy.m */,
+				07A896C3EB5579E39262A541BF2EA061 /* Pods-CirclePay_Example-frameworks.sh */,
+				9E0C5D0BDE60BBBE881BC7FACA385BE3 /* Pods-CirclePay_Example-Info.plist */,
+				2278F9AA56050D27605E11FF287A16BB /* Pods-CirclePay_Example-umbrella.h */,
+				AE74686EA3CA695D75FCE0F6B615B303 /* Pods-CirclePay_Example.debug.xcconfig */,
+				CB57C79BC49706A3167F761E925F969E /* Pods-CirclePay_Example.release.xcconfig */,
+			);
+			name = "Pods-CirclePay_Example";
+			path = "Target Support Files/Pods-CirclePay_Example";
+			sourceTree = "<group>";
+		};
+		EF81891485D5AFBA5E33C1B67A5433FD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF3F66B3E0CF91C536869F9EBF7D7D82 /* OHHTTPStubs.modulemap */,
+				96B09F70D8318D3B3C6B25589AAE9933 /* OHHTTPStubs-dummy.m */,
+				D8271BE9485D327CBECA394306611B48 /* OHHTTPStubs-Info.plist */,
+				2B3D3237BDFD3BFD3B61513F838E21F6 /* OHHTTPStubs-prefix.pch */,
+				CD220818A23936E2AB3394735DD1D124 /* OHHTTPStubs-umbrella.h */,
+				8EC3488DA660920038760CC2C11CB1DA /* OHHTTPStubs.debug.xcconfig */,
+				5CEC6CB5CED75CC2FC24115BD0BDAD6B /* OHHTTPStubs.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/OHHTTPStubs";
 			sourceTree = "<group>";
 		};
 		FB0FEFA88A16EE45A305425F3C5A6EC4 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A394AF4433D6353327D647BBEA6C516 /* CirclePay */,
+				79FC27EC455B537370D6E107EDC6CF1B /* CirclePay */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -235,19 +384,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55B1E771D57944CFB1361321E52DA951 /* Headers */ = {
+		79BF8FF3D602332DB9720C936508808B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				236414F53303AAC4E1C1F45AB2AE7114 /* CirclePay-umbrella.h in Headers */,
+				622D4F6AA5A0F7F2FE7522F6CD5FB210 /* Compatibility.h in Headers */,
+				E551070A151DC06AF47B84CE7A258AEE /* HTTPStubs.h in Headers */,
+				2114F7E4B02770BF53B9B521D0DBC801 /* HTTPStubsMethodSwizzling.h in Headers */,
+				FBA10EDD6E1E7704324E66F6B35540CD /* HTTPStubsPathHelpers.h in Headers */,
+				D1AA75E25744E797B4D68F6A4CB5D03D /* HTTPStubsResponse.h in Headers */,
+				09C4DA95304C05A60EC159203C0F4CF4 /* HTTPStubsResponse+JSON.h in Headers */,
+				0194717FC38FFAE0D1B2C6029A093FB4 /* NSURLRequest+HTTPBodyTesting.h in Headers */,
+				8A6135DF3532D742992A489E58E8D421 /* OHHTTPStubs-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5A954734AA38197C6F53854EAA42800 /* Headers */ = {
+		A1C1E9B15CBEDA0585BC7851BC04F004 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30CE0A545B51A6A4FA95A20C59F0E05 /* Pods-CirclePay_Tests-umbrella.h in Headers */,
+				06AEAFA69F767CA815A08AF6C6CBA998 /* Pods-CirclePay_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,39 +412,40 @@
 /* Begin PBXNativeTarget section */
 		49C9BA767CBD990823457263B835A034 /* Pods-CirclePay_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C19C0B0E5DBD67DF4B3D5100ED6CE016 /* Build configuration list for PBXNativeTarget "Pods-CirclePay_Tests" */;
+			buildConfigurationList = 470F2FBFBD9F5A2130E1C4DFFCE32BFE /* Build configuration list for PBXNativeTarget "Pods-CirclePay_Tests" */;
 			buildPhases = (
-				B5A954734AA38197C6F53854EAA42800 /* Headers */,
-				FEB6204C5360983DDE16F33C70718D8A /* Sources */,
-				931B680957C8BC1AAF2BD5F00CA86FE7 /* Frameworks */,
-				AEFA2422619426D09E18DAD50EC683C1 /* Resources */,
+				A1C1E9B15CBEDA0585BC7851BC04F004 /* Headers */,
+				279DFB6082E5ABB80B0CAB0A9193382B /* Sources */,
+				8B69A2994E24AB9A7C700F62C355E454 /* Frameworks */,
+				493EA9B991701A758D4731210196C4FD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				58FEAC22E1DB4ECAC04CC925082DD655 /* PBXTargetDependency */,
+				06A2D6CE2456463165C3D401C17071BE /* PBXTargetDependency */,
+				8F625BC19DD7D1BBDE00BA82749A0F5D /* PBXTargetDependency */,
 			);
 			name = "Pods-CirclePay_Tests";
 			productName = Pods_CirclePay_Tests;
 			productReference = F55A461DF9486D16CF49E75DD03CE3D8 /* Pods-CirclePay_Tests */;
 			productType = "com.apple.product-type.framework";
 		};
-		4D045BE899498B48DE74563E5C204F58 /* CirclePay */ = {
+		A983A2D06C5B6AA3D6ABA5CCC0A16725 /* OHHTTPStubs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C994B4885A58186B987C8AFCDB57080 /* Build configuration list for PBXNativeTarget "CirclePay" */;
+			buildConfigurationList = 16B9D186E741234F74F4E0D0D64CEFA1 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */;
 			buildPhases = (
-				55B1E771D57944CFB1361321E52DA951 /* Headers */,
-				3E3E8857CD9DF13F4051D17957F9AEFA /* Sources */,
-				41E728DB49BFC20AEFE37F3F3E9F2B0A /* Frameworks */,
-				9319F0A66A8AC2217FD5E9C2DEF31731 /* Resources */,
+				79BF8FF3D602332DB9720C936508808B /* Headers */,
+				727460F596859EC2E21DA321013FB809 /* Sources */,
+				E6C4221503E63AB94BBB9CE997C151A0 /* Frameworks */,
+				B70AFB673CBE339AF6A31EAD000F76A6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CirclePay;
-			productName = CirclePay;
-			productReference = 5396EEF312634BBB7521E4010C3498DB /* CirclePay */;
+			name = OHHTTPStubs;
+			productName = OHHTTPStubs;
+			productReference = 17E33041B314FA837A3CAEB9DF3CDE9F /* OHHTTPStubs */;
 			productType = "com.apple.product-type.framework";
 		};
 		FFA00E34CD8C49E8AF9D9882B1037BF5 /* Pods-CirclePay_Example */ = {
@@ -303,7 +460,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				075800FC1666490D9D6C37EA26701112 /* PBXTargetDependency */,
+				1F2A3525BFDC78F2151A62593DD3FAAB /* PBXTargetDependency */,
 			);
 			name = "Pods-CirclePay_Example";
 			productName = Pods_CirclePay_Example;
@@ -328,11 +485,12 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 029A2E00A7C3D8B702B23A9D1E65017C /* Products */;
+			productRefGroup = CDF00D633CAA678BC41DE27C15E0DAE8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				4D045BE899498B48DE74563E5C204F58 /* CirclePay */,
+				A983A2D06C5B6AA3D6ABA5CCC0A16725 /* OHHTTPStubs */,
 				FFA00E34CD8C49E8AF9D9882B1037BF5 /* Pods-CirclePay_Example */,
 				49C9BA767CBD990823457263B835A034 /* Pods-CirclePay_Tests */,
 			);
@@ -340,6 +498,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		493EA9B991701A758D4731210196C4FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4956C0425111D21F2E3A57544B0BFF95 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,14 +512,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9319F0A66A8AC2217FD5E9C2DEF31731 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AEFA2422619426D09E18DAD50EC683C1 /* Resources */ = {
+		B70AFB673CBE339AF6A31EAD000F76A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,12 +521,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BB2E3343222F23765791143B39484C4 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/CirclePay/CirclePay-xcframeworks.sh",
+				"${PODS_ROOT}/../../CirclePaySDK.xcframework",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputPaths = (
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/CirclePay/CirclePaySDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/CirclePay/CirclePay-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		3E3E8857CD9DF13F4051D17957F9AEFA /* Sources */ = {
+		279DFB6082E5ABB80B0CAB0A9193382B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5AA63FF76B4B211B63322C4BCAA6007 /* CirclePay-dummy.m in Sources */,
+				E9B0EE7261F3F7D057EF4124131880B9 /* Pods-CirclePay_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		727460F596859EC2E21DA321013FB809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D1BCE5AD80B0B843782627D32A9945 /* HTTPStubs.m in Sources */,
+				90BBA22AE62C6D103CA45126D916E9B5 /* HTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				5E2FF15EAFEF89119E9FD90C2B46D6E4 /* HTTPStubsMethodSwizzling.m in Sources */,
+				5F6E86DF36F8AC7D9B15396880AC2DA5 /* HTTPStubsPathHelpers.m in Sources */,
+				BBD06A2859332AAF7C685D224F7E7A1A /* HTTPStubsResponse.m in Sources */,
+				07AF133A017AB74CC31B5475BFFA92E9 /* HTTPStubsResponse+JSON.m in Sources */,
+				19FF16C15407ABBCAB0168CDE44709E1 /* NSURLRequest+HTTPBodyTesting.m in Sources */,
+				A75F1D93C20CB25C19260ED16E0DC048 /* OHHTTPStubs-dummy.m in Sources */,
+				042668FFA122D78B6EE074C04C460261 /* OHHTTPStubsSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,35 +575,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FEB6204C5360983DDE16F33C70718D8A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				889B2B9D80FEC2FE4A0D565FD6F0749D /* Pods-CirclePay_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		075800FC1666490D9D6C37EA26701112 /* PBXTargetDependency */ = {
+		06A2D6CE2456463165C3D401C17071BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OHHTTPStubs;
+			target = A983A2D06C5B6AA3D6ABA5CCC0A16725 /* OHHTTPStubs */;
+			targetProxy = 35655773747DEAC2493F06C487969B10 /* PBXContainerItemProxy */;
+		};
+		1F2A3525BFDC78F2151A62593DD3FAAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CirclePay;
 			target = 4D045BE899498B48DE74563E5C204F58 /* CirclePay */;
-			targetProxy = FB9AA376A6C4836F2DD3A5A3FEBB99B6 /* PBXContainerItemProxy */;
+			targetProxy = FB68063DC3B2B1F4B7D4FE4A3D4026BA /* PBXContainerItemProxy */;
 		};
-		58FEAC22E1DB4ECAC04CC925082DD655 /* PBXTargetDependency */ = {
+		8F625BC19DD7D1BBDE00BA82749A0F5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-CirclePay_Example";
 			target = FFA00E34CD8C49E8AF9D9882B1037BF5 /* Pods-CirclePay_Example */;
-			targetProxy = A772D63C956A2BA1214CD49165130959 /* PBXContainerItemProxy */;
+			targetProxy = A04E4AB221AF135D1087E6922AA2A2E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0A9BE5DB73985630CE1847C04977054B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D9723A2C45AE3C04DC1FE871CCFDD67 /* CirclePay.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12F256A07FBF287812C34D062F1DF54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CEC6CB5CED75CC2FC24115BD0BDAD6B /* OHHTTPStubs.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OHHTTPStubs/OHHTTPStubs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OHHTTPStubs/OHHTTPStubs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OHHTTPStubs/OHHTTPStubs.modulemap";
+				PRODUCT_MODULE_NAME = OHHTTPStubs;
+				PRODUCT_NAME = OHHTTPStubs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		1F644D65FB045524CD9236EE9A7324B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73062B46CDB3C82C1100B364E2B190CA /* Pods-CirclePay_Example.debug.xcconfig */;
+			baseConfigurationReference = AE74686EA3CA695D75FCE0F6B615B303 /* Pods-CirclePay_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -422,11 +660,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-CirclePay_Example/Pods-CirclePay_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-CirclePay_Example/Pods-CirclePay_Example.modulemap";
 				OTHER_LDFLAGS = "";
@@ -508,9 +742,56 @@
 			};
 			name = Debug;
 		};
+		2767AC199EC7CDCBBC7A8CCB6D07879C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0432D81AD4701459DE9A4E96C436CBCA /* Pods-CirclePay_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5040C958A3477D8CCFCD810D0F51FA00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71BE67DB428E6D1BA035DAEEFA2A91E3 /* CirclePay.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		87AD08F1FEFF4C94C1B6309446679B48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC7466BA010006D7ACB0CEB5EA80129F /* Pods-CirclePay_Example.release.xcconfig */;
+			baseConfigurationReference = CB57C79BC49706A3167F761E925F969E /* Pods-CirclePay_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -524,11 +805,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-CirclePay_Example/Pods-CirclePay_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-CirclePay_Example/Pods-CirclePay_Example.modulemap";
 				OTHER_LDFLAGS = "";
@@ -544,112 +821,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		A042F902552CE016BBFA76C4CF2FB4A3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AE434A6861206D9D891F66285FE9D4A /* CirclePay.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CirclePay/CirclePay-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CirclePay/CirclePay-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CirclePay/CirclePay.modulemap";
-				PRODUCT_MODULE_NAME = CirclePay;
-				PRODUCT_NAME = CirclePay;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A77CA992B9526AEA911380DE0113FA63 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 782293100E726C2BBEB5DC180DF3AEA3 /* Pods-CirclePay_Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C8947945AA54BD00B80AFE881ADCA8A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E8B1CCC2CC3E7F5BB77F819C71558F /* CirclePay.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CirclePay/CirclePay-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CirclePay/CirclePay-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CirclePay/CirclePay.modulemap";
-				PRODUCT_MODULE_NAME = CirclePay;
-				PRODUCT_NAME = CirclePay;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -706,16 +877,45 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		D4CBD8720522A8817C34050CD06B4042 /* Debug */ = {
+		DA29B8401A6CFCBE868FDC27B258A822 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68D7694344521D071D281D5FAC679C5E /* Pods-CirclePay_Tests.debug.xcconfig */;
+			baseConfigurationReference = 8EC3488DA660920038760CC2C11CB1DA /* OHHTTPStubs.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OHHTTPStubs/OHHTTPStubs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OHHTTPStubs/OHHTTPStubs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OHHTTPStubs/OHHTTPStubs.modulemap";
+				PRODUCT_MODULE_NAME = OHHTTPStubs;
+				PRODUCT_NAME = OHHTTPStubs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E2352B7B7BCC013C2367C2460EDC19E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB81504EA7F9EA0B07B322C2BADF6121 /* Pods-CirclePay_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -729,11 +929,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-CirclePay_Tests/Pods-CirclePay_Tests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -744,14 +940,33 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		16B9D186E741234F74F4E0D0D64CEFA1 /* Build configuration list for PBXNativeTarget "OHHTTPStubs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA29B8401A6CFCBE868FDC27B258A822 /* Debug */,
+				12F256A07FBF287812C34D062F1DF54F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		470F2FBFBD9F5A2130E1C4DFFCE32BFE /* Build configuration list for PBXNativeTarget "Pods-CirclePay_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2767AC199EC7CDCBBC7A8CCB6D07879C /* Debug */,
+				E2352B7B7BCC013C2367C2460EDC19E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -761,20 +976,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C994B4885A58186B987C8AFCDB57080 /* Build configuration list for PBXNativeTarget "CirclePay" */ = {
+		5B445A7AAB104951EC56B7C642CA58A1 /* Build configuration list for PBXAggregateTarget "CirclePay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C8947945AA54BD00B80AFE881ADCA8A5 /* Debug */,
-				A042F902552CE016BBFA76C4CF2FB4A3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C19C0B0E5DBD67DF4B3D5100ED6CE016 /* Build configuration list for PBXNativeTarget "Pods-CirclePay_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4CBD8720522A8817C34050CD06B4042 /* Debug */,
-				A77CA992B9526AEA911380DE0113FA63 /* Release */,
+				0A9BE5DB73985630CE1847C04977054B /* Debug */,
+				5040C958A3477D8CCFCD810D0F51FA00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

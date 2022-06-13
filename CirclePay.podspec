@@ -7,7 +7,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'CirclePay'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'An Online Payment Solution'
   s.swift_version    = '5.0'
 
@@ -38,5 +38,12 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 arm64e armv7 armv7s x86_64' }
 
   s.ios.vendored_frameworks = 'CirclePaySDK.xcframework'
+  
+          s.test_spec 'Tests' do |test_spec|
+            test_spec.source_files = 'Tests/*.{h,m}'
+            test_spec.dependency 'OHHTTPStubs/Swift' , '~> 9.1.0'
+            
+            # This dependency will only be linked with your tests.
+        end
 
 end

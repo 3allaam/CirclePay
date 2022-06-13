@@ -1,6 +1,6 @@
 import XCTest
-import CirclePay
-
+import OHHTTPStubs
+import CirclePaySDK
 class Tests: XCTestCase {
     
     override func setUp() {
