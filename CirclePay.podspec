@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   This Software Development Kit allows you to accept online payments provided by many payment getways
   DESC
 
-  s.homepage         = 'https://circlepay.ai/'
+  s.homepage         = 'https://github.com/Mahmoud3allam/CirclePay'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.authors           = { 'adel' => 'adelmohy_58@hotmail.com' , 'allam' => 'allam40960@gmail.com' }
   
