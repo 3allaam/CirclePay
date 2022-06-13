@@ -7,7 +7,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'CirclePay'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'An Online Payment Solution'
   s.swift_version    = '5.0'
 
