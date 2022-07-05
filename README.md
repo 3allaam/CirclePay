@@ -84,7 +84,8 @@ You can use those modules methods by importing the SDK into your class , then ca
 ```
 For more details you can visit the open API docs :
 
-https://circlepayapi.github.io/CirclePayApi/#merchants
+[Docs](https://circlepayapi.github.io/CirclePayApi/#introduction)
+
 
 ## Author 
 
