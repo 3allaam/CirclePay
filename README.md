@@ -31,7 +31,13 @@ pod 'CirclePay'
 
 
 ## Prepare SDK & Adding Keys 🔑
-Once integration done you can import the SDK in your classes , but you have put your keys  and call CirclePay.prepareSDK method before using the SDK methods .
+Once integration done you can import the SDK in your classes like below:
+
+```ruby
+import CirclePaySDK
+```
+
+Now you have put your keys  and call CirclePay.prepareSDK method before using the SDK methods .
 you can put it into your AppDelegate.swift file like this :
 
 ```ruby
