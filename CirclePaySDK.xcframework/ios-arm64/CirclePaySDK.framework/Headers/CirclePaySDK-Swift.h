@@ -648,6 +648,15 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 
 
 
+
+
+
+
+
+
+
+
+
 @interface UIImage (SWIFT_EXTENSION(CirclePaySDK))
 + (UIImage * _Nullable)keyboardPreviousiOS9Image SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)keyboardNextiOS9Image SWIFT_WARN_UNUSED_RESULT;
@@ -656,6 +665,10 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 + (UIImage * _Nullable)keyboardPreviousImage SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)keyboardNextImage SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
+
+
 
 
 @interface UIScrollView (SWIFT_EXTENSION(CirclePaySDK))
@@ -761,7 +774,6 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 - (UIViewController * _Nullable)parentIQContainerViewController SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
 @class NSLayoutConstraint;
 
 @interface UIViewController (SWIFT_EXTENSION(CirclePaySDK))
@@ -769,6 +781,7 @@ SWIFT_CLASS("_TtC12CirclePaySDK15SessionDelegate")
 /// @deprecated    Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * _Nullable IQLayoutGuideConstraint SWIFT_DEPRECATED_MSG("Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview.");
 @end
+
 
 
 

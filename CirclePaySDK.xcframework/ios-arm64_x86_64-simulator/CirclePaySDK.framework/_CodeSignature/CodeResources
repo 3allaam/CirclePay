@@ -30,11 +30,39 @@
 		</data>
 		<key>Headers/CirclePaySDK-Swift.h</key>
 		<data>
-		OB+cHi+9iU3ZLRipdw2WkIWQakU=
+		2T2dVivv9oEInwWT7WgIH8bcXBU=
 		</data>
 		<key>Headers/CirclePaySDK.h</key>
 		<data>
-		jfW8nByrOKgMTx99ZJIzZJpQiNk=
+		vec17xiOHAbwNtHwsUf+EXq+29s=
+		</data>
+		<key>Headers/Compatibility.h</key>
+		<data>
+		nemLhJiiA6nuG4OxoVs57Y5zqGo=
+		</data>
+		<key>Headers/HTTPStubs.h</key>
+		<data>
+		svLBj8x9n5pOIFnxotnYj5eRPtA=
+		</data>
+		<key>Headers/HTTPStubsMethodSwizzling.h</key>
+		<data>
+		mfRjQw7S/iX/NdximwcbzyJ2gl0=
+		</data>
+		<key>Headers/HTTPStubsPathHelpers.h</key>
+		<data>
+		6S/cHlZUT1vzFyvPs0tcJjr/4Do=
+		</data>
+		<key>Headers/HTTPStubsResponse+JSON.h</key>
+		<data>
+		W3w8M9UYdF7FmQTHlwcdTCScCMM=
+		</data>
+		<key>Headers/HTTPStubsResponse.h</key>
+		<data>
+		aplWoOiZWuQICHdgYcGEGKnqIdI=
+		</data>
+		<key>Headers/NSURLRequest+HTTPBodyTesting.h</key>
+		<data>
+		H3vdqK8C1nEIEXq2TydQIuiUqOk=
 		</data>
 		<key>IQKeyboardManager.bundle/IQButtonBarArrowDown@2x.png</key>
 		<data>
@@ -72,6 +100,10 @@
 		<data>
 		auUHuYV55QGVO2MqMr3SKpD3Pwk=
 		</data>
+		<key>InvoiceNotAvailable.png</key>
+		<data>
+		ZKZSjO/FYDG4TBfSSZuihgXo6+E=
+		</data>
 		<key>InvoicePaidFailed.png</key>
 		<data>
 		1GGDUt7RcgBhQDkB/BC8efvJO+k=
@@ -102,51 +134,51 @@
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		3Vu2puTa4Of1Wj90sQp44mV24S8=
+		0eme5TrB9/TuaZoFh2ZBwFL7PfY=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		kfVsVbxFsxZNeJDW1krEUZW5Ygc=
+		wxPdSEwd4zWeXK+N0A7jIFCvHMw=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		HVry7t3fxVJ9dewAf8pzSMzHcaU=
+		gUvfaUO7eG3nSNxNndeitHAqfNw=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		3Vu2puTa4Of1Wj90sQp44mV24S8=
+		0eme5TrB9/TuaZoFh2ZBwFL7PfY=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		kfVsVbxFsxZNeJDW1krEUZW5Ygc=
+		wxPdSEwd4zWeXK+N0A7jIFCvHMw=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		HVry7t3fxVJ9dewAf8pzSMzHcaU=
+		gUvfaUO7eG3nSNxNndeitHAqfNw=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		X2I763/zsNMzTuU3u52LJ34r8+4=
+		2QMrK3fd4Jh1O+fDIU/pfBXR74U=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		xCt6Mjp1CEnxfGXw8WH1H4QiUWA=
+		YrDB8Mm6EHh9XqOo9qV6MrHXKNA=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Mp2641Uz34RwgfalDxXvKjdA5Fk=
+		C0cFAKjwLXRd4NW9woWmtjbE8IU=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		X2I763/zsNMzTuU3u52LJ34r8+4=
+		2QMrK3fd4Jh1O+fDIU/pfBXR74U=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		xCt6Mjp1CEnxfGXw8WH1H4QiUWA=
+		YrDB8Mm6EHh9XqOo9qV6MrHXKNA=
 		</data>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Mp2641Uz34RwgfalDxXvKjdA5Fk=
+		C0cFAKjwLXRd4NW9woWmtjbE8IU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -269,14 +301,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UFYMa4X9DFuZUWFqMzVWbqjPfPJjy9GRD0ZPmZt8Jmo=
+			BywgR+U7LeLMxCR460SY3c4w2308LTxcDBW2Irt5O78=
 			</data>
 		</dict>
 		<key>Headers/CirclePaySDK.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RP9ZEalIsJkMOYzZslhQpLR7QyGX1l06V0rypvr0Kek=
+			HHqExyRNq9sy0SHOecKtjcT5anRlKxUaEIZZIRkFYvU=
+			</data>
+		</dict>
+		<key>Headers/Compatibility.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			m4D+FqZi5EMZxsTr80tSkbaiHWGb5CkHoe0lyZw7XE8=
+			</data>
+		</dict>
+		<key>Headers/HTTPStubs.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DANEQXSULMgxJB1oqLxF6kqrKzOnk7m/72AbP4VDMnY=
+			</data>
+		</dict>
+		<key>Headers/HTTPStubsMethodSwizzling.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WWYMaRNz0tZpbOAgwi9oBrNgNM1cNh/heFWuCDLgBtM=
+			</data>
+		</dict>
+		<key>Headers/HTTPStubsPathHelpers.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Eofzvw21IujIAjV2dhjG/nSdBdIY7koxLN3c0k/zHRc=
+			</data>
+		</dict>
+		<key>Headers/HTTPStubsResponse+JSON.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oQAeczHPUKLjMjSSNPtJLCh8opEJhnJcVSKQna/2sXs=
+			</data>
+		</dict>
+		<key>Headers/HTTPStubsResponse.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rRy41NPTQ/NB5y6TJvDfaUMLcmMYjKe+YfR0rn2+J4w=
+			</data>
+		</dict>
+		<key>Headers/NSURLRequest+HTTPBodyTesting.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vvGmF6kDREiRKGxec8UEEFQERVvsmk58QJy2qTNtJAg=
 			</data>
 		</dict>
 		<key>IQKeyboardManager.bundle/IQButtonBarArrowDown@2x.png</key>
@@ -335,6 +416,13 @@
 			mHgGzwRHbt8d8nUQ3O4sJDpFOCYNM1Lmp9v9bNPk2ek=
 			</data>
 		</dict>
+		<key>InvoiceNotAvailable.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6ywRZrI2zKNcfkcwKX7qlVDKUXzj0RocU3ZU3LBZPcM=
+			</data>
+		</dict>
 		<key>InvoicePaidFailed.png</key>
 		<dict>
 			<key>hash2</key>
@@ -388,84 +476,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BGTHHp2e1D9uDYp5fMy7G+jvnl6FSUrQbykTsX4n1Z8=
+			j9YASoMaBv31ilUw7T7kWP4jYtXgOW6UIGwjVfwoBW8=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rw5CtQ88l2UMa1T3QPnT02MNamNGxXVKgPmZHJy36cE=
+			xqzWYnaeDQwnCjmh6xxkxpMhDT1ItEUMwviSgjliijM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6klD7lAkk748On5y70JBqzGqxHEvtmNusYnNDGBGdJ4=
+			euW5/fEOAAy2X2Z7dWk2Amlphv/zQ/gtD8Q31dZnDDM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BGTHHp2e1D9uDYp5fMy7G+jvnl6FSUrQbykTsX4n1Z8=
+			j9YASoMaBv31ilUw7T7kWP4jYtXgOW6UIGwjVfwoBW8=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rw5CtQ88l2UMa1T3QPnT02MNamNGxXVKgPmZHJy36cE=
+			xqzWYnaeDQwnCjmh6xxkxpMhDT1ItEUMwviSgjliijM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6klD7lAkk748On5y70JBqzGqxHEvtmNusYnNDGBGdJ4=
+			euW5/fEOAAy2X2Z7dWk2Amlphv/zQ/gtD8Q31dZnDDM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3sWZUAlE/hdptIAWf3paLqoIVRImUrBbP4YX0Ev6Rhg=
+			mb277IP18HHCZ+xdxG8Xg54IXXTaJoi9DxUMUoQGwSs=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6HRcrmLpm/7dE3ek/vb1xjPZI86rOJsbW8CDgyHGPg0=
+			Ahq68OthJmNS9Yh6O9+R1WNeCMrOUK0W2fDZk+hQIhM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			00MLR0PjWqu0RzWdbWL0FUy765LeWkOY0ov7BLkQbFs=
+			1DZrtaLUMiI9pDccJWYCAl0SXalTjCnmf6bhEcy4fj0=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3sWZUAlE/hdptIAWf3paLqoIVRImUrBbP4YX0Ev6Rhg=
+			mb277IP18HHCZ+xdxG8Xg54IXXTaJoi9DxUMUoQGwSs=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6HRcrmLpm/7dE3ek/vb1xjPZI86rOJsbW8CDgyHGPg0=
+			Ahq68OthJmNS9Yh6O9+R1WNeCMrOUK0W2fDZk+hQIhM=
 			</data>
 		</dict>
 		<key>Modules/CirclePaySDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			00MLR0PjWqu0RzWdbWL0FUy765LeWkOY0ov7BLkQbFs=
+			1DZrtaLUMiI9pDccJWYCAl0SXalTjCnmf6bhEcy4fj0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

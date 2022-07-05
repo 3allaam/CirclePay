@@ -7,7 +7,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'CirclePay'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'An Online Payment Solution'
   s.swift_version    = '5.0'
 
@@ -20,14 +20,12 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   This Software Development Kit allows you to accept online payments provided by many payment getways
   DESC
-
-  s.homepage         = 'https://github.com/Mahmoud3allam/CirclePay'
+  s.homepage         = 'https://github.com/3allaam/CirclePay'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.authors           = { 'adel' => 'adelmohy_58@hotmail.com' , 'allam' => 'allam40960@gmail.com' }
   
   
-  
-  s.source           = { :git => 'https://github.com/Mahmoud3allam/CirclePay.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/3allaam/CirclePay.git', :tag => s.version.to_s }
 
   s.requires_arc = true
     s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 arm64e armv7 armv7s x86_64' }

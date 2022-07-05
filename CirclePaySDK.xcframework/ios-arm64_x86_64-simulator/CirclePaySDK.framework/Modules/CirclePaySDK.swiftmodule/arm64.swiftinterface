@@ -4,6 +4,7 @@
 @_exported import CirclePaySDK
 import Combine
 import CoreGraphics
+import CoreImage
 import CoreText
 import Dispatch
 import Foundation
@@ -13,9 +14,29 @@ import Swift
 import SystemConfiguration
 import UIKit
 import WebKit
-public struct InvoiceFirstScreenViewModel {
-  public var invoiceDetails: CirclePaySDK.InvoiceCodable
-  public var merchantDetails: CirclePaySDK.MerchantCodable
+public struct MerchantSendOTPCodable : Swift.Codable {
+  public let status: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MerchantPaymentGatewayEnabledCodable : Swift.Codable {
+  public let paymentGatewayId: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CustomerCodable : Swift.Codable {
+  public let firstName: Swift.String?
+  public let lastName: Swift.String?
+  public let email: Swift.String?
+  public var mobileNumber: Swift.String?
+  public let country: Swift.String?
+  public var governorate: Swift.String?
+  public let city: Swift.String?
+  public let address: Swift.String?
+  public let aptNumber: Swift.String?
+  public func getFullName() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc extension UIView {
   @objc dynamic public func viewContainingController() -> UIKit.UIViewController?
@@ -25,19 +46,6 @@ public struct InvoiceFirstScreenViewModel {
 }
 @objc extension UIViewController {
   @objc dynamic public func parentIQContainerViewController() -> UIKit.UIViewController?
-}
-public protocol CustomersProtocol {
-  func createCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CreateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func updateCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.UpdateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getCustomer(mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.GetCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func listCustomers(completion: @escaping ([CirclePaySDK.GetCustomerCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-}
-@_hasMissingDesignatedInitializers public class Customers : CirclePaySDK.CustomersProtocol {
-  public func createCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CreateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func updateCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.UpdateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getCustomer(mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.GetCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func listCustomers(completion: @escaping ([CirclePaySDK.GetCustomerCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class IQKeyboardManager : ObjectiveC.NSObject, UIKit.UIGestureRecognizerDelegate {
   @objc public var enable: Swift.Bool {
@@ -118,6 +126,15 @@ public protocol CustomersProtocol {
   @objc public var enableDebugging: Swift.Bool
   @objc public func registerAllNotifications()
   @objc public func unregisterAllNotifications()
+}
+public protocol PaymentGatewaysProtocol {
+  func getAllPaymentGetways(completion: @escaping ([CirclePaySDK.PaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getPaymentGetway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.PaymentGatewayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class PaymentGateways : CirclePaySDK.PaymentGatewaysProtocol {
+  public func getAllPaymentGetways(completion: @escaping ([CirclePaySDK.PaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getPaymentGetway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.PaymentGatewayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Request {
   public enum State {
@@ -375,6 +392,24 @@ extension UploadRequest.Uploadable : CirclePaySDK.UploadableConvertible {
 public protocol UploadConvertible : CirclePaySDK.URLRequestConvertible, CirclePaySDK.UploadableConvertible {
 }
 public typealias AFResult<Success> = Swift.Result<Success, CirclePaySDK.AFError>
+extension String {
+  public var replacedArabicDigitsWithEnglish: Swift.String {
+    get
+  }
+}
+public protocol CustomersProtocol {
+  func createCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CreateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func updateCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.UpdateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getCustomer(mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func listCustomers(completion: @escaping ([CirclePaySDK.CustomerCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class Customers : CirclePaySDK.CustomersProtocol {
+  public func createCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CreateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func updateCustomer(firstName: Swift.String, lastName: Swift.String, address: Swift.String, country: Swift.String, governorate: Swift.String, city: Swift.String, aptNumber: Swift.String, email: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.UpdateCustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getCustomer(mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.CustomerCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func listCustomers(completion: @escaping ([CirclePaySDK.CustomerCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
+}
 public protocol RedirectHandler {
   func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
 }
@@ -391,6 +426,11 @@ public struct Redirector {
 }
 extension Redirector : CirclePaySDK.RedirectHandler {
   public func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
+}
+public struct UpdateCustomerCodable : Swift.Codable {
+  public let customerMobileNumber: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc public class IQBarButtonItemConfiguration : ObjectiveC.NSObject {
   @objc public init(barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem, action: ObjectiveC.Selector)
@@ -455,9 +495,14 @@ extension Redirector : CirclePaySDK.RedirectHandler {
   @objc override dynamic public init()
 }
 public let AF: CirclePaySDK.Session
-public struct MerchantPaymentMethodEnabledCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public protocol PaymentMethodsProtocol {
+  func getAllPaymentMethods(paymentGatewayId: Swift.String, completion: @escaping ([CirclePaySDK.PaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getPaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.PaymentMethodCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class PaymentMethods : CirclePaySDK.PaymentMethodsProtocol {
+  public func getAllPaymentMethods(paymentGatewayId: Swift.String, completion: @escaping ([CirclePaySDK.PaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getPaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.PaymentMethodCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class IQKeyboardReturnKeyHandler : ObjectiveC.NSObject, UIKit.UITextFieldDelegate, UIKit.UITextViewDelegate {
   @objc weak public var delegate: (UIKit.UITextFieldDelegate & UIKit.UITextViewDelegate)?
@@ -496,6 +541,17 @@ public struct MerchantPaymentMethodEnabledCodable : Swift.Codable {
   @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange) -> Swift.Bool
   @available(iOS, deprecated: 10.0)
   @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange) -> Swift.Bool
+}
+public struct RefundCodable : Swift.Codable {
+  public let refundId: Swift.Int?
+  public let externalRefId: Swift.String?
+  public let initDate: Swift.String?
+  public let updateDate: Swift.String?
+  public let value: Swift.Double?
+  public let transactionId: Swift.String?
+  public let status: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol EventMonitor {
   var queue: Dispatch.DispatchQueue { get }
@@ -725,16 +781,6 @@ open class ClosureEventMonitor : CirclePaySDK.EventMonitor {
   open func request(_ request: CirclePaySDK.DownloadRequest, didParseResponse response: CirclePaySDK.DownloadResponse<Foundation.URL?, CirclePaySDK.AFError>)
   @objc deinit
 }
-extension String {
-  public var replacedArabicDigitsWithEnglish: Swift.String {
-    get
-  }
-}
-public struct MerchantCodable : Swift.Codable {
-  public func getFullName() -> Swift.String
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
 public protocol ParameterEncoder {
   func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
 }
@@ -773,18 +819,6 @@ open class URLEncodedFormParameterEncoder : CirclePaySDK.ParameterEncoder {
   public init(encoder: CirclePaySDK.URLEncodedFormEncoder = URLEncodedFormEncoder(), destination: CirclePaySDK.URLEncodedFormParameterEncoder.Destination = .methodDependent)
   open func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
   @objc deinit
-}
-public struct PaymentCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct RequestRefundCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct RefundCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
 }
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
 public struct DataResponsePublisher<Value> : Combine.Publisher {
@@ -886,6 +920,13 @@ open class MultipartFormData {
   public func writeEncodedData(to fileURL: Foundation.URL) throws
   @objc deinit
 }
+public struct PaymentMethodCodable : Swift.Codable {
+  public let id: Swift.String?
+  public let name: Swift.String?
+  public let gatewayId: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 public let kIQUseDefaultKeyboardDistance: CoreGraphics.CGFloat
 @objc extension UIView {
   @objc dynamic public var keyboardDistanceFromTextField: CoreGraphics.CGFloat {
@@ -901,18 +942,69 @@ public let kIQUseDefaultKeyboardDistance: CoreGraphics.CGFloat
     @objc set(newValue)
   }
 }
-public protocol PaymentMethodsProtocol {
-  func getAllPaymentMethods(paymentGatewayId: Swift.String, completion: @escaping ([CirclePaySDK.PaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getPaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.PaymentMethodCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+public protocol InvoicesProtocol {
+  func createInvoice(invoiceNumber: Swift.String?, items: [CirclePaySDK.Items], customerMobile: Swift.String, status: Swift.Int?, createDate: Swift.String?, dueDate: Swift.String, prefPaymentMethod: Swift.String?, shippingFees: Swift.Double?, discountValue: Swift.Double?, discountType: CirclePaySDK.DiscountTypes?, tax: Swift.Double?, taxValue: Swift.Double?, shippingPolicy: Swift.String?, returnPolicy: Swift.String?, extraNotes: Swift.String?, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func createInvoice(items: [CirclePaySDK.Items], customerMobile: Swift.String, dueDate: Swift.String, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func listInvoices(customerMobile: Swift.String?, completion: @escaping ([CirclePaySDK.InvoiceCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func deleteInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceDeleteCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func payInvoice(invoiceNumber: Swift.String, customerMobile: Swift.String?, paymentMethodId: Swift.String?, completion: @escaping (CirclePaySDK.InvoicePayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
 }
-@_hasMissingDesignatedInitializers public class PaymentMethods : CirclePaySDK.PaymentMethodsProtocol {
-  public func getAllPaymentMethods(paymentGatewayId: Swift.String, completion: @escaping ([CirclePaySDK.PaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getPaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.PaymentMethodCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+@_hasMissingDesignatedInitializers public class Invoices : CirclePaySDK.InvoicesProtocol {
+  public func createInvoice(invoiceNumber: Swift.String? = "", items: [CirclePaySDK.Items], customerMobile: Swift.String, status: Swift.Int?, createDate: Swift.String?, dueDate: Swift.String, prefPaymentMethod: Swift.String?, shippingFees: Swift.Double?, discountValue: Swift.Double?, discountType: CirclePaySDK.DiscountTypes?, tax: Swift.Double?, taxValue: Swift.Double?, shippingPolicy: Swift.String?, returnPolicy: Swift.String?, extraNotes: Swift.String?, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func createInvoice(items: [CirclePaySDK.Items], customerMobile: Swift.String, dueDate: Swift.String, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func listInvoices(customerMobile: Swift.String?, completion: @escaping ([CirclePaySDK.InvoiceCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func deleteInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceDeleteCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func payInvoice(invoiceNumber: Swift.String, customerMobile: Swift.String?, paymentMethodId: Swift.String?, completion: @escaping (CirclePaySDK.InvoicePayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
   @objc deinit
 }
-public struct CreateCustomerCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public enum DiscountTypes : Swift.String {
+  case percentage
+  case fixed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol ImageCache {
+  func add(_ image: CirclePaySDK.Image, withIdentifier identifier: Swift.String)
+  func removeImage(withIdentifier identifier: Swift.String) -> Swift.Bool
+  @discardableResult
+  func removeAllImages() -> Swift.Bool
+  func image(withIdentifier identifier: Swift.String) -> CirclePaySDK.Image?
+}
+public protocol ImageRequestCache : CirclePaySDK.ImageCache {
+  func add(_ image: CirclePaySDK.Image, for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?)
+  func removeImage(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.Bool
+  func image(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> CirclePaySDK.Image?
+}
+open class AutoPurgingImageCache : CirclePaySDK.ImageRequestCache {
+  open var memoryUsage: Swift.UInt64 {
+    get
+  }
+  final public let memoryCapacity: Swift.UInt64
+  final public let preferredMemoryUsageAfterPurge: Swift.UInt64
+  public init(memoryCapacity: Swift.UInt64 = 100_000_000, preferredMemoryUsageAfterPurge: Swift.UInt64 = 60_000_000)
+  @objc deinit
+  open func add(_ image: CirclePaySDK.Image, for request: Foundation.URLRequest, withIdentifier identifier: Swift.String? = nil)
+  open func add(_ image: CirclePaySDK.Image, withIdentifier identifier: Swift.String)
+  @discardableResult
+  open func removeImage(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.Bool
+  @discardableResult
+  open func removeImages(matching request: Foundation.URLRequest) -> Swift.Bool
+  @discardableResult
+  open func removeImage(withIdentifier identifier: Swift.String) -> Swift.Bool
+  @discardableResult
+  @objc open func removeAllImages() -> Swift.Bool
+  open func image(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String? = nil) -> CirclePaySDK.Image?
+  open func image(withIdentifier identifier: Swift.String) -> CirclePaySDK.Image?
+  open func imageCacheKey(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.String
+}
+public struct InvoiceFirstScreenViewModel {
+  public var invoiceDetails: CirclePaySDK.InvoiceCodable
+  public var merchantDetails: CirclePaySDK.MerchantCodable
 }
 public typealias Parameters = [Swift.String : Any]
 public protocol ParameterEncoding {
@@ -990,6 +1082,44 @@ public enum BaseAPIRequestResponseFailureErrorType : Swift.Error {
     get
   }
 }
+extension URLRequest {
+  public var ohhttpStubs_httpBody: Foundation.Data? {
+    get
+  }
+}
+public func fixture(filePath: Swift.String, status: Swift.Int32 = 200, headers: [Swift.AnyHashable : Any]?) -> CirclePaySDK.HTTPStubsResponse
+@discardableResult
+public func stub(condition: @escaping CirclePaySDK.HTTPStubsTestBlock, response: @escaping CirclePaySDK.HTTPStubsResponseBlock) -> CirclePaySDK.HTTPStubsDescriptor
+public func isMethodGET() -> CirclePaySDK.HTTPStubsTestBlock
+public func isMethodPOST() -> CirclePaySDK.HTTPStubsTestBlock
+public func isMethodPUT() -> CirclePaySDK.HTTPStubsTestBlock
+public func isMethodPATCH() -> CirclePaySDK.HTTPStubsTestBlock
+public func isMethodDELETE() -> CirclePaySDK.HTTPStubsTestBlock
+public func isMethodHEAD() -> CirclePaySDK.HTTPStubsTestBlock
+public func isAbsoluteURLString(_ url: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func isScheme(_ scheme: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func isHost(_ host: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func isPath(_ path: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func pathStartsWith(_ path: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func pathEndsWith(_ path: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func pathMatches(_ regex: Foundation.NSRegularExpression) -> CirclePaySDK.HTTPStubsTestBlock
+public func pathMatches(_ regexString: Swift.String, options: Foundation.NSRegularExpression.Options = []) -> CirclePaySDK.HTTPStubsTestBlock
+public func isExtension(_ ext: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+@available(iOS 8.0, macOS 10.10, *)
+public func containsQueryParams(_ params: [Swift.String : Swift.String?]) -> CirclePaySDK.HTTPStubsTestBlock
+public func hasHeaderNamed(_ name: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func hasHeaderNamed(_ name: Swift.String, value: Swift.String) -> CirclePaySDK.HTTPStubsTestBlock
+public func hasBody(_ body: Foundation.Data) -> CirclePaySDK.HTTPStubsTestBlock
+public func hasJsonBody(_ jsonObject: [Swift.AnyHashable : Any]) -> CirclePaySDK.HTTPStubsTestBlock
+@available(iOS 8.0, macOS 10.10, *)
+public func hasFormBody(_ params: [Swift.String : Swift.String?]) -> CirclePaySDK.HTTPStubsTestBlock
+@available(iOS 8.0, macOS 10.10, *)
+public func hasFormBody(_ queryItems: [Foundation.URLQueryItem]) -> CirclePaySDK.HTTPStubsTestBlock
+@available(iOS 8.0, macOS 10.10, *)
+public func hasFormBody(_ queryItems: Foundation.URLQueryItem...) -> CirclePaySDK.HTTPStubsTestBlock
+public func || (lhs: @escaping CirclePaySDK.HTTPStubsTestBlock, rhs: @escaping CirclePaySDK.HTTPStubsTestBlock) -> CirclePaySDK.HTTPStubsTestBlock
+public func && (lhs: @escaping CirclePaySDK.HTTPStubsTestBlock, rhs: @escaping CirclePaySDK.HTTPStubsTestBlock) -> CirclePaySDK.HTTPStubsTestBlock
+prefix public func ! (expr: @escaping CirclePaySDK.HTTPStubsTestBlock) -> CirclePaySDK.HTTPStubsTestBlock
 public protocol CachedResponseHandler {
   func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
 }
@@ -1007,16 +1137,8 @@ public struct ResponseCacher {
 extension ResponseCacher : CirclePaySDK.CachedResponseHandler {
   public func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
 }
-public struct MerchantPaymentGatewayCodable : Swift.Codable {
-  public let id: Swift.String?
-  public let name: Swift.String?
-  public let status: Swift.Bool?
-  public let config: CirclePaySDK.MerchantPaymentGatewayConfigure?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct MerchantPaymentGatewayConfigure : Swift.Codable {
-  public let apiKey: Swift.String?
+public struct MerchantPaymentMethodEnabledCodable : Swift.Codable {
+  public let paymentMethodId: Swift.String?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -1045,6 +1167,23 @@ extension URLRequest : CirclePaySDK.URLRequestConvertible {
 }
 extension URLRequest {
   public init(url: CirclePaySDK.URLConvertible, method: CirclePaySDK.HTTPMethod, headers: CirclePaySDK.HTTPHeaders? = nil) throws
+}
+public struct MerchantPaymentMethodCodable : Swift.Codable {
+  public let id: Swift.String?
+  public let name: Swift.String?
+  public let gateWayId: Swift.String?
+  public let status: Swift.Bool?
+  public let rateObject: CirclePaySDK.MerchantPaymentMethodRateObjectCodable?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MerchantPaymentMethodRateObjectCodable : Swift.Codable {
+  public let paymentFeePercentage: Swift.Double?
+  public let paymentFeeAmount: Swift.Double?
+  public let refundFeePercentage: Swift.Double?
+  public let refundFeeAmount: Swift.Double?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers final public class FontBlaster {
   public static var debugEnabled: Swift.Bool
@@ -1096,24 +1235,143 @@ extension URLRequest {
 extension NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
   public static func == (a: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus, b: CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
 }
-public struct InvoiceDeleteCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public enum AFIError : Swift.Error {
+  case requestCancelled
+  case imageSerializationFailed
+  case alamofireError(CirclePaySDK.AFError)
 }
-public protocol PaymentsProtocol {
-  func getAllPayments(couponCode: Swift.String?, customerMobile: Swift.String?, invoiceNum: Swift.String?, paymentLinkUrl: Swift.String?, completion: @escaping ([CirclePaySDK.PaymentCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getPayment(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.PaymentCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+extension AFIError {
+  public var isRequestCancelledError: Swift.Bool {
+    get
+  }
+  public var isImageSerializationFailedError: Swift.Bool {
+    get
+  }
+  public var isAlamofireError: Swift.Bool {
+    get
+  }
 }
-@_hasMissingDesignatedInitializers public class Payments : CirclePaySDK.PaymentsProtocol {
-  public func getAllPayments(couponCode: Swift.String?, customerMobile: Swift.String?, invoiceNum: Swift.String?, paymentLinkUrl: Swift.String?, completion: @escaping ([CirclePaySDK.PaymentCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getPayment(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.PaymentCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  @objc deinit
+extension AFIError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
 }
-public struct InvoicePayCodable : Swift.Codable {
-  public let transactionId: Swift.String?
-  public let invoiceUrl: Swift.String?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public protocol ImageFilter {
+  var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image { get }
+  var identifier: Swift.String { get }
+}
+extension ImageFilter {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public protocol Sizable {
+  var size: CoreGraphics.CGSize { get }
+}
+extension ImageFilter where Self : CirclePaySDK.Sizable {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public protocol Roundable {
+  var radius: CoreGraphics.CGFloat { get }
+}
+extension ImageFilter where Self : CirclePaySDK.Roundable {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct DynamicImageFilter : CirclePaySDK.ImageFilter {
+  public let identifier: Swift.String
+  public let filter: (CirclePaySDK.Image) -> CirclePaySDK.Image
+  public init(_ identifier: Swift.String, filter: @escaping (CirclePaySDK.Image) -> CirclePaySDK.Image)
+}
+public protocol CompositeImageFilter : CirclePaySDK.ImageFilter {
+  var filters: [CirclePaySDK.ImageFilter] { get }
+}
+extension CompositeImageFilter {
+  public var identifier: Swift.String {
+    get
+  }
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+}
+public struct DynamicCompositeImageFilter : CirclePaySDK.CompositeImageFilter {
+  public let filters: [CirclePaySDK.ImageFilter]
+  public init(_ filters: [CirclePaySDK.ImageFilter])
+  public init(_ filters: CirclePaySDK.ImageFilter...)
+}
+public struct ScaledToSizeFilter : CirclePaySDK.ImageFilter, CirclePaySDK.Sizable {
+  public let size: CoreGraphics.CGSize
+  public init(size: CoreGraphics.CGSize)
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+}
+public struct AspectScaledToFitSizeFilter : CirclePaySDK.ImageFilter, CirclePaySDK.Sizable {
+  public let size: CoreGraphics.CGSize
+  public init(size: CoreGraphics.CGSize)
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+}
+public struct AspectScaledToFillSizeFilter : CirclePaySDK.ImageFilter, CirclePaySDK.Sizable {
+  public let size: CoreGraphics.CGSize
+  public init(size: CoreGraphics.CGSize)
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+}
+public struct RoundedCornersFilter : CirclePaySDK.ImageFilter, CirclePaySDK.Roundable {
+  public let radius: CoreGraphics.CGFloat
+  public let divideRadiusByImageScale: Swift.Bool
+  public init(radius: CoreGraphics.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct CircleFilter : CirclePaySDK.ImageFilter {
+  public init()
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+}
+public protocol CoreImageFilter : CirclePaySDK.ImageFilter {
+  var filterName: Swift.String { get }
+  var parameters: [Swift.String : Any] { get }
+}
+extension ImageFilter where Self : CirclePaySDK.CoreImageFilter {
+  public var filter: (CirclePaySDK.Image) -> CirclePaySDK.Image {
+    get
+  }
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct BlurFilter : CirclePaySDK.ImageFilter, CirclePaySDK.CoreImageFilter {
+  public let filterName: Swift.String
+  public let parameters: [Swift.String : Any]
+  public init(blurRadius: Swift.UInt = 10)
+}
+public struct ScaledToSizeWithRoundedCornersFilter : CirclePaySDK.CompositeImageFilter {
+  public init(size: CoreGraphics.CGSize, radius: CoreGraphics.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public let filters: [CirclePaySDK.ImageFilter]
+}
+public struct AspectScaledToFillSizeWithRoundedCornersFilter : CirclePaySDK.CompositeImageFilter {
+  public init(size: CoreGraphics.CGSize, radius: CoreGraphics.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public let filters: [CirclePaySDK.ImageFilter]
+}
+public struct ScaledToSizeCircleFilter : CirclePaySDK.CompositeImageFilter {
+  public init(size: CoreGraphics.CGSize)
+  public let filters: [CirclePaySDK.ImageFilter]
+}
+public struct AspectScaledToFillSizeCircleFilter : CirclePaySDK.CompositeImageFilter {
+  public init(size: CoreGraphics.CGSize)
+  public let filters: [CirclePaySDK.ImageFilter]
 }
 public struct AlamofireExtension<ExtendedType> {
   public var type: ExtendedType {
@@ -1135,6 +1393,21 @@ extension AlamofireExtended {
     get
     set
   }
+}
+public struct MerchantCodable : Swift.Codable {
+  public let firstName: Swift.String?
+  public let lastName: Swift.String?
+  public let email: Swift.String?
+  public let mobileNumber: Swift.String?
+  public let businessName: Swift.String?
+  public let businessAddress: Swift.String?
+  public let refundPolicy: Swift.String?
+  public let shippingPolicy: Swift.String?
+  public let status: Swift.String?
+  public let merchantToken: Swift.String?
+  public func getFullName() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class IQTitleBarButtonItem : CirclePaySDK.IQBarButtonItem {
   @objc open var titleFont: UIKit.UIFont? {
@@ -1161,16 +1434,36 @@ extension AlamofireExtended {
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-public struct CreateInvoiceCodable : Swift.Codable {
-  public let invoiceNumber: Swift.String?
-  public let invoiceUrl: Swift.String?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public protocol MerchantsProtocol {
+  func createMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCreateCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getMerchant(completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getAllMerchants(completion: @escaping ([CirclePaySDK.MerchantCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func updateMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func enablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func disablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func listPaymentGateways(completion: @escaping ([CirclePaySDK.MerchantPaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func enablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func disablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func listPaymentMethods(completion: @escaping ([CirclePaySDK.MerchantPaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func sendOTP(countryCode: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.MerchantSendOTPCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func verifyMerchant(merchantMobile: Swift.String, OTP: Swift.String, completion: @escaping (CirclePaySDK.verified?, CirclePaySDK.CirclePayError?) -> Swift.Void)
 }
-public struct MerchantSendOTPCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+@_hasMissingDesignatedInitializers public class Merchants : CirclePaySDK.MerchantsProtocol {
+  public func createMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCreateCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getMerchant(completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getAllMerchants(completion: @escaping ([CirclePaySDK.MerchantCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func updateMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func enablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func disablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func listPaymentGateways(completion: @escaping ([CirclePaySDK.MerchantPaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func enablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func disablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func listPaymentMethods(completion: @escaping ([CirclePaySDK.MerchantPaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func sendOTP(countryCode: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.MerchantSendOTPCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func verifyMerchant(merchantMobile: Swift.String, OTP: Swift.String, completion: @escaping (CirclePaySDK.verified?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
 }
+public typealias verified = Swift.Bool
 @objc @_inheritsConvenienceInitializers open class IQTextView : UIKit.UITextView {
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc override dynamic public init(frame: CoreGraphics.CGRect, textContainer: UIKit.NSTextContainer?)
@@ -1319,9 +1612,161 @@ extension URLSessionConfiguration {
     set
   }
 }
-public struct MerchantPaymentGatewayEnabledCodable : Swift.Codable {
+public struct InvoicePayCodable : Swift.Codable {
+  public let transactionId: Swift.String?
+  public let invoiceUrl: Swift.String?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+extension UIImage : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = UIKit.UIImage
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public static func threadSafeImage(with data: Foundation.Data) -> UIKit.UIImage?
+  public static func threadSafeImage(with data: Foundation.Data, scale: CoreGraphics.CGFloat) -> UIKit.UIImage?
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `UIImage.af.threadSafeImage(with:)`")
+  public static func af_threadSafeImage(with data: Foundation.Data) -> UIKit.UIImage?
+  @available(*, deprecated, message: "Replaced by `UIImage.af.threadSafeImage(with:scale:)`")
+  public static func af_threadSafeImage(with data: Foundation.Data, scale: CoreGraphics.CGFloat) -> UIKit.UIImage?
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public var isInflated: Swift.Bool {
+    get
+    nonmutating set
+  }
+  public func inflate()
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.isInflated`")
+  public var af_inflated: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Replaced by `image.af.inflate()`")
+  public func af_inflate()
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public var containsAlphaComponent: Swift.Bool {
+    get
+  }
+  public var isOpaque: Swift.Bool {
+    get
+  }
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.containsAlphaComponent`")
+  public var af_containsAlphaComponent: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Replaced by `image.af.isOpaque`")
+  public var af_isOpaque: Swift.Bool {
+    get
+  }
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public func imageScaled(to size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+  public func imageAspectScaled(toFit size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+  public func imageAspectScaled(toFill size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageScale(to:scale:)`")
+  public func af_imageScaled(to size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageAspectScale(toFit:scale:)`")
+  public func af_imageAspectScaled(toFit size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageAspectScale(toFill:scale:)`")
+  public func af_imageAspectScaled(toFill size: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat? = nil) -> UIKit.UIImage
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public func imageRounded(withCornerRadius radius: CoreGraphics.CGFloat, divideRadiusByImageScale: Swift.Bool = false) -> UIKit.UIImage
+  public func imageRoundedIntoCircle() -> UIKit.UIImage
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageRounded(withCornerRadius:divideRadiusByImageScale:)`")
+  public func af_imageRounded(withCornerRadius radius: CoreGraphics.CGFloat, divideRadiusByImageScale: Swift.Bool = false) -> UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageRoundedIntoCircle()`")
+  public func af_imageRoundedIntoCircle() -> UIKit.UIImage
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImage {
+  public func imageFiltered(withCoreImageFilter name: Swift.String, parameters: [Swift.String : Any]? = nil) -> UIKit.UIImage?
+}
+extension UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageFiltered(withCoreImageFilter:parameters:)`")
+  public func af_imageFiltered(withCoreImageFilter name: Swift.String, parameters: [Swift.String : Any]? = nil) -> UIKit.UIImage?
+}
+public typealias AnimationOptions = UIKit.UIView.AnimationOptions
+extension UIImageView {
+  public enum ImageTransition {
+    case noTransition
+    case crossDissolve(Foundation.TimeInterval)
+    case curlDown(Foundation.TimeInterval)
+    case curlUp(Foundation.TimeInterval)
+    case flipFromBottom(Foundation.TimeInterval)
+    case flipFromLeft(Foundation.TimeInterval)
+    case flipFromRight(Foundation.TimeInterval)
+    case flipFromTop(Foundation.TimeInterval)
+    case custom(duration: Foundation.TimeInterval, animationOptions: UIKit.UIView.AnimationOptions, animations: (UIKit.UIImageView, CirclePaySDK.Image) -> Swift.Void, completion: ((Swift.Bool) -> Swift.Void)?)
+    public var duration: Foundation.TimeInterval {
+      get
+    }
+    public var animationOptions: UIKit.UIView.AnimationOptions {
+      get
+    }
+    public var animations: (UIKit.UIImageView, CirclePaySDK.Image) -> Swift.Void {
+      get
+    }
+    public var completion: ((Swift.Bool) -> Swift.Void)? {
+      get
+    }
+  }
+}
+extension UIImageView : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = UIKit.UIImageView
+}
+extension AlamofireExtension where ExtendedType : UIKit.UIImageView {
+  public var imageDownloader: CirclePaySDK.ImageDownloader? {
+    get
+    nonmutating set(downloader)
+  }
+  public static var sharedImageDownloader: CirclePaySDK.ImageDownloader {
+    get
+    set
+  }
+  public func setImage(withURL url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setImage(withURLRequest urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelImageRequest()
+  public func run(_ imageTransition: UIKit.UIImageView.ImageTransition, with image: CirclePaySDK.Image)
+}
+extension UIImageView {
+  @available(*, deprecated, message: "Replaced by `imageView.af.imageDownloader`")
+  public var af_imageDownloader: CirclePaySDK.ImageDownloader? {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `imageView.af.sharedImageDownloader`")
+  public class var af_sharedImageDownloader: CirclePaySDK.ImageDownloader {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `imageView.af.setImage(withURL: ...)`")
+  public func af_setImage(withURL url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `imageView.af.setImage(withURLRequest: ...)`")
+  public func af_setImage(withURLRequest urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `imageView.af.cancelImageRequest()`")
+  public func af_cancelImageRequest()
+  @available(*, deprecated, message: "Replaced by `imageView.af.run(_:with:)`")
+  public func run(_ imageTransition: UIKit.UIImageView.ImageTransition, with image: CirclePaySDK.Image)
+}
+public struct PaymentGatewayCodable : Swift.Codable {
+  public let id: Swift.String?
+  public let name: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public class Items : ObjectiveC.NSObject {
+  public init(itemDescription: Swift.String, itemnName: Swift.String, itemPrice: Swift.Double, itemQuantity: Swift.Int)
+  @objc override dynamic public init()
+  @objc deinit
 }
 extension URLSessionConfiguration : CirclePaySDK.AlamofireExtended {
   public typealias ExtendedType = Foundation.URLSessionConfiguration
@@ -1330,6 +1775,17 @@ extension AlamofireExtension where ExtendedType : Foundation.URLSessionConfigura
   public static var `default`: Foundation.URLSessionConfiguration {
     get
   }
+}
+public protocol RefundsProtocol {
+  func getAllRefunds(completion: @escaping ([CirclePaySDK.RefundCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getRefuntStatus(refundId: Swift.Int, completion: @escaping (CirclePaySDK.RefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func requestRefund(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.RequestRefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class Refunds : CirclePaySDK.RefundsProtocol {
+  public func getAllRefunds(completion: @escaping ([CirclePaySDK.RefundCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getRefuntStatus(refundId: Swift.Int, completion: @escaping (CirclePaySDK.RefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func requestRefund(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.RequestRefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class IQPreviousNextView : UIKit.UIView {
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -1347,10 +1803,14 @@ extension AlamofireExtension where ExtendedType : Foundation.URLSessionConfigura
   @objc open var invocation: CirclePaySDK.IQInvocation?
   @objc deinit
 }
-public struct GetCustomerCodable : Swift.Codable {
-  public func getFullName() -> Swift.String
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public protocol PaymentsProtocol {
+  func getAllPayments(couponCode: Swift.String?, customerMobile: Swift.String?, invoiceNum: Swift.String?, paymentLinkUrl: Swift.String?, completion: @escaping ([CirclePaySDK.PaymentCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  func getPayment(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.PaymentCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class Payments : CirclePaySDK.PaymentsProtocol {
+  public func getAllPayments(couponCode: Swift.String?, customerMobile: Swift.String?, invoiceNum: Swift.String?, paymentLinkUrl: Swift.String?, completion: @escaping ([CirclePaySDK.PaymentCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  public func getPayment(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.PaymentCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+  @objc deinit
 }
 extension Request {
   public typealias ValidationResult = Swift.Result<Swift.Void, Swift.Error>
@@ -1387,36 +1847,49 @@ public struct CirclePayError {
   public var errorMsg: Swift.String?
   public init(errorCode: Swift.Int?, errorMsg: Swift.String?)
 }
-@objc public class Items : ObjectiveC.NSObject {
-  public init(itemDescription: Swift.String, itemnName: Swift.String, itemPrice: Swift.Double, itemQuantity: Swift.Int)
-  @objc override dynamic public init()
+public typealias AFIDataResponse<T> = CirclePaySDK.DataResponse<T, CirclePaySDK.AFIError>
+public typealias AFIResult<T> = Swift.Result<T, CirclePaySDK.AFIError>
+@_hasMissingDesignatedInitializers open class RequestReceipt {
+  final public let request: CirclePaySDK.DataRequest
+  final public let receiptID: Swift.String
   @objc deinit
 }
-public protocol InvoicesProtocol {
-  func createInvoice(invoiceNumber: Swift.String?, items: [CirclePaySDK.Items], customerMobile: Swift.String, status: Swift.Int?, createDate: Swift.String?, dueDate: Swift.String, prefPaymentMethod: Swift.String?, shippingFees: Swift.Double?, discountValue: Swift.Double?, discountType: CirclePaySDK.DiscountTypes?, tax: Swift.Double?, taxValue: Swift.Double?, shippingPolicy: Swift.String?, returnPolicy: Swift.String?, extraNotes: Swift.String?, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func createInvoice(items: [CirclePaySDK.Items], customerMobile: Swift.String, dueDate: Swift.String, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func listInvoices(customerMobile: Swift.String?, completion: @escaping ([CirclePaySDK.InvoiceCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func deleteInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceDeleteCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func payInvoice(invoiceNumber: Swift.String, customerMobile: Swift.String?, paymentMethodId: Swift.String?, completion: @escaping (CirclePaySDK.InvoicePayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-}
-@_hasMissingDesignatedInitializers public class Invoices : CirclePaySDK.InvoicesProtocol {
-  public func createInvoice(invoiceNumber: Swift.String? = "", items: [CirclePaySDK.Items], customerMobile: Swift.String, status: Swift.Int?, createDate: Swift.String?, dueDate: Swift.String, prefPaymentMethod: Swift.String?, shippingFees: Swift.Double?, discountValue: Swift.Double?, discountType: CirclePaySDK.DiscountTypes?, tax: Swift.Double?, taxValue: Swift.Double?, shippingPolicy: Swift.String?, returnPolicy: Swift.String?, extraNotes: Swift.String?, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func createInvoice(items: [CirclePaySDK.Items], customerMobile: Swift.String, dueDate: Swift.String, completion: @escaping (CirclePaySDK.CreateInvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func listInvoices(customerMobile: Swift.String?, completion: @escaping ([CirclePaySDK.InvoiceCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func deleteInvoice(invoiceNumber: Swift.String, completion: @escaping (CirclePaySDK.InvoiceDeleteCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func payInvoice(invoiceNumber: Swift.String, customerMobile: Swift.String?, paymentMethodId: Swift.String?, completion: @escaping (CirclePaySDK.InvoicePayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  @objc deinit
-}
-public enum DiscountTypes : Swift.String {
-  case percentage
-  case fixed
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
+open class ImageDownloader {
+  public typealias CompletionHandler = (CirclePaySDK.AFIDataResponse<CirclePaySDK.Image>) -> Swift.Void
+  public typealias ProgressHandler = CirclePaySDK.DataRequest.ProgressHandler
+  public enum DownloadPrioritization {
+    case fifo, lifo
+    public static func == (a: CirclePaySDK.ImageDownloader.DownloadPrioritization, b: CirclePaySDK.ImageDownloader.DownloadPrioritization) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let imageCache: CirclePaySDK.ImageRequestCache?
+  open var credential: Foundation.URLCredential? {
     get
   }
+  public var imageResponseSerializer: CirclePaySDK.ImageResponseSerializer
+  final public let session: CirclePaySDK.Session
+  public static let `default`: CirclePaySDK.ImageDownloader
+  open class func defaultURLSessionConfiguration() -> Foundation.URLSessionConfiguration
+  open class func defaultURLCache() -> Foundation.URLCache
+  public init(configuration: Foundation.URLSessionConfiguration = ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: CirclePaySDK.ImageDownloader.DownloadPrioritization = .fifo, maximumActiveDownloads: Swift.Int = 4, imageCache: CirclePaySDK.ImageRequestCache? = AutoPurgingImageCache())
+  public init(session: CirclePaySDK.Session, downloadPrioritization: CirclePaySDK.ImageDownloader.DownloadPrioritization = .fifo, maximumActiveDownloads: Swift.Int = 4, imageCache: CirclePaySDK.ImageRequestCache? = AutoPurgingImageCache())
+  open func addAuthentication(user: Swift.String, password: Swift.String, persistence: Foundation.URLCredential.Persistence = .forSession)
+  open func addAuthentication(usingCredential credential: Foundation.URLCredential)
+  @discardableResult
+  open func download(_ urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, receiptID: Swift.String = UUID().uuidString, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: CirclePaySDK.ImageDownloader.CompletionHandler? = nil) -> CirclePaySDK.RequestReceipt?
+  @discardableResult
+  open func download(_ urlRequests: [CirclePaySDK.URLRequestConvertible], filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: CirclePaySDK.ImageDownloader.CompletionHandler? = nil) -> [CirclePaySDK.RequestReceipt]
+  open func cancelRequest(with requestReceipt: CirclePaySDK.RequestReceipt)
+  @objc deinit
+}
+public struct CreateInvoiceCodable : Swift.Codable {
+  public let invoiceNumber: Swift.String?
+  public let invoiceUrl: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc extension UIViewController {
   @available(*, deprecated, message: "Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview.")
@@ -1425,43 +1898,33 @@ public enum DiscountTypes : Swift.String {
     @objc set(newValue)
   }
 }
-public class CirclePay {
-  public static var merchantToken: Swift.String
-  public static var accountToken: Swift.String
-  public static var accountKey: Swift.String
-  public static let customers: CirclePaySDK.CustomersProtocol
-  public static let invoices: CirclePaySDK.InvoicesProtocol
-  public static let merchants: CirclePaySDK.MerchantsProtocol
-  public static let payments: CirclePaySDK.PaymentsProtocol
-  public static let refunds: CirclePaySDK.RefundsProtocol
-  public static let paymentGateways: CirclePaySDK.PaymentGatewaysProtocol
-  public static let paymentMethods: CirclePaySDK.PaymentMethodsProtocol
-  public static var mode: CirclePaySDK.CirclePayInviroment
-  public static var delegete: CirclePaySDK.CirclePayDelegete?
-  public init()
-  public static func prepareSDK()
-  public static func excutePayment(with paymentType: CirclePaySDK.PaymentType)
-  @objc deinit
+public struct InvoiceCodable : Swift.Codable {
+  public let invoiceNumber: Swift.String?
+  public let items: [CirclePaySDK.InvoiceItemsCodable]?
+  public let customerMobile: Swift.String?
+  public let status: Swift.Int?
+  public let createDate: Swift.String?
+  public let dueDate: Swift.String?
+  public let prefPaymenMethod: Swift.String?
+  public let shippingFees: Swift.Double?
+  public let discountValue: Swift.Double?
+  public let discountType: Swift.String?
+  public let discountValueCalculated: Swift.Double?
+  public let tax: Swift.Double?
+  public let taxValue: Swift.Double?
+  public let shippingPolicy: Swift.String?
+  public let returnPolicy: Swift.String?
+  public let extraNotes: Swift.String?
+  public let totalValue: Swift.Double?
+  public let subTotalValue: Swift.Double?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
-public enum CirclePayInviroment : Swift.String {
-  case staging
-  case production
-  case sandBox
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public enum PaymentType {
-  case Invoice(invoiceNumber: Swift.String)
-}
-public protocol CirclePayDelegete {
-  func didGetErrorAtCheckoutProcess(error: CirclePaySDK.CirclePayError)
-  func didPaidTransactionSucsessfully(transactionId: Swift.String)
-  func didGetErrorAtPayingTransaction(error: CirclePaySDK.CirclePayError)
-}
-public struct PaymentMethodCodable : Swift.Codable {
+public struct InvoiceItemsCodable : Swift.Codable {
+  public let name: Swift.String?
+  public let description: Swift.String?
+  public let quantity: Swift.Int?
+  public let price: Swift.Double?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -1500,18 +1963,47 @@ public class AuthenticationInterceptor<AuthenticatorType> : CirclePaySDK.Request
   public func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
   @objc deinit
 }
-public struct UpdateCustomerCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+public typealias ControlState = UIKit.UIControl.State
+extension UIButton : CirclePaySDK.AlamofireExtended {
+  public typealias ExtendedType = UIKit.UIButton
 }
-public protocol PaymentGatewaysProtocol {
-  func getAllPaymentGetways(completion: @escaping ([CirclePaySDK.PaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getPaymentGetway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.PaymentGatewayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+extension AlamofireExtension where ExtendedType : UIKit.UIButton {
+  public var imageDownloader: CirclePaySDK.ImageDownloader? {
+    get
+    nonmutating set
+  }
+  public static var sharedImageDownloader: CirclePaySDK.ImageDownloader {
+    get
+    set
+  }
+  public func setImage(for state: CirclePaySDK.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setImage(for state: CirclePaySDK.ControlState, urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelImageRequest(for state: CirclePaySDK.ControlState)
+  public func setBackgroundImage(for state: CirclePaySDK.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setBackgroundImage(for state: CirclePaySDK.ControlState, urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelBackgroundImageRequest(for state: CirclePaySDK.ControlState)
 }
-@_hasMissingDesignatedInitializers public class PaymentGateways : CirclePaySDK.PaymentGatewaysProtocol {
-  public func getAllPaymentGetways(completion: @escaping ([CirclePaySDK.PaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getPaymentGetway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.PaymentGatewayCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  @objc deinit
+extension UIButton {
+  @available(*, deprecated, message: "Replaced by `button.af.imageDownloader`")
+  public var af_imageDownloader: CirclePaySDK.ImageDownloader? {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  public class var af_sharedImageDownloader: CirclePaySDK.ImageDownloader {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  public func af_setImage(for state: CirclePaySDK.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  public func af_setImage(for state: CirclePaySDK.ControlState, urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func af_cancelImageRequest(for state: CirclePaySDK.ControlState)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  public func af_setBackgroundImage(for state: CirclePaySDK.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  public func af_setBackgroundImage(for state: CirclePaySDK.ControlState, urlRequest: CirclePaySDK.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: UIKit.UIImage? = nil, serializer: CirclePaySDK.ImageResponseSerializer? = nil, filter: CirclePaySDK.ImageFilter? = nil, progress: CirclePaySDK.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((CirclePaySDK.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func af_cancelBackgroundImageRequest(for state: CirclePaySDK.ControlState)
 }
 open class RetryPolicy : CirclePaySDK.RequestInterceptor {
   public static let defaultRetryLimit: Swift.UInt
@@ -1535,6 +2027,11 @@ open class ConnectionLostRetryPolicy : CirclePaySDK.RetryPolicy {
   public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods)
   override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<CirclePaySDK.HTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
   @objc deinit
+}
+public struct CreateCustomerCodable : Swift.Codable {
+  public let customerMobileNumber: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc public enum IQAutoToolbarManageBehaviour : Swift.Int {
   case bySubviews
@@ -1797,10 +2294,6 @@ extension Session : CirclePaySDK.RequestDelegate {
   public func retryResult(for request: CirclePaySDK.Request, dueTo error: CirclePaySDK.AFError, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
   public func retryRequest(_ request: CirclePaySDK.Request, withDelay timeDelay: Foundation.TimeInterval?)
 }
-public struct PaymentGatewayCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
 @objc extension UIScrollView {
   @objc dynamic public var shouldIgnoreScrollingAdjustment: Swift.Bool {
     @objc get
@@ -1810,6 +2303,11 @@ public struct PaymentGatewayCodable : Swift.Codable {
     @objc get
     @objc set(newValue)
   }
+}
+public struct InvoiceDeleteCodable : Swift.Codable {
+  public let invoiceNumber: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
@@ -1919,23 +2417,6 @@ open class Interceptor : CirclePaySDK.RequestInterceptor {
   open func adapt(_ urlRequest: Foundation.URLRequest, for session: CirclePaySDK.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
   open func retry(_ request: CirclePaySDK.Request, for session: CirclePaySDK.Session, dueTo error: Swift.Error, completion: @escaping (CirclePaySDK.RetryResult) -> Swift.Void)
   @objc deinit
-}
-public struct MerchantPaymentMethodCodable : Swift.Codable {
-  public let id: Swift.String?
-  public let name: Swift.String?
-  public let gateWayId: Swift.String?
-  public let status: Swift.Bool?
-  public let rateObject: CirclePaySDK.MerchantPaymentMethodRateObjectCodable?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct MerchantPaymentMethodRateObjectCodable : Swift.Codable {
-  public let paymentFeePercentage: Swift.Double?
-  public let paymentFeeAmount: Swift.Double?
-  public let refundFeePercentage: Swift.Double?
-  public let refundFeeAmount: Swift.Double?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
 }
 public struct HTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashable {
   public static let connect: CirclePaySDK.HTTPMethod
@@ -2167,51 +2648,7 @@ extension DataStreamRequest {
   @discardableResult
   final public func responseStreamDecodable<T>(of type: T.Type = T.self, on queue: Dispatch.DispatchQueue = .main, using decoder: CirclePaySDK.DataDecoder = JSONDecoder(), preprocessor: CirclePaySDK.DataPreprocessor = PassthroughPreprocessor(), stream: @escaping CirclePaySDK.DataStreamRequest.Handler<T, CirclePaySDK.AFError>) -> Self where T : Swift.Decodable
 }
-public protocol RefundsProtocol {
-  func getAllRefunds(completion: @escaping ([CirclePaySDK.RefundCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getRefuntStatus(refundId: Swift.Int, completion: @escaping (CirclePaySDK.RefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func requestRefund(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.RequestRefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-}
-@_hasMissingDesignatedInitializers public class Refunds : CirclePaySDK.RefundsProtocol {
-  public func getAllRefunds(completion: @escaping ([CirclePaySDK.RefundCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getRefuntStatus(refundId: Swift.Int, completion: @escaping (CirclePaySDK.RefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func requestRefund(transactionId: Swift.Int, completion: @escaping (CirclePaySDK.RequestRefundCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  @objc deinit
-}
-public struct MerchantCreateCodable : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct InvoiceCodable : Swift.Codable {
-  public let invoiceNumber: Swift.String?
-  public let items: [CirclePaySDK.InvoiceItemsCodable]?
-  public let customerMobile: Swift.String?
-  public let status: Swift.Int?
-  public let createDate: Swift.String?
-  public let dueDate: Swift.String?
-  public let prefPaymenMethod: Swift.String?
-  public let shippingFees: Swift.Double?
-  public let discountValue: Swift.Double?
-  public let discountType: Swift.String?
-  public let discountValueCalculated: Swift.Double?
-  public let tax: Swift.Double?
-  public let taxValue: Swift.Double?
-  public let shippingPolicy: Swift.String?
-  public let returnPolicy: Swift.String?
-  public let extraNotes: Swift.String?
-  public let totalValue: Swift.Double?
-  public let subTotalValue: Swift.Double?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public struct InvoiceItemsCodable : Swift.Codable {
-  public let name: Swift.String?
-  public let description: Swift.String?
-  public let quantity: Swift.Int?
-  public let price: Swift.Double?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
+public typealias Image = UIKit.UIImage
 extension Request {
   public static let didResumeNotification: Foundation.Notification.Name
   public static let didSuspendNotification: Foundation.Notification.Name
@@ -2238,36 +2675,44 @@ extension Notification {
   final public func request(_ request: CirclePaySDK.Request, didCompleteTask task: Foundation.URLSessionTask, with error: CirclePaySDK.AFError?)
   @objc deinit
 }
-public protocol MerchantsProtocol {
-  func createMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCreateCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getMerchant(completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func getAllMerchants(completion: @escaping ([CirclePaySDK.MerchantCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func updateMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func enablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func disablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func listPaymentGateways(completion: @escaping ([CirclePaySDK.MerchantPaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func enablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func disablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func listPaymentMethods(completion: @escaping ([CirclePaySDK.MerchantPaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func sendOTP(countryCode: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.MerchantSendOTPCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  func verifyMerchant(merchantMobile: Swift.String, OTP: Swift.String, completion: @escaping (CirclePaySDK.verified?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-}
-@_hasMissingDesignatedInitializers public class Merchants : CirclePaySDK.MerchantsProtocol {
-  public func createMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCreateCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getMerchant(completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func getAllMerchants(completion: @escaping ([CirclePaySDK.MerchantCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func updateMerchant(firstName: Swift.String, lastName: Swift.String, email: Swift.String, mobileNumber: Swift.String, businessName: Swift.String, businessAddress: Swift.String, callbackURL: Swift.String, completion: @escaping (CirclePaySDK.MerchantCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func enablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func disablePaymentGateway(paymentGatewayId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentGatewayEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func listPaymentGateways(completion: @escaping ([CirclePaySDK.MerchantPaymentGatewayCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func enablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func disablePaymentMethod(paymentMethodId: Swift.String, completion: @escaping (CirclePaySDK.MerchantPaymentMethodEnabledCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func listPaymentMethods(completion: @escaping ([CirclePaySDK.MerchantPaymentMethodCodable]?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func sendOTP(countryCode: Swift.String, mobileNumber: Swift.String, completion: @escaping (CirclePaySDK.MerchantSendOTPCodable?, CirclePaySDK.CirclePayError?) -> Swift.Void)
-  public func verifyMerchant(merchantMobile: Swift.String, OTP: Swift.String, completion: @escaping (CirclePaySDK.verified?, CirclePaySDK.CirclePayError?) -> Swift.Void)
+public class CirclePay {
+  public static var merchantToken: Swift.String
+  public static var accountToken: Swift.String
+  public static var accountKey: Swift.String
+  public static let customers: CirclePaySDK.CustomersProtocol
+  public static let invoices: CirclePaySDK.InvoicesProtocol
+  public static let merchants: CirclePaySDK.MerchantsProtocol
+  public static let payments: CirclePaySDK.PaymentsProtocol
+  public static let refunds: CirclePaySDK.RefundsProtocol
+  public static let paymentGateways: CirclePaySDK.PaymentGatewaysProtocol
+  public static let paymentMethods: CirclePaySDK.PaymentMethodsProtocol
+  public static var mode: CirclePaySDK.CirclePayInviroment
+  public static var delegete: CirclePaySDK.CirclePayDelegete?
+  public init()
+  public static func prepareSDK()
+  public static func excutePayment(with paymentType: CirclePaySDK.PaymentType)
   @objc deinit
 }
-public typealias verified = Swift.Bool
+public enum CirclePayInviroment : Swift.String {
+  case staging
+  case production
+  case sandBox
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PaymentType {
+  case Invoice(invoiceNumber: Swift.String)
+}
+public protocol CirclePayDelegete {
+  func didGetErrorAtCheckoutProcess(error: CirclePaySDK.CirclePayError)
+  func didPaidTransactionSucsessfully(transaction: CirclePaySDK.TransactionResult)
+  func didGetErrorAtPayingTransaction(transaction: CirclePaySDK.TransactionResult, error: CirclePaySDK.CirclePayError)
+}
+public struct TransactionResult {
+}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class IQToolbar : UIKit.UIToolbar, UIKit.UIInputViewAudioFeedback {
   @objc open var previousBarButton: CirclePaySDK.IQBarButtonItem {
     @objc get
@@ -2361,6 +2806,49 @@ extension DownloadResponse {
   public func tryMap<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> CirclePaySDK.DownloadResponse<NewSuccess, Swift.Error>
   public func mapError<NewFailure>(_ transform: (Failure) -> NewFailure) -> CirclePaySDK.DownloadResponse<Success, NewFailure> where NewFailure : Swift.Error
   public func tryMapError<NewFailure>(_ transform: (Failure) throws -> NewFailure) -> CirclePaySDK.DownloadResponse<Success, Swift.Error> where NewFailure : Swift.Error
+}
+public struct MerchantCreateCodable : Swift.Codable {
+  public let merchantToken: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MerchantPaymentGatewayCodable : Swift.Codable {
+  public let id: Swift.String?
+  public let name: Swift.String?
+  public let status: Swift.Bool?
+  public let config: CirclePaySDK.MerchantPaymentGatewayConfigure?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MerchantPaymentGatewayConfigure : Swift.Codable {
+  public let apiKey: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+final public class ImageResponseSerializer : CirclePaySDK.ResponseSerializer {
+  public static var deviceScreenScale: CoreGraphics.CGFloat {
+    get
+  }
+  final public let imageScale: CoreGraphics.CGFloat
+  final public let inflateResponseImage: Swift.Bool
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod>
+  public init(imageScale: CoreGraphics.CGFloat = ImageResponseSerializer.deviceScreenScale, inflateResponseImage: Swift.Bool = true, emptyResponseCodes: Swift.Set<Swift.Int> = ImageResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<CirclePaySDK.HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods)
+  final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> CirclePaySDK.Image
+  final public func serializeImage(from data: Foundation.Data) throws -> CirclePaySDK.Image
+  final public class func addAcceptableImageContentTypes(_ contentTypes: Swift.Set<Swift.String>)
+  final public func validateContentType(for request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?) throws
+  public typealias SerializedObject = CirclePaySDK.Image
+  @objc deinit
+}
+extension DataRequest {
+  public class var imageScale: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension DataRequest {
+  @discardableResult
+  public func responseImage(imageScale: CoreGraphics.CGFloat = DataRequest.imageScale, inflateResponseImage: Swift.Bool = true, queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (CirclePaySDK.AFDataResponse<CirclePaySDK.Image>) -> Swift.Void) -> Self
 }
 open class ServerTrustManager {
   final public let allHostsMustBeEvaluated: Swift.Bool
@@ -2507,6 +2995,11 @@ extension AlamofireExtension where ExtendedType == Security.SecTrustResultType {
     get
   }
 }
+public struct RequestRefundCodable : Swift.Codable {
+  public let refundId: Swift.Int?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 extension URLRequest {
   public var method: CirclePaySDK.HTTPMethod? {
     get
@@ -2514,10 +3007,32 @@ extension URLRequest {
   }
   public func validate() throws
 }
+public struct PaymentCodable : Swift.Codable {
+  public let id: Swift.Int?
+  public let transactionId: Swift.Int?
+  public let externalRefId: Swift.String?
+  public let initDate: Swift.String?
+  public let updateDate: Swift.String?
+  public let customerMobile: Swift.String?
+  public let status: Swift.String?
+  public let paymentLinkUrl: Swift.String?
+  public let invoiceNum: Swift.String?
+  public let value: Swift.Double?
+  public let netFees: Swift.Double?
+  public let currency: Swift.String?
+  public let paymentMethodId: Swift.String?
+  public let paymentMethodName: Swift.String?
+  public let paymentGatewayName: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 extension CirclePaySDK.Request.State : Swift.Equatable {}
 extension CirclePaySDK.Request.State : Swift.Hashable {}
 extension CirclePaySDK.URLEncodedFormParameterEncoder.Destination : Swift.Equatable {}
 extension CirclePaySDK.URLEncodedFormParameterEncoder.Destination : Swift.Hashable {}
+extension CirclePaySDK.DiscountTypes : Swift.Equatable {}
+extension CirclePaySDK.DiscountTypes : Swift.Hashable {}
+extension CirclePaySDK.DiscountTypes : Swift.RawRepresentable {}
 extension CirclePaySDK.URLEncoding.Destination : Swift.Equatable {}
 extension CirclePaySDK.URLEncoding.Destination : Swift.Hashable {}
 extension CirclePaySDK.URLEncoding.ArrayEncoding : Swift.Equatable {}
@@ -2528,12 +3043,8 @@ extension CirclePaySDK.BaseAPIRequestResponseFailureErrorType : Swift.Equatable 
 extension CirclePaySDK.BaseAPIRequestResponseFailureErrorType : Swift.Hashable {}
 extension CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Equatable {}
 extension CirclePaySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Hashable {}
-extension CirclePaySDK.DiscountTypes : Swift.Equatable {}
-extension CirclePaySDK.DiscountTypes : Swift.Hashable {}
-extension CirclePaySDK.DiscountTypes : Swift.RawRepresentable {}
-extension CirclePaySDK.CirclePayInviroment : Swift.Equatable {}
-extension CirclePaySDK.CirclePayInviroment : Swift.Hashable {}
-extension CirclePaySDK.CirclePayInviroment : Swift.RawRepresentable {}
+extension CirclePaySDK.ImageDownloader.DownloadPrioritization : Swift.Equatable {}
+extension CirclePaySDK.ImageDownloader.DownloadPrioritization : Swift.Hashable {}
 extension CirclePaySDK.AuthenticationError : Swift.Equatable {}
 extension CirclePaySDK.AuthenticationError : Swift.Hashable {}
 extension CirclePaySDK.IQAutoToolbarManageBehaviour : Swift.Equatable {}
@@ -2551,3 +3062,6 @@ extension CirclePaySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
 extension CirclePaySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
 extension CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
 extension CirclePaySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension CirclePaySDK.CirclePayInviroment : Swift.Equatable {}
+extension CirclePaySDK.CirclePayInviroment : Swift.Hashable {}
+extension CirclePaySDK.CirclePayInviroment : Swift.RawRepresentable {}
