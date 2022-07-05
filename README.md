@@ -71,7 +71,8 @@ Note that there's two environments  :
  .sandbox
 .production
 By default the environment is set to .sandbox
-Usage 🧑‍💻
+
+## Usage 🧑‍💻
 Mainly the SDK contain some main modules you can call them by a class called CirclePay , below the main modules that SDK Support :
 - [x] invoices
 - [x] customers
