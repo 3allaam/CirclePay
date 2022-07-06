@@ -13,7 +13,7 @@ also they can use CirclePay checkout embed screens which gonna reduce a lot of e
 
 
 ## Table of Contents ⚓ 
-[Integration 💻](integration-💻)  
+[Integration 💻](#headers)  
 [Prepare SDK & Adding Keys 🔑](#headers)  
 [Change SDK environment 👀](#headers)  
 [Usage 🧑‍💻](#headers)  
