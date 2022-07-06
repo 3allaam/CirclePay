@@ -16,6 +16,7 @@ also they can use CirclePay checkout embed screens which gonna reduce a lot of e
 [Prepare SDK & Adding Keys 🔑](#headers)  
 [Change SDK environment 👀](#headers)  
 [Usage 🧑‍💻](#headers)  
+[Checkout Embed 📲](#headers)  
 [Author](#author)  
 [License](#license)  
 <a name="headers"/>
@@ -93,6 +94,28 @@ For more details you can visit the open API docs :
 
 [Docs](https://circlepayapi.github.io/CirclePayApi/#introduction)
 
+## Checkout Embed 📲
+<table>
+  <tr>
+    <td>Invoice Summary</td>
+     <td>Invoice Details</td>
+     <td>Payment Methods</td>
+     <td>Sucsessfully Transaction</td>
+
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/79041707/177437629-22b10a92-6a02-49c7-b84a-468fd9c43c0a.png" width="200" height="400" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/79041707/177437625-118e47fa-aae2-4790-bb72-ef235773bd18.png" width="200" height="400" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/79041707/177437622-f66f85aa-3c5e-43c8-9cc8-90fc664bd932.png" width="200" height="400" width=270 height=480></td>
+        <td><img src="https://user-images.githubusercontent.com/79041707/177437619-7c3c97fe-8893-473f-b01f-207605c3691b.png" width="200" height="400" width=270 height=480></td>
+  </tr>
+ </table>
+ 
+ To use  checkout embed you have to call execute methods which is in our main class CirclePay like below:
+ ```ruby
+  CirclePay.excutePayment(with: .Invoice(invoiceNumber: unwrappedInvoiceNumber))
+```
+By passing the invoice number argument you should start the checkout embed jounry easily , and carry on.
 
 ## Author 
 
