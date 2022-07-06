@@ -18,8 +18,10 @@ also they can use CirclePay checkout embed screens which gonna reduce a lot of e
 [Usage 🧑‍💻](#headers)  
 [Checkout Embed 📲](#headers)  
 [Call Backs 🔙](#license)  
+[UI Configuration <Dynamic> 🎨](#headers)  
 [Author](#author)  
 [License](#license)  
+
 <a name="headers"/>
 
 ## Integration 💻
@@ -150,6 +152,16 @@ Transaction Result object contains:
  var transactoinStatus: String?
  var transactionType: Int
 ```
+
+## UI Configuration <Dynamic> 🎨
+
+The UI is fully dynamic based on your configuration on the dashboard , it will reflect directly checkout embed screens like image below : 
+
+<td><img src="https://user-images.githubusercontent.com/79041707/177439560-11beff9e-a6c6-4eb2-9764-a14cbb2e390a.png" width="250" height="400" width=270 height=480></td>
+
+UI Will be reflected directly with your configuration like primary colors , hiding/showing elements 
+
+
 ## Author 
 
 Mahmoud3allam, mahmoudallam@circlepay.ai , allam40960@gmail.com
