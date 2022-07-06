@@ -1,4 +1,5 @@
-# CirclePay
+![Alt Text](https://en.bloggif.com/tmp/78c9149072f35640e28af878c2e11492/text.gif?1657069810)
+
 [![Website](https://img.shields.io/badge/CirlcePay-Join-blue?style=flat)](https://circlepay.ai/)
 [![Version](https://img.shields.io/cocoapods/v/CirclePay.svg?style=flat)](https://cocoapods.org/pods/CirclePay)
 [![License](https://img.shields.io/cocoapods/l/CirclePay.svg?style=flat)](https://cocoapods.org/pods/CirclePay)
