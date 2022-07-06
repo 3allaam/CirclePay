@@ -76,8 +76,12 @@ You can change the environment like this :
  CirclePay.mode = .sandbox
 ```
 Note that there's two environments  :
- .sandbox
-.production
+| Enviroments | Mode |
+| --- | --- |
+| SandBox | .sandbox |
+| Production | .production |
+ 
+
 By default the environment is set to .sandbox
 
 ## Usage 🧑‍💻
