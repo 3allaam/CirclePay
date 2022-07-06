@@ -17,6 +17,7 @@ also they can use CirclePay checkout embed screens which gonna reduce a lot of e
 [Change SDK environment 👀](#headers)  
 [Usage 🧑‍💻](#headers)  
 [Checkout Embed 📲](#headers)  
+[Call Backs 🔙](#license)  
 [Author](#author)  
 [License](#license)  
 <a name="headers"/>
@@ -117,6 +118,38 @@ For more details you can visit the open API docs :
 ```
 By passing the invoice number argument you should start the checkout embed jounry easily , and carry on.
 
+## Call Backs 🔙 
+By Conforming to CirclePayDelegete Interface you will be able to receive the transaction result call back .
+First You have to assign delegete like below :
+```ruby
+    CirclePay.delegete = self
+```
+Then you should implement CirclePayDelegete in your class like below:
+
+```ruby
+extension InitialViewController: CirclePayDelegete {
+    
+    func didGetErrorAtCheckoutProcess(error: CirclePayError) {
+        print("Check out error :- " , error.errorMsg )
+    }
+    
+    func didPaidTransactionSucsessfully(transaction: TransactionResult) {
+        print("Sucsessfully Paid :-", transaction)
+    }
+    
+    func didGetErrorAtPayingTransaction(transaction: TransactionResult, error: CirclePayError) {
+        print("Failed to Pay :-", transaction)
+    }
+}
+```
+Transaction Result object contains:
+```ruby
+ var paymentGatewayName: String?
+ var paymentMethodName: String?
+ var transactionId: String?
+ var transactoinStatus: String?
+ var transactionType: Int
+```
 ## Author 
 
 Mahmoud3allam, mahmoudallam@circlepay.ai , allam40960@gmail.com
