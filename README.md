@@ -164,7 +164,7 @@ UI Will be reflected directly with your configuration like primary colors , hidi
 
 ## Author 
 
-Mahmoud3allam, mahmoudallam@circlepay.ai , allam40960@gmail.com
+Mahmoud3allam, mahmoudallam@circlepay.ai , https://github.com/Mahmoud3allam
 
 Adel Mohey, adelmohey@circlepay.ai
 
