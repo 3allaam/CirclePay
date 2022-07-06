@@ -1,9 +1,10 @@
 # CirclePay
 [![Website](https://img.shields.io/badge/CirlcePay-Join-blue?style=flat)](https://circlepay.ai/)
-[![CI Status](https://img.shields.io/travis/Mahmoud3allam/CirclePay.svg?style=flat)](https://travis-ci.org/Mahmoud3allam/CirclePay)
 [![Version](https://img.shields.io/cocoapods/v/CirclePay.svg?style=flat)](https://cocoapods.org/pods/CirclePay)
 [![License](https://img.shields.io/cocoapods/l/CirclePay.svg?style=flat)](https://cocoapods.org/pods/CirclePay)
 [![Platform](https://img.shields.io/cocoapods/p/CirclePay.svg?style=flat)](https://cocoapods.org/pods/CirclePay)
+[![Developer](https://img.shields.io/badge/Developer-Visit-brightgreen?style=flat)](https://github.com/Mahmoud3allam)
+
 
 ## Product Objectives 🎯
 
