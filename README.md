@@ -34,7 +34,9 @@ it, simply add the following line to your Podfile:
 pod 'CirclePay'
 ```
   Then run this command in your terminal to fetch the latest version:
-
+```ruby
+pod repo update
+```
 
 ## Prepare SDK & Adding Keys 🔑
 Once integration done you can import the SDK in your classes like below:
@@ -81,12 +83,42 @@ By default the environment is set to .sandbox
 ## Usage 🧑‍💻
 Mainly the SDK contain some main modules you can call them by a class called CirclePay , below the main modules that SDK Support :
 - [x] invoices
+ - createInvoice
+ - deleteInvoice
+ - listInvoices
+ - getInvoice
+ - payInvoice
 - [x] customers
+ - createCustomer
+ - updateCustomer
+ - listCustomers
+ - getCustomer
 - [x] merchants
+ - createMerchant
+ - getMerchant
+ - getAllMerchants
+ - disablePaymentGateway
+ - enablePaymentGateway
+ - listPaymentGateway
+ - disablePaymentMethod
+ - enablePaymentMethod
+ - listPaymentMethods
+ - updateMerchant
+ - sendOTP
+ - verifyMerchant
 - [x] payments
+ - getPayment
+ - getAllPayments
 - [x] refunds
+ - getRefundStatus
+ - getAllRefunds
+ - requestRefund
 - [x] paymentGateways
+ - getPaymentGateway
+ - getAllPaymentGatways
 - [x] paymentMethods
+ - getPaymentMethod
+ - getAllPaymentMethods
 
 You can use those modules methods by importing the SDK into your class , then calling its methods throw CirclePay class like shown below:
 
